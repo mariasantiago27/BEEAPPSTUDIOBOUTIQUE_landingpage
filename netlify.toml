@@ -1,0 +1,13 @@
+[build]
+  # No hay build command porque es HTML estático
+  publish = "."
+
+[[redirects]]
+  # Redirigir todas las rutas a index.html para SPA (si es necesario)
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  # Variables de entorno si las necesitas en el futuro
+  NODE_VERSION = "18"
