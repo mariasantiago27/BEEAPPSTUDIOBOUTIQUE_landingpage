@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Página no encontrada | Chus Sama</title>
+<meta name="description" content="La página que buscas no existe."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#5f6f52",
+                    "background-light": "#F5F1EB",
+                    "background-dark": "#191b17",
+                    "text-main": "#2B2420",
+                    "card-bg": "#E4D6C8",
+                },
+                fontFamily: {
+                    "display": ["Newsreader", "serif"],
+                    "sans": ["Noto Sans", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+        },
+    }
+</script>
+<style>
+    body {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #F5F1EB;
+        color: #2B2420;
+    }
+    .font-display {
+        font-family: 'Newsreader', serif;
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #F5F1EB;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #5f6f52;
+        border-radius: 10px;
+    }
+    .carousel-stage {
+        background: linear-gradient(180deg, rgba(95, 79, 181, 0.06), rgba(95, 79, 181, 0.02));
+        border-radius: 1rem;
+        padding: 2rem 0;
+        -webkit-mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+    }
+    .carousel-track {
+        display: flex;
+        gap: 1.25rem;
+        padding: 0 calc(50% - 110px);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .carousel-track::-webkit-scrollbar {
+        display: none;
+    }
+    [data-carousel] .phone-frame img {
+        image-rendering: high-quality;
+        image-rendering: -webkit-optimize-contrast;
+    }
+    .phone-frame {
+        flex-shrink: 0;
+        height: 480px;
+        aspect-ratio: 9 / 19.5;
+        background: #1a1a1a;
+        border-radius: 1.85rem;
+        padding: 4px;
+        box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.4),
+            0 20px 40px -12px rgba(0, 0, 0, 0.35),
+            0 6px 12px -6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .phone-frame img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 1.55rem;
+        object-fit: cover;
+    }
+    /* Carrusel Surya Vida — mockups anchos (Nest Hub Max) */
+    [data-carousel-variant="wide"] .carousel-stage {
+        background: linear-gradient(180deg, rgba(216, 101, 50, 0.08), rgba(216, 101, 50, 0.02));
+        padding: 1.25rem 0;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+    /* Carrusel ancho: una captura = 100% del ancho visible (nitidez al 1:1 del escalado) */
+    [data-carousel-variant="wide"] .wide-carousel-track {
+        padding: 0;
+        gap: 0;
+    }
+    [data-carousel-variant="wide"] .wide-carousel-track .wide-mockup-frame {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+    .wide-mockup-frame {
+        flex-shrink: 0;
+        display: block;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background: #faf8f6;
+        box-shadow:
+            0 0 0 1px rgba(43, 36, 32, 0.06),
+            0 12px 28px -10px rgba(43, 36, 32, 0.18);
+    }
+    .wide-mockup-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+    #case-overlay [data-carousel-theme="surya"] .carousel-stage {
+        padding: 0;
+    }
+    #case-overlay [data-carousel-theme="surya"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    #case-overlay .surya-modal-aside {
+        border-color: rgba(217, 101, 50, 0.22);
+    }
+    .surya-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #d96532;
+    }
+    .surya-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(43, 36, 32, 0.2);
+    }
+    #case-overlay .maria-modal-aside {
+        border-color: rgba(212, 165, 176, 0.35);
+    }
+    #case-overlay [data-carousel-theme="maria"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(42, 36, 40, 0.08), rgba(232, 193, 200, 0.05));
+    }
+    #case-overlay [data-carousel-theme="maria"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .maria-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #7d5f66;
+    }
+    .maria-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(43, 36, 32, 0.2);
+    }
+    #case-overlay .matrona-modal-aside {
+        border-color: rgba(109, 127, 104, 0.28);
+    }
+    #case-overlay [data-carousel-theme="matrona"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(244, 236, 242, 0.65), rgba(232, 241, 232, 0.45));
+    }
+    #case-overlay [data-carousel-theme="matrona"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .matrona-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #6d7f68;
+    }
+    .matrona-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(61, 56, 58, 0.18);
+    }
+    #case-overlay .pilates-modal-aside {
+        border-color: rgba(33, 105, 118, 0.26);
+    }
+    #case-overlay [data-carousel-theme="pilates"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(236, 249, 247, 0.85), rgba(232, 242, 252, 0.45));
+    }
+    #case-overlay [data-carousel-theme="pilates"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .pilates-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #217a72;
+    }
+    .pilates-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(30, 58, 79, 0.18);
+    }
+    #case-overlay .meditacion-modal-aside {
+        border-color: rgba(184, 99, 66, 0.28);
+    }
+    #case-overlay [data-carousel-theme="meditacion"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(252, 245, 238, 0.9), rgba(248, 232, 224, 0.45));
+    }
+    #case-overlay [data-carousel-theme="meditacion"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .meditacion-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #b86342;
+    }
+    .meditacion-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(88, 52, 38, 0.2);
+    }
+    #case-overlay .psicologa-modal-aside {
+        border-color: rgba(74, 99, 88, 0.28);
+    }
+    #case-overlay [data-carousel-theme="psicologa"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(244, 247, 245, 0.95), rgba(232, 238, 233, 0.5));
+    }
+    #case-overlay [data-carousel-theme="psicologa"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .psicologa-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #4a6358;
+    }
+    .psicologa-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(45, 61, 54, 0.22);
+    }
+    #case-overlay .fisio-modal-aside {
+        border-color: rgba(51, 99, 120, 0.28);
+    }
+    #case-overlay [data-carousel-theme="fisio"] .carousel-stage {
+        padding: 0;
+        background: transparent;
+    }
+    #case-overlay [data-carousel-theme="fisio"] .carousel-stage.fisio-carousel-stage {
+        flex: 1 1 auto;
+        min-height: 0;
+        min-width: 0;
+        padding: 0.4rem 0.5rem 0.65rem;
+        background: linear-gradient(165deg, #f8fafc 0%, #f1f5f9 45%, rgba(236, 253, 245, 0.65) 100%);
+        border-radius: 0.875rem;
+        border: 1px solid rgba(51, 65, 85, 0.1);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.85),
+            0 2px 3px rgba(15, 23, 42, 0.04),
+            0 12px 32px -12px rgba(15, 23, 42, 0.14);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    /* Fisio panel (capturas escritorio): rail intrínseco + snap acotado + primer slide centrado */
+    #case-overlay [data-carousel-theme="fisio"][data-carousel-variant="wide"] .wide-carousel-track {
+        scroll-padding-inline: max(14px, calc(50% - min(280px, 44vw)));
+        align-items: center;
+        min-height: 0 !important;
+        gap: clamp(1.5rem, 4vw, 2.75rem);
+        padding: 0.5rem clamp(1.25rem, 3.5vw, 2rem) 1rem;
+        box-sizing: border-box;
+        width: auto;
+        max-width: none;
+        flex: 1 1 auto;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-gutter: stable;
+    }
+    /* Anula regla global "wide": cada slide = ancho intrínseco de la captura */
+    #case-overlay [data-carousel-variant="wide"] .wide-carousel-track > .fisio-slide.wide-mockup-frame {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        max-width: none !important;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+    #case-overlay .fisio-slide {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        padding: 0.125rem;
+        box-sizing: border-box;
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0.5rem;
+        overflow: visible !important;
+    }
+    #case-overlay .fisio-slide img {
+        display: block !important;
+        width: auto !important;
+        max-width: min(840px, 94vw) !important;
+        height: auto !important;
+        max-height: min(72dvh, calc(100dvh - 10rem), 900px) !important;
+        vertical-align: middle;
+        border-radius: 0.375rem;
+        object-fit: contain;
+        box-shadow:
+            0 0 0 1px rgba(15, 23, 42, 0.065),
+            0 20px 50px -16px rgba(15, 23, 42, 0.3),
+            0 8px 20px -10px rgba(15, 23, 42, 0.14);
+    }
+    /* Fisio Connect: un poco más de tamaño útil en pantallas grandes (menos reducción innecesaria de capturas ya muy grandes) */
+    #case-overlay [data-case-view="fisio-connect"] .fisio-slide img {
+        max-width: min(920px, 96vw) !important;
+        max-height: min(76dvh, calc(100dvh - 9.5rem), 980px) !important;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+    #case-overlay [data-case-view="fisio-connect"] .case-carousel-web .wide-mockup-frame.fisio-slide img {
+        max-height: min(74dvh, calc(100dvh - 9rem), 980px);
+    }
+    #case-overlay [data-case-view="fisio-connect"] .case-slide-mobile-img img {
+        max-height: min(72dvh, calc(100dvh - 9.5rem), 780px);
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+    #case-overlay .fisio-carousel-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 2.75rem !important;
+        height: 2.75rem !important;
+        border-radius: 9999px;
+        border: 1px solid rgba(51, 65, 85, 0.16) !important;
+        background: rgba(255, 255, 255, 0.97) !important;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow:
+            0 1px 2px rgba(15, 23, 42, 0.05),
+            0 8px 20px -6px rgba(15, 23, 42, 0.12) !important;
+        color: #334155 !important;
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.2s ease;
+    }
+    #case-overlay .fisio-carousel-nav:hover {
+        border-color: #0f7669 !important;
+        background: #0f7669 !important;
+        color: #fff !important;
+        transform: scale(1.04);
+    }
+    #case-overlay .fisio-carousel-nav:active {
+        transform: scale(0.98);
+    }
+    #case-overlay [data-carousel-theme="fisio"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .fisio-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #0f7669;
+    }
+    .fisio-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(51, 65, 85, 0.22);
+    }
+    #case-overlay .fitness-modal-aside {
+        border-color: rgba(120, 113, 108, 0.22);
+    }
+    .fitness-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #0d9488;
+    }
+    .fitness-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(43, 36, 32, 0.2);
+    }
+    /* Demo fitness: una sola silueta; las PNG ya traen el móvil / la UI */
+    .fitness-demo-viewport {
+        position: relative;
+        width: 100%;
+        max-width: min(380px, 96vw);
+        margin-left: auto;
+        margin-right: auto;
+        height: min(72vh, 620px);
+        max-height: min(72vh, 620px);
+        border-radius: 1.75rem;
+        overflow: hidden;
+        background: #f5f5f4;
+        box-shadow:
+            0 0 0 1px rgba(43, 36, 32, 0.06),
+            0 24px 48px -16px rgba(43, 36, 32, 0.22);
+    }
+    .fitness-demo-viewport iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+        background: #f5f5f4;
+    }
+    #case-overlay {
+        z-index: 200;
+        background-color: #F5F1EB;
+        display: none;
+    }
+    #case-overlay.is-open {
+        display: flex !important;
+        flex-direction: column;
+    }
+    .case-page-topbar {
+        flex-shrink: 0;
+        min-height: 3.25rem;
+    }
+    #case-overlay .case-page-body > aside {
+        width: 100%;
+        max-width: none;
+        flex-shrink: 0;
+    }
+    @media (min-width: 1024px) {
+        #case-overlay .case-page-body > aside {
+            width: 35%;
+            max-width: 35%;
+        }
+        #case-overlay .case-media-col {
+            width: 65%;
+            flex: 1 1 65%;
+        }
+    }
+    #case-overlay .case-media-col {
+        min-width: 0;
+        min-height: 0;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    /* Carrusel web / escritorio — capturas a todo el ancho de la columna */
+    #case-overlay .case-carousel-web {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    #case-overlay .case-carousel-web .carousel-stage {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem 0 0.75rem;
+        overflow: hidden;
+        -webkit-mask-image: none;
+        mask-image: none;
+        background: linear-gradient(180deg, rgba(43, 36, 32, 0.04), rgba(43, 36, 32, 0.01));
+    }
+    #case-overlay .case-carousel-web [data-carousel-slides],
+    #case-overlay .case-carousel-phone [data-carousel-slides],
+    #case-overlay .case-carousel-fisio-app [data-carousel-slides],
+    #case-overlay .case-carousel-fisio-panel [data-carousel-slides],
+    #case-overlay .case-carousel-phone-tin [data-carousel-slides] {
+        flex: 1 1 auto;
+        min-height: 0;
+    }
+    #case-overlay .case-carousel-web .wide-mockup-frame {
+        overflow: visible;
+        background: transparent;
+        box-shadow: none;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    #case-overlay .case-carousel-web .wide-mockup-frame img {
+        width: 100%;
+        height: auto;
+        max-height: min(68dvh, calc(100dvh - 10rem), 920px);
+        display: block;
+        object-fit: contain;
+        object-position: top center;
+        border-radius: 0.5rem;
+        box-shadow:
+            0 0 0 1px rgba(43, 36, 32, 0.06),
+            0 12px 36px -12px rgba(43, 36, 32, 0.2);
+    }
+
+    /* Móvil: capturas tamaño intrínseco, centrado, scroll */
+    #case-overlay .case-carousel-phone,
+    #case-overlay .case-carousel-phone-tin,
+    #case-overlay .case-carousel-fisio-app {
+        flex: 1 1 auto;
+        min-height: 0;
+        position: relative;
+        max-height: min(76dvh, calc(100dvh - 9.5rem));
+    }
+    /* Móvil en overlay: pantalla visible entera dentro del alto útil (barra superior + puntos carrusel) */
+    #case-overlay .case-carousel-phone .carousel-stage,
+    #case-overlay .case-carousel-phone-tin .carousel-stage,
+    #case-overlay .case-carousel-fisio-app .carousel-stage {
+        padding: 0.75rem 0 1rem;
+        -webkit-mask-image: none;
+        mask-image: none;
+        height: auto;
+        min-height: 0;
+        max-height: min(74dvh, calc(100dvh - 9.5rem));
+        align-items: center;
+        justify-content: center;
+    }
+    #case-overlay .case-carousel-phone-tin .carousel-stage {
+        background: transparent;
+    }
+    #case-overlay .case-carousel-phone [data-carousel-slides],
+    #case-overlay .case-carousel-phone-tin [data-carousel-slides],
+    #case-overlay .case-carousel-fisio-app [data-carousel-slides] {
+        gap: 1rem;
+        /* Centro horizontal en la columna: mitad_stage − mitad_slide (slide máx. 420px). Corrige el primer ítem pegado al borde. */
+        padding-inline: max(14px, calc(50% - 210px));
+        padding-block: 0;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 0;
+        max-height: min(74dvh, calc(100dvh - 9.5rem));
+        scroll-padding-inline: max(14px, calc(50% - 210px));
+    }
+    #case-overlay .case-slide-mobile-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        scroll-snap-stop: normal;
+        max-height: inherit;
+        box-sizing: border-box;
+        padding-inline: 0.25rem;
+        width: min(420px, 100%);
+        max-width: 100%;
+    }
+    #case-overlay .case-slide-mobile-img img {
+        width: 100%;
+        height: auto;
+        /* Escala proporcional hasta caber en pantalla; calidad de la PNG/JPG intacta (solo tamaño CSS) */
+        max-width: 100%;
+        max-height: min(68dvh, calc(100dvh - 10rem), 740px);
+        object-fit: contain;
+        object-position: center top;
+        display: block;
+        border-radius: 0.5rem;
+        box-shadow:
+            0 0 0 1px rgba(43, 36, 32, 0.08),
+            0 16px 40px -12px rgba(43, 36, 32, 0.25);
+    }
+    /* Caso Meditación: carrusel «La app» con más lienzo útil (capturas más grandes = mejor nitidez relativa) */
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin {
+        max-height: min(80dvh, calc(100dvh - 9rem));
+    }
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin .carousel-stage {
+        max-height: min(78dvh, calc(100dvh - 9rem));
+    }
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin [data-carousel-slides] {
+        padding-inline: max(14px, calc(50% - 236px));
+        scroll-padding-inline: max(14px, calc(50% - 236px));
+        max-height: min(78dvh, calc(100dvh - 9rem));
+    }
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin .case-slide-mobile-img {
+        width: min(472px, 100%);
+    }
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin .case-slide-mobile-img img {
+        max-height: min(74dvh, calc(100dvh - 9rem), 880px);
+    }
+
+    /* Casos reales — carrusel horizontal (tarjetas 320×420px) */
+    #casos .casos-carousel-strip {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(62, 56, 52, 0.25) transparent;
+    }
+    #casos .casos-carousel-strip::-webkit-scrollbar {
+        height: 6px;
+    }
+    #casos .casos-carousel-strip::-webkit-scrollbar-thumb {
+        background-color: rgba(62, 56, 52, 0.22);
+        border-radius: 999px;
+    }
+    .dark #casos .casos-carousel-strip {
+        scrollbar-color: rgba(255, 250, 245, 0.2) transparent;
+    }
+    .dark #casos .casos-carousel-strip::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 250, 245, 0.18);
+    }
+    #casos .caso-real-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 0 0 auto;
+        width: 320px;
+        height: 420px;
+        box-sizing: border-box;
+        border-radius: 1.125rem;
+        transition:
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #casos .caso-real-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+            0 4px 8px -2px rgba(45, 42, 38, 0.07),
+            0 18px 38px -14px rgba(45, 42, 38, 0.14);
+    }
+    #casos .casos-carousel-nav-btn {
+        box-shadow:
+            0 2px 10px rgba(45, 42, 38, 0.08),
+            0 0 0 1px rgba(62, 56, 52, 0.06);
+    }
+    #casos .casos-carousel-nav-btn:disabled {
+        opacity: 0.32;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+    .dark #casos .casos-carousel-nav-btn:disabled {
+        opacity: 0.28;
+    }
+</style>
+<link rel="canonical" href="https://chussama.com/404.html"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","ProfessionalService"],"name":"Chus Sama","url":"https://chussama.com","description":"Diseño web y apps para profesionales de la salud en Barcelona","address":{"@type":"PostalAddress","addressLocality":"Barcelona","addressCountry":"ES"},"areaServed":"Barcelona"}</script>
+
+</head>
+<body class="bg-background-light text-text-main min-h-screen flex flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-4 md:px-10 py-4 md:py-6 sticky top-0 bg-background-light/80 backdrop-blur-md z-50">
+    <div class="flex items-center gap-2 md:gap-4 text-text-main dark:text-white">
+        <a href="/" class="font-display text-xl md:text-2xl font-medium tracking-tight">Chus Santiago</a>
+    </div>
+    <div class="flex items-center gap-4">
+        <button id="mobile-menu-toggle" class="md:hidden p-2 text-text-main dark:text-white hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+        <div class="hidden md:flex flex-1 justify-end gap-10">
+            <nav class="flex items-center gap-6 lg:gap-10">
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="/#sobre-mi">Sobre mí</a>
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="/servicios/">Servicios</a>
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="/#proceso">Proceso</a>
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="/casos-de-estudio/">Casos</a>
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="/#filosofia">Filosofía</a>
+            </nav>
+            <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-white text-sm font-semibold tracking-wide hover:bg-opacity-90 transition-all">
+                <span>¿Hablamos?</span>
+            </a>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-background-light border-b border-primary/10 backdrop-blur-md">
+        <nav class="flex flex-col px-4 py-6 gap-4">
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="/#sobre-mi">Sobre mí</a>
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="/servicios/">Servicios</a>
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="/#proceso">Proceso</a>
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="/casos-de-estudio/">Casos</a>
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="/#filosofia">Filosofía</a>
+            <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="mt-4 w-full rounded-full h-12 px-6 bg-primary text-white text-sm font-semibold tracking-wide hover:bg-opacity-90 transition-all flex items-center justify-center">¿Hablamos?</a>
+        </nav>
+    </div>
+</header>
+<script>
+    document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = this.querySelector('span');
+        menu?.classList.toggle('hidden');
+        icon.textContent = menu?.classList.contains('hidden') ? 'menu' : 'close';
+    });
+</script>
+<main class="flex-1 flex flex-col items-center justify-center px-6 text-center">
+    <h1 class="font-display text-5xl font-light italic mb-4">404</h1>
+    <p class="text-text-main/70 mb-8">Esta página no existe.</p>
+    <a href="/" class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-white font-semibold">Volver al inicio</a>
+</main>
+<footer class="bg-background-light py-20 px-6 md:px-10 border-t border-text-main/5">
+    <div class="max-w-[1200px] mx-auto grid md:grid-cols-4 gap-12">
+        <div class="col-span-2">
+            <a href="/" class="font-display text-text-main text-2xl font-medium tracking-tight">Chus Santiago</a>
+            <p class="text-text-main/60 text-sm leading-relaxed mt-4 max-w-md">Tecnología humana y cercana para profesionales de salud y bienestar.</p>
+        </div>
+        <div>
+            <h4 class="font-semibold text-xs uppercase tracking-widest mb-6 text-primary">Explora</h4>
+            <ul class="flex flex-col gap-4 text-sm text-text-main/60">
+                <li><a class="hover:text-primary transition-colors" href="/#sobre-mi">Sobre mí</a></li>
+                <li><a class="hover:text-primary transition-colors" href="/servicios/">Servicios</a></li>
+                <li><a class="hover:text-primary transition-colors" href="/#proceso">Proceso</a></li>
+                <li><a class="hover:text-primary transition-colors" href="/casos-de-estudio/">Casos</a></li>
+                <li><a class="hover:text-primary transition-colors" href="/#filosofia">Filosofía</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-semibold text-xs uppercase tracking-widest mb-6 text-primary">Hablemos</h4>
+            <ul class="mt-8 flex flex-col gap-3 text-sm text-text-main/70">
+                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-primary">mail</span><a class="hover:text-primary transition-colors" href="mailto:chussama.digital@gmail.com">chussama.digital@gmail.com</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="max-w-[1200px] mx-auto mt-20 pt-8 border-t border-text-main/5 flex justify-center items-center text-[10px] text-text-main/40 uppercase tracking-[0.2em] font-medium">
+        <p>Â© 2026 Chus Santiago. Todos los derechos reservados.</p>
+    </div>
+</footer>
+</body></html>
