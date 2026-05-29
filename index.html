@@ -1,338 +1,1927 @@
 <!DOCTYPE html>
-
-<html class="light" lang="es"><head>
+<html class="light" lang="es">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>BEEAPP Studio &amp; Boutique | Intentional Digital Design</title>
+<title>Chus Santiago | Tecnología humana para profesionales de salud y bienestar</title>
+<meta name="description" content="Webs, apps y agentes con IA para profesionales de salud y bienestar. Haz que tu cliente te sienta cerca, incluso cuando no estás."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#5f6f52",
-                        "background-light": "#F5F1EB",
-                        "background-dark": "#191b17",
-                        "text-main": "#2B2420",
-                        "card-bg": "#E4D6C8",
-                    },
-                    fontFamily: {
-                        "display": ["Newsreader", "serif"],
-                        "sans": ["Noto Sans", "sans-serif"]
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#5f6f52",
+                    "background-light": "#F5F1EB",
+                    "background-dark": "#191b17",
+                    "text-main": "#2B2420",
+                    "card-bg": "#E4D6C8",
                 },
+                fontFamily: {
+                    "display": ["Newsreader", "serif"],
+                    "sans": ["Noto Sans", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
             },
-        }
-    </script>
+        },
+    }
+</script>
 <style>
-        body {
-            font-family: 'Noto Sans', sans-serif;
-            background-color: #F5F1EB;
-            color: #2B2420;
+    body {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #F5F1EB;
+        color: #2B2420;
+    }
+    .font-display {
+        font-family: 'Newsreader', serif;
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #F5F1EB;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #5f6f52;
+        border-radius: 10px;
+    }
+    .carousel-stage {
+        background: linear-gradient(180deg, rgba(95, 79, 181, 0.06), rgba(95, 79, 181, 0.02));
+        border-radius: 1rem;
+        padding: 2rem 0;
+        -webkit-mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+    }
+    .carousel-track {
+        display: flex;
+        gap: 1.25rem;
+        padding: 0 calc(50% - 110px);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .carousel-track::-webkit-scrollbar {
+        display: none;
+    }
+    [data-carousel] .phone-frame img {
+        image-rendering: high-quality;
+        image-rendering: -webkit-optimize-contrast;
+    }
+    .phone-frame {
+        flex-shrink: 0;
+        height: 480px;
+        aspect-ratio: 9 / 19.5;
+        background: #1a1a1a;
+        border-radius: 1.85rem;
+        padding: 4px;
+        box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.4),
+            0 20px 40px -12px rgba(0, 0, 0, 0.35),
+            0 6px 12px -6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .phone-frame img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 1.55rem;
+        object-fit: cover;
+    }
+    /* Carrusel Surya Vida — mockups anchos (Nest Hub Max) */
+    [data-carousel-variant="wide"] .carousel-stage {
+        background: linear-gradient(180deg, rgba(216, 101, 50, 0.08), rgba(216, 101, 50, 0.02));
+        padding: 1.25rem 0;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+    /* Carrusel ancho: una captura = 100% del ancho visible (nitidez al 1:1 del escalado) */
+    [data-carousel-variant="wide"] .wide-carousel-track {
+        padding: 0;
+        gap: 0;
+    }
+    [data-carousel-variant="wide"] .wide-carousel-track .wide-mockup-frame {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+    .wide-mockup-frame {
+        flex-shrink: 0;
+        display: block;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background: #faf8f6;
+        box-shadow:
+            0 0 0 1px rgba(43, 36, 32, 0.06),
+            0 12px 28px -10px rgba(43, 36, 32, 0.18);
+    }
+    .wide-mockup-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+    #case-overlay [data-carousel-theme="surya"] .carousel-stage {
+        padding: 0;
+    }
+    #case-overlay [data-carousel-theme="surya"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    #case-overlay .surya-modal-aside {
+        border-color: rgba(217, 101, 50, 0.22);
+    }
+    .surya-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #d96532;
+    }
+    .surya-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(43, 36, 32, 0.2);
+    }
+    #case-overlay .maria-modal-aside {
+        border-color: rgba(212, 165, 176, 0.35);
+    }
+    #case-overlay [data-carousel-theme="maria"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(42, 36, 40, 0.08), rgba(232, 193, 200, 0.05));
+    }
+    #case-overlay [data-carousel-theme="maria"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .maria-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #7d5f66;
+    }
+    .maria-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(43, 36, 32, 0.2);
+    }
+    #case-overlay .matrona-modal-aside {
+        border-color: rgba(109, 127, 104, 0.28);
+    }
+    #case-overlay [data-carousel-theme="matrona"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(244, 236, 242, 0.65), rgba(232, 241, 232, 0.45));
+    }
+    #case-overlay [data-carousel-theme="matrona"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .matrona-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #6d7f68;
+    }
+    .matrona-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(61, 56, 58, 0.18);
+    }
+    #case-overlay .pilates-modal-aside {
+        border-color: rgba(33, 105, 118, 0.26);
+    }
+    #case-overlay [data-carousel-theme="pilates"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(236, 249, 247, 0.85), rgba(232, 242, 252, 0.45));
+    }
+    #case-overlay [data-carousel-theme="pilates"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .pilates-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #217a72;
+    }
+    .pilates-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(30, 58, 79, 0.18);
+    }
+    #case-overlay .meditacion-modal-aside {
+        border-color: rgba(184, 99, 66, 0.28);
+    }
+    #case-overlay [data-carousel-theme="meditacion"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(252, 245, 238, 0.9), rgba(248, 232, 224, 0.45));
+    }
+    #case-overlay [data-carousel-theme="meditacion"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .meditacion-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #b86342;
+    }
+    .meditacion-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(88, 52, 38, 0.2);
+    }
+    #case-overlay .psicologa-modal-aside {
+        border-color: rgba(74, 99, 88, 0.28);
+    }
+    #case-overlay [data-carousel-theme="psicologa"] .carousel-stage {
+        padding: 0;
+        background: linear-gradient(180deg, rgba(244, 247, 245, 0.95), rgba(232, 238, 233, 0.5));
+    }
+    #case-overlay [data-carousel-theme="psicologa"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .psicologa-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #4a6358;
+    }
+    .psicologa-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(45, 61, 54, 0.22);
+    }
+    #case-overlay .fisio-modal-aside {
+        border-color: rgba(51, 99, 120, 0.28);
+    }
+    #case-overlay [data-carousel-theme="fisio"] .carousel-stage {
+        padding: 0;
+        background: transparent;
+    }
+    #case-overlay [data-carousel-theme="fisio"] .carousel-stage.fisio-carousel-stage {
+        flex: 1 1 auto;
+        min-height: 0;
+        min-width: 0;
+        padding: 0.4rem 0.5rem 0.65rem;
+        background: linear-gradient(165deg, #f8fafc 0%, #f1f5f9 45%, rgba(236, 253, 245, 0.65) 100%);
+        border-radius: 0.875rem;
+        border: 1px solid rgba(51, 65, 85, 0.1);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.85),
+            0 2px 3px rgba(15, 23, 42, 0.04),
+            0 12px 32px -12px rgba(15, 23, 42, 0.14);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    /* Fisio panel (capturas escritorio): rail intrínseco + snap acotado + primer slide centrado */
+    #case-overlay [data-carousel-theme="fisio"][data-carousel-variant="wide"] .wide-carousel-track {
+        scroll-padding-inline: max(14px, calc(50% - min(280px, 44vw)));
+        align-items: center;
+        min-height: 0 !important;
+        gap: clamp(1.5rem, 4vw, 2.75rem);
+        padding: 0.5rem clamp(1.25rem, 3.5vw, 2rem) 1rem;
+        box-sizing: border-box;
+        width: auto;
+        max-width: none;
+        flex: 1 1 auto;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-gutter: stable;
+    }
+    /* Anula regla global "wide": cada slide = ancho intrínseco de la captura */
+    #case-overlay [data-carousel-variant="wide"] .wide-carousel-track > .fisio-slide.wide-mockup-frame {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        max-width: none !important;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+    #case-overlay .fisio-slide {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        padding: 0.125rem;
+        box-sizing: border-box;
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0.5rem;
+        overflow: visible !important;
+    }
+    #case-overlay .fisio-slide img {
+        display: block !important;
+        width: auto !important;
+        max-width: min(840px, 94vw) !important;
+        height: auto !important;
+        max-height: min(72dvh, calc(100dvh - 10rem), 900px) !important;
+        vertical-align: middle;
+        border-radius: 0.375rem;
+        object-fit: contain;
+        box-shadow:
+            0 0 0 1px rgba(15, 23, 42, 0.065),
+            0 20px 50px -16px rgba(15, 23, 42, 0.3),
+            0 8px 20px -10px rgba(15, 23, 42, 0.14);
+    }
+    /* Fisio Connect: un poco más de tamaño útil en pantallas grandes (menos reducción innecesaria de capturas ya muy grandes) */
+    #case-overlay [data-case-view="fisio-connect"] .fisio-slide img {
+        max-width: min(920px, 96vw) !important;
+        max-height: min(76dvh, calc(100dvh - 9.5rem), 980px) !important;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+    #case-overlay [data-case-view="fisio-connect"] .case-carousel-web .wide-mockup-frame.fisio-slide img {
+        max-height: min(74dvh, calc(100dvh - 9rem), 980px);
+    }
+    #case-overlay [data-case-view="fisio-connect"] .case-slide-mobile-img img {
+        max-height: min(72dvh, calc(100dvh - 9.5rem), 780px);
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+    #case-overlay .fisio-carousel-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 2.75rem !important;
+        height: 2.75rem !important;
+        border-radius: 9999px;
+        border: 1px solid rgba(51, 65, 85, 0.16) !important;
+        background: rgba(255, 255, 255, 0.97) !important;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow:
+            0 1px 2px rgba(15, 23, 42, 0.05),
+            0 8px 20px -6px rgba(15, 23, 42, 0.12) !important;
+        color: #334155 !important;
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.2s ease;
+    }
+    #case-overlay .fisio-carousel-nav:hover {
+        border-color: #0f7669 !important;
+        background: #0f7669 !important;
+        color: #fff !important;
+        transform: scale(1.04);
+    }
+    #case-overlay .fisio-carousel-nav:active {
+        transform: scale(0.98);
+    }
+    #case-overlay [data-carousel-theme="fisio"] [data-carousel-dots] {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+    .fisio-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #0f7669;
+    }
+    .fisio-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(51, 65, 85, 0.22);
+    }
+    #case-overlay .fitness-modal-aside {
+        border-color: rgba(120, 113, 108, 0.22);
+    }
+    .fitness-carousel-dot-active {
+        width: 1.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: #0d9488;
+    }
+    .fitness-carousel-dot-idle {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background-color: rgba(43, 36, 32, 0.2);
+    }
+    /* Demo fitness: una sola silueta; las PNG ya traen el móvil / la UI */
+    .fitness-demo-viewport {
+        position: relative;
+        width: 100%;
+        max-width: min(380px, 96vw);
+        margin-left: auto;
+        margin-right: auto;
+        height: min(72vh, 620px);
+        max-height: min(72vh, 620px);
+        border-radius: 1.75rem;
+        overflow: hidden;
+        background: #f5f5f4;
+        box-shadow:
+            0 0 0 1px rgba(43, 36, 32, 0.06),
+            0 24px 48px -16px rgba(43, 36, 32, 0.22);
+    }
+    .fitness-demo-viewport iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+        background: #f5f5f4;
+    }
+    #case-overlay {
+        z-index: 200;
+        background-color: #F5F1EB;
+        display: none;
+    }
+    #case-overlay.is-open {
+        display: flex !important;
+        flex-direction: column;
+    }
+    .case-page-topbar {
+        flex-shrink: 0;
+        min-height: 3.25rem;
+    }
+    #case-overlay .case-page-body > aside {
+        width: 100%;
+        max-width: none;
+        flex-shrink: 0;
+    }
+    @media (min-width: 1024px) {
+        #case-overlay .case-page-body > aside {
+            width: 35%;
+            max-width: 35%;
         }
-        .font-display {
-            font-family: 'Newsreader', serif;
+        #case-overlay .case-media-col {
+            width: 65%;
+            flex: 1 1 65%;
         }
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #F5F1EB;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #5f6f52;
-            border-radius: 10px;
-        }
-    </style>
+    }
+    #case-overlay .case-media-col {
+        min-width: 0;
+        min-height: 0;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    /* Carrusel web / escritorio — capturas a todo el ancho de la columna */
+    #case-overlay .case-carousel-web {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    #case-overlay .case-carousel-web .carousel-stage {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem 0 0.75rem;
+        overflow: hidden;
+        -webkit-mask-image: none;
+        mask-image: none;
+        background: linear-gradient(180deg, rgba(43, 36, 32, 0.04), rgba(43, 36, 32, 0.01));
+    }
+    #case-overlay .case-carousel-web [data-carousel-slides],
+    #case-overlay .case-carousel-phone [data-carousel-slides],
+    #case-overlay .case-carousel-fisio-app [data-carousel-slides],
+    #case-overlay .case-carousel-fisio-panel [data-carousel-slides],
+    #case-overlay .case-carousel-phone-tin [data-carousel-slides] {
+        flex: 1 1 auto;
+        min-height: 0;
+    }
+    #case-overlay .case-carousel-web .wide-mockup-frame {
+        overflow: visible;
+        background: transparent;
+        box-shadow: none;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    #case-overlay .case-carousel-web .wide-mockup-frame img {
+        width: 100%;
+        height: auto;
+        max-height: min(68dvh, calc(100dvh - 10rem), 920px);
+        display: block;
+        object-fit: contain;
+        object-position: top center;
+        border-radius: 0.5rem;
+        box-shadow:
+            0 0 0 1px rgba(43, 36, 32, 0.06),
+            0 12px 36px -12px rgba(43, 36, 32, 0.2);
+    }
+
+    /* Móvil: capturas tamaño intrínseco, centrado, scroll */
+    #case-overlay .case-carousel-phone,
+    #case-overlay .case-carousel-phone-tin,
+    #case-overlay .case-carousel-fisio-app {
+        flex: 1 1 auto;
+        min-height: 0;
+        position: relative;
+        max-height: min(76dvh, calc(100dvh - 9.5rem));
+    }
+    /* Móvil en overlay: pantalla visible entera dentro del alto útil (barra superior + puntos carrusel) */
+    #case-overlay .case-carousel-phone .carousel-stage,
+    #case-overlay .case-carousel-phone-tin .carousel-stage,
+    #case-overlay .case-carousel-fisio-app .carousel-stage {
+        padding: 0.75rem 0 1rem;
+        -webkit-mask-image: none;
+        mask-image: none;
+        height: auto;
+        min-height: 0;
+        max-height: min(74dvh, calc(100dvh - 9.5rem));
+        align-items: center;
+        justify-content: center;
+    }
+    #case-overlay .case-carousel-phone-tin .carousel-stage {
+        background: transparent;
+    }
+    #case-overlay .case-carousel-phone [data-carousel-slides],
+    #case-overlay .case-carousel-phone-tin [data-carousel-slides],
+    #case-overlay .case-carousel-fisio-app [data-carousel-slides] {
+        gap: 1rem;
+        /* Centro horizontal en la columna: mitad_stage − mitad_slide (slide máx. 420px). Corrige el primer ítem pegado al borde. */
+        padding-inline: max(14px, calc(50% - 210px));
+        padding-block: 0;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 0;
+        max-height: min(74dvh, calc(100dvh - 9.5rem));
+        scroll-padding-inline: max(14px, calc(50% - 210px));
+    }
+    #case-overlay .case-slide-mobile-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        scroll-snap-stop: normal;
+        max-height: inherit;
+        box-sizing: border-box;
+        padding-inline: 0.25rem;
+        width: min(420px, 100%);
+        max-width: 100%;
+    }
+    #case-overlay .case-slide-mobile-img img {
+        width: 100%;
+        height: auto;
+        /* Escala proporcional hasta caber en pantalla; calidad de la PNG/JPG intacta (solo tamaño CSS) */
+        max-width: 100%;
+        max-height: min(68dvh, calc(100dvh - 10rem), 740px);
+        object-fit: contain;
+        object-position: center top;
+        display: block;
+        border-radius: 0.5rem;
+        box-shadow:
+            0 0 0 1px rgba(43, 36, 32, 0.08),
+            0 16px 40px -12px rgba(43, 36, 32, 0.25);
+    }
+    /* Caso Meditación: carrusel «La app» con más lienzo útil (capturas más grandes = mejor nitidez relativa) */
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin {
+        max-height: min(80dvh, calc(100dvh - 9rem));
+    }
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin .carousel-stage {
+        max-height: min(78dvh, calc(100dvh - 9rem));
+    }
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin [data-carousel-slides] {
+        padding-inline: max(14px, calc(50% - 236px));
+        scroll-padding-inline: max(14px, calc(50% - 236px));
+        max-height: min(78dvh, calc(100dvh - 9rem));
+    }
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin .case-slide-mobile-img {
+        width: min(472px, 100%);
+    }
+    #case-overlay [data-case-view="meditacion"] .case-carousel-phone-tin .case-slide-mobile-img img {
+        max-height: min(74dvh, calc(100dvh - 9rem), 880px);
+    }
+
+    /* Casos reales — carrusel horizontal (tarjetas 320×420px) */
+    #casos .casos-carousel-strip {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(62, 56, 52, 0.25) transparent;
+    }
+    #casos .casos-carousel-strip::-webkit-scrollbar {
+        height: 6px;
+    }
+    #casos .casos-carousel-strip::-webkit-scrollbar-thumb {
+        background-color: rgba(62, 56, 52, 0.22);
+        border-radius: 999px;
+    }
+    .dark #casos .casos-carousel-strip {
+        scrollbar-color: rgba(255, 250, 245, 0.2) transparent;
+    }
+    .dark #casos .casos-carousel-strip::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 250, 245, 0.18);
+    }
+    #casos .caso-real-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 0 0 auto;
+        width: 320px;
+        height: 420px;
+        box-sizing: border-box;
+        border-radius: 1.125rem;
+        transition:
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #casos .caso-real-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+            0 4px 8px -2px rgba(45, 42, 38, 0.07),
+            0 18px 38px -14px rgba(45, 42, 38, 0.14);
+    }
+    #casos .casos-carousel-nav-btn {
+        box-shadow:
+            0 2px 10px rgba(45, 42, 38, 0.08),
+            0 0 0 1px rgba(62, 56, 52, 0.06);
+    }
+    #casos .casos-carousel-nav-btn:disabled {
+        opacity: 0.32;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+    .dark #casos .casos-carousel-nav-btn:disabled {
+        opacity: 0.28;
+    }
+</style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-text-main transition-colors duration-300">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
 <div class="layout-container flex h-full grow flex-col">
+
 <!-- Navigation -->
 <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-4 md:px-10 py-4 md:py-6 sticky top-0 bg-background-light/80 backdrop-blur-md z-50">
-            <div class="flex items-center gap-2 md:gap-4 text-text-main dark:text-white">
-                <img src="2.png" alt="BEEAPP Studio & Boutique" class="h-8 md:h-12 w-auto">
-            </div>
-<div class="flex items-center gap-4">
-<button id="mobile-menu-toggle" class="md:hidden p-2 text-text-main dark:text-white hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-2xl">menu</span>
-</button>
-<div class="hidden md:flex flex-1 justify-end gap-10">
-<nav class="flex items-center gap-6 lg:gap-10">
-<a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#boutique">Boutique</a>
-<a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#studio">Studio</a>
-<a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#proceso">Proceso</a>
-<a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#filosofia">Filosofía</a>
-</nav>
-                <a href="https://calendar.app.google/oNEgg1MZVqt9Tutx5" target="_blank" rel="noopener noreferrer" class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-white text-sm font-semibold tracking-wide hover:bg-opacity-90 transition-all">
-                <span>Solicitar llamada</span>
-                </a>
-</div>
-</div>
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-background-light border-b border-primary/10 backdrop-blur-md">
-<nav class="flex flex-col px-4 py-6 gap-4">
-<a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="#boutique">Boutique</a>
-<a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="#studio">Studio</a>
-<a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="#proceso">Proceso</a>
-<a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="#filosofia">Filosofía</a>
-                <a href="https://calendar.app.google/oNEgg1MZVqt9Tutx5" target="_blank" rel="noopener noreferrer" class="mt-4 w-full rounded-full h-12 px-6 bg-primary text-white text-sm font-semibold tracking-wide hover:bg-opacity-90 transition-all flex items-center justify-center">
-                Solicitar llamada
-                </a>
-</nav>
-</div>
+    <div class="flex items-center gap-2 md:gap-4 text-text-main dark:text-white">
+        <a href="#" class="font-display text-xl md:text-2xl font-medium tracking-tight">Chus Santiago</a>
+    </div>
+    <div class="flex items-center gap-4">
+        <button id="mobile-menu-toggle" class="md:hidden p-2 text-text-main dark:text-white hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+        <div class="hidden md:flex flex-1 justify-end gap-10">
+            <nav class="flex items-center gap-6 lg:gap-10">
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#sobre-mi">Sobre mí</a>
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#servicios">Servicios</a>
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#proceso">Proceso</a>
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#casos">Casos</a>
+                <a class="text-text-main dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#filosofia">Filosofía</a>
+            </nav>
+            <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-white text-sm font-semibold tracking-wide hover:bg-opacity-90 transition-all">
+                <span>¿Hablamos?</span>
+            </a>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-background-light border-b border-primary/10 backdrop-blur-md">
+        <nav class="flex flex-col px-4 py-6 gap-4">
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="#sobre-mi">Sobre mí</a>
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="#servicios">Servicios</a>
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="#proceso">Proceso</a>
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="#casos">Casos</a>
+            <a class="text-text-main dark:text-white text-base font-medium hover:text-primary transition-colors py-2" href="#filosofia">Filosofía</a>
+            <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="mt-4 w-full rounded-full h-12 px-6 bg-primary text-white text-sm font-semibold tracking-wide hover:bg-opacity-90 transition-all flex items-center justify-center">
+                ¿Hablamos?
+            </a>
+        </nav>
+    </div>
 </header>
-    <script>
-        document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = this.querySelector('span');
-            menu?.classList.toggle('hidden');
-            if (menu?.classList.contains('hidden')) {
-                icon.textContent = 'menu';
-            } else {
-                icon.textContent = 'close';
-            }
-        });
-
-        // Boutique carousel scroll
-        const boutiqueCarousel = document.getElementById('boutique-carousel');
-        const scrollLeftBtn = document.getElementById('boutique-scroll-left');
-        const scrollRightBtn = document.getElementById('boutique-scroll-right');
-
-        if (scrollLeftBtn && scrollRightBtn && boutiqueCarousel) {
-            scrollLeftBtn.addEventListener('click', function() {
-                boutiqueCarousel.scrollBy({
-                    left: -320,
-                    behavior: 'smooth'
-                });
-            });
-
-            scrollRightBtn.addEventListener('click', function() {
-                boutiqueCarousel.scrollBy({
-                    left: 320,
-                    behavior: 'smooth'
-                });
-            });
+<script>
+    document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = this.querySelector('span');
+        menu?.classList.toggle('hidden');
+        if (menu?.classList.contains('hidden')) {
+            icon.textContent = 'menu';
+        } else {
+            icon.textContent = 'close';
         }
-    </script>
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const strip = document.querySelector('#casos-carousel');
+        if (!strip || !strip.hasAttribute('data-casos-scroll')) return;
+
+        strip.addEventListener(
+            'wheel',
+            function (e) {
+                if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+                e.preventDefault();
+                this.scrollLeft += e.deltaY;
+            },
+            { passive: false }
+        );
+
+        const prev = document.getElementById('casos-carousel-prev');
+        const next = document.getElementById('casos-carousel-next');
+        const cardWidth = 320;
+        const gapPx = 28;
+        const stepScroll = () => cardWidth + gapPx;
+
+        const updateCasosNav = () => {
+            const max = Math.max(0, strip.scrollWidth - strip.clientWidth);
+            const x = strip.scrollLeft;
+            const eps = 6;
+            const atStart = x <= eps;
+            const atEnd = x >= max - eps;
+            if (prev) prev.disabled = atStart;
+            if (next) next.disabled = atEnd || max <= eps;
+        };
+
+        prev?.addEventListener('click', () => {
+            strip.scrollBy({ left: -stepScroll(), behavior: 'smooth' });
+        });
+        next?.addEventListener('click', () => {
+            strip.scrollBy({ left: stepScroll(), behavior: 'smooth' });
+        });
+        strip.addEventListener('scroll', updateCasosNav, { passive: true });
+        window.addEventListener('resize', updateCasosNav);
+        updateCasosNav();
+    });
+</script>
+
 <main class="flex-1">
+
 <!-- Hero Section -->
-<section class="px-10 py-20 lg:py-32 flex flex-col items-center text-center">
-<div class="max-w-4xl mx-auto">
-                        <h1 class="font-display text-text-main dark:text-white text-5xl lg:text-7xl font-light leading-[1.1] mb-8 italic">
-                            Haz que tu cliente te sienta cerca, incluso cuando no estás.
-                        </h1>
-                        <p class="font-sans text-text-main/70 dark:text-white/70 text-lg lg:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-                            Creamos aplicaciones y sistemas digitales que transforman tu servicio en una experiencia continua.
-                        </p>
-                        <a href="https://calendar.app.google/oNEgg1MZVqt9Tutx5" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-white font-semibold text-base transition-transform hover:scale-105">
-                            Descubre cómo estar más presente para tus clientes
-                        </a>
-</div>
+<section class="px-6 md:px-10 py-20 lg:py-32 flex flex-col items-center text-center">
+    <div class="max-w-4xl mx-auto">
+        <span class="text-primary font-semibold tracking-[0.2em] text-xs uppercase mb-6 block">Para profesionales de salud y bienestar</span>
+        <h1 class="font-display text-text-main dark:text-white text-5xl lg:text-7xl font-light leading-[1.1] mb-12 italic">
+            Haz que tu cliente te sienta cerca, incluso cuando no estás.
+        </h1>
+        <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-white font-semibold text-base transition-transform hover:scale-105">
+            ¿Hablamos?
+        </a>
+    </div>
 </section>
-<!-- Boutique Section -->
-<section class="py-20 bg-card-bg/30" id="boutique">
-<div class="px-10 max-w-[1200px] mx-auto">
-<div class="flex items-end justify-between mb-12">
-<div>
-                    <span class="text-primary font-semibold tracking-[0.2em] text-sm uppercase mb-2 block">Tu punto de partida digital</span>
-                    <h2 class="font-display text-4xl text-text-main dark:text-white font-medium">Boutique</h2>
-</div>
-                <div class="flex gap-2">
-                <button id="boutique-scroll-left" class="p-2 border border-text-main/20 rounded-full hover:bg-primary/10 transition-colors">
-                <span class="material-symbols-outlined">chevron_left</span>
-                </button>
-                <button id="boutique-scroll-right" class="p-2 border border-text-main/20 rounded-full hover:bg-primary/10 transition-colors">
-                <span class="material-symbols-outlined">chevron_right</span>
-                </button>
+
+<!-- Sobre mí: Por qué hago esto -->
+<section class="py-20 lg:py-28 bg-card-bg/30" id="sobre-mi">
+    <div class="px-6 md:px-10 max-w-[1200px] mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="aspect-[4/5] w-full rounded-xl overflow-hidden max-w-md mx-auto lg:mx-0 shadow-sm ring-1 ring-black/5">
+                    <img src="chusweb.jpg" alt="Retrato de Chus" class="w-full h-full object-cover object-center" width="1280" height="720" loading="lazy" decoding="async">
                 </div>
-                </div>
-                <div id="boutique-carousel" class="flex overflow-x-auto gap-8 pb-8 no-scrollbar scroll-smooth items-stretch">
-<!-- Card 1 -->
-                <div class="w-[320px] flex flex-col gap-6 p-6 rounded-xl bg-background-light border border-text-main/5 shadow-sm group h-full flex-shrink-0">
-                <div class="w-full h-[400px] bg-cover bg-center rounded-lg grayscale hover:grayscale-0 transition-all duration-700 flex-shrink-0" data-alt="Minimalist digital mindfulness interface design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBa6-rdavj6baOihY7-1U5zxiuWELSe8Xj_zGXY0pF8xuo2Bs_C-bpQ4_4ReNXyTPo9-5NQ75d89WFqFXHM-LvIMoYY7eM7OSVh62cslfsGXOTIzkrNNEo_rLAjiT5ZWGuzoz-8G4GWTe2P_EzXTm7gwbB43y_MW6JYKMzo7_j040WTyi9oaLUPZMp7DUyyN4ZEXJ0jZWo3ekJvZuoW4xf6D33WECzJX-IWIzbbrBdVBhEE-B0-bsPFVxMoiA4noIcRy1N5FCuzrxBZ");'></div>
-                <div class="flex flex-col gap-2 flex-1">
-                <h3 class="font-display text-4xl font-medium min-h-[3rem] flex items-start">BEE Balance</h3>
-                <p class="text-text-main/60 text-lg leading-relaxed flex-1">Sistemas digitales para profesionales del bienestar que quieren acompañar a sus clientes más allá de la sesión. Diseñamos estructuras simples que sostienen la experiencia en el tiempo.</p>
-                <a class="mt-auto flex items-center gap-2 text-primary font-semibold text-base hover:gap-3 transition-all" href="https://calendar.app.google/oNEgg1MZVqt9Tutx5" target="_blank" rel="noopener noreferrer">
-                                        Ver si encaja <span class="material-symbols-outlined text-base">arrow_forward</span>
-                </a>
-                </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="w-[320px] flex flex-col gap-6 p-6 rounded-xl bg-background-light border border-text-main/5 shadow-sm group h-full flex-shrink-0">
-                <div class="w-full h-[400px] bg-cover bg-center rounded-lg grayscale hover:grayscale-0 transition-all duration-700 flex-shrink-0" data-alt="Elegant web portfolio for high end brands" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBicUceXcJkO2uMl6YQGM45298BpE8rgrv6Mfon2yfZsGRVDc2oIrYV9-MhwfVTdJWYX4A7qOajdX2SLr-zAVNw3W__5pYUjrKrLn2pT0gk7RAkhHk8KjpL2fWmsHmQgCyp3NwKUsDgbQ-02AKRkYyp8lVG_-obGrhEcp1OeAeTPK4J_Bwu1Cawm-Ynx4fl2BLxA9CIIfVeobrbnq14b1Y33z41rmmWE9LasqrCrO1pL8gawiReqrMHq7fgwPryp2aTD1E2N9GYcBoz");'></div>
-                <div class="flex flex-col gap-2 flex-1">
-                <h3 class="font-display text-4xl font-medium min-h-[3rem] flex items-start">BEE Web</h3>
-                <p class="text-text-main/60 text-lg leading-relaxed flex-1">Webs estratégicas que no solo presentan tu marca, sino que prolongan la experiencia. Presencia digital pensada para que tu cliente te sienta cerca desde el primer contacto.</p>
-                <a class="mt-auto flex items-center gap-2 text-primary font-semibold text-base hover:gap-3 transition-all" href="https://calendar.app.google/oNEgg1MZVqt9Tutx5" target="_blank" rel="noopener noreferrer">
-                                        Ver si encaja <span class="material-symbols-outlined text-base">arrow_forward</span>
-                </a>
-                </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="w-[320px] flex flex-col gap-6 p-6 rounded-xl bg-background-light border border-text-main/5 shadow-sm group h-full flex-shrink-0">
-                <div class="w-full h-[400px] bg-cover bg-center rounded-lg grayscale hover:grayscale-0 transition-all duration-700 flex-shrink-0" data-alt="Sophisticated wellness app dashboard mockup" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYV_IWP5DMDhKH6cx4b2LwZwPUFpaFnRf61ZiAmBFUWdfjjJ0CoQbJNSmgN36kgyovWeBgOhyeSNIjp-BobFTJvwnRFAFidd7GP6Gl049psVuE0iG05e-CnmFThU9nGEf87HdxAfJN6Q6yuw8xdrFEcPga43s9bF5YN_KUnb0JftwsmbMOUCjon863muPHVr6r6EiIZzVecpBWkYOeJE0NRbmp-oyMpfUIvvkx6WSasysD29oNWwVwGmR1uV4K0RbMoYaX03-QouHj");'></div>
-                <div class="flex flex-col gap-2 flex-1">
-                <h3 class="font-display text-4xl font-medium min-h-[3rem] flex items-start">BEE Local</h3>
-                <p class="text-text-main/60 text-lg leading-relaxed flex-1">Herramientas digitales para negocios físicos que quieren estar presentes incluso fuera de su horario. Reservas, comunicación y gestión que mantienen viva la relación con tus clientes.</p>
-                <a class="mt-auto flex items-center gap-2 text-primary font-semibold text-base hover:gap-3 transition-all" href="https://calendar.app.google/oNEgg1MZVqt9Tutx5" target="_blank" rel="noopener noreferrer">
-                                        Ver si encaja <span class="material-symbols-outlined text-base">arrow_forward</span>
-                </a>
-                </div>
-                </div>
-</div>
-</div>
+            </div>
+            <div class="order-1 lg:order-2">
+                <span class="text-primary font-semibold tracking-[0.2em] text-sm uppercase mb-4 block">Sobre mí</span>
+                <h2 class="font-display text-4xl lg:text-5xl text-text-main dark:text-white font-light italic leading-tight mb-8">Por qué hago esto</h2>
+                <p class="font-sans text-text-main/80 dark:text-white/80 text-lg leading-relaxed">
+                    Estaba embarazada en una clase de yoga. El profesor no lo sabía. Nadie preguntó. Salí con miedo de haber puesto en peligro a mi bebé.
+                </p>
+                <p class="font-sans text-text-main/80 dark:text-white/80 text-lg leading-relaxed mt-6">
+                    Ahí entendí que los profesionales de salud necesitan conocer a su cliente antes de atenderle. Y que la tecnología puede hacer eso posible de forma humana y cercana.
+                </p>
+                <p class="font-sans text-text-main/80 dark:text-white/80 text-lg leading-relaxed mt-6">
+                    Llevo 7 años como consultora de Customer Experience en entornos corporativos — ayudando a grandes empresas a conectar mejor con sus clientes. Ahora hago lo mismo, pero para las personas que más lo necesitan: los profesionales que cuidan tu salud.
+                </p>
+                <p class="font-display italic text-text-main dark:text-white text-2xl leading-relaxed mt-8">
+                    Eso es lo que construyo.
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
-<!-- Studio Section -->
-<section class="py-20" id="studio">
-            <div class="px-10 max-w-[1200px] mx-auto">
-                <div class="grid lg:grid-cols-2 gap-12 items-start">
-                    <div>
-                        <div class="mb-6">
-                            <span class="text-primary font-semibold tracking-[0.2em] text-sm uppercase mb-2 block">Cuando tu acompañamiento necesita algo propio.</span>
-                            <h2 class="font-display text-4xl text-text-main dark:text-white font-medium">Studio</h2>
-                        </div>
-                        <p class="text-lg text-text-main/70 leading-relaxed">
-                            Cuando tu modelo de servicio requiere algo más que una base, diseñamos y desarrollamos aplicaciones y sistemas digitales totalmente personalizados.
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 gap-4">
-                        <div class="p-6 rounded-xl bg-background-light border border-text-main/5 shadow-sm">
-                            <div class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary text-xl">design_services</span>
-                                <span class="text-base font-medium">Diseñamos y construimos tu propio sistema digital</span>
-                            </div>
-                        </div>
-                        <div class="p-6 rounded-xl bg-background-light border border-text-main/5 shadow-sm">
-                            <div class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary text-xl">favorite</span>
-                                <span class="text-base font-medium">Cuidamos cada detalle de la experiencia</span>
-                            </div>
-                        </div>
-                        <div class="p-6 rounded-xl bg-background-light border border-text-main/5 shadow-sm">
-                            <div class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary text-xl">trending_up</span>
-                                <span class="text-base font-medium">Evolucionamos tu servicio con tecnología a medida</span>
-                            </div>
-                        </div>
-                    </div>
+
+<!-- Servicios -->
+<section class="py-20 lg:py-28" id="servicios">
+    <div class="px-6 md:px-10 max-w-[1200px] mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-primary font-semibold tracking-[0.2em] text-xs uppercase mb-4 block">Servicios</span>
+            <h2 class="font-display text-4xl lg:text-5xl text-text-main dark:text-white font-light italic leading-tight mb-4">Tecnología hecha para acompañar</h2>
+            <p class="font-sans text-text-main/70 text-lg max-w-2xl mx-auto">
+                Soluciones digitales pensadas para profesionales de salud y bienestar. Elige el punto de partida que mejor encaje con tu momento.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Card 1 -->
+            <div class="p-8 rounded-xl bg-background-light border border-text-main/10 shadow-sm flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">language</span>
+                    <h3 class="font-display text-3xl font-medium leading-tight">Web profesional</h3>
                 </div>
-</div>
+                <p class="text-text-main/70 leading-relaxed">
+                    Diseño a medida, responsive, formulario de contacto y SEO de configuración inicial. Tu primera presencia digital, hecha con criterio.
+                </p>
+            </div>
+            <!-- Card 2 -->
+            <div class="p-8 rounded-xl bg-background-light border border-text-main/10 shadow-sm flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">phone_iphone</span>
+                    <h3 class="font-display text-3xl font-medium leading-tight">App personalizada</h3>
+                </div>
+                <p class="text-text-main/70 leading-relaxed">
+                    Webapp a medida con funcionalidades específicas para tu negocio: reservas, perfiles de cliente, contenido propio o pagos. Lo que tu servicio necesite, o lo que hayas imaginado. Lo hacemos posible.
+                </p>
+            </div>
+            <!-- Card 3 -->
+            <div class="p-8 rounded-xl bg-background-light border border-text-main/10 shadow-sm flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">auto_awesome</span>
+                    <h3 class="font-display text-3xl font-medium leading-tight">Agente digital con IA</h3>
+                </div>
+                <p class="text-text-main/70 leading-relaxed">
+                    Un asistente inteligente que mantiene viva la relación con tus clientes cuando no puedes estar. Responde dudas, recoge información y prepara cada sesión. Sin perder la calidez que te hace única.
+                </p>
+            </div>
+            <!-- Card 4 — Pack completo (highlighted) -->
+            <div class="p-8 rounded-xl bg-card-bg/40 border-2 border-primary shadow-md flex flex-col gap-4 relative">
+                <span class="absolute -top-3 left-8 bg-primary text-white text-[10px] uppercase tracking-[0.2em] font-semibold px-3 py-1 rounded-full">Recomendado</span>
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">all_inclusive</span>
+                    <h3 class="font-display text-3xl font-medium leading-tight">Pack completo</h3>
+                </div>
+                <p class="text-text-main/70 leading-relaxed">
+                    Web + App + integración + formación de uso. Un sistema digital completo, listo para acompañar a tus clientes desde el primer día.
+                </p>
+            </div>
+        </div>
+        <div class="text-center mt-12">
+            <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-white font-semibold text-base transition-transform hover:scale-105">
+                ¿Hablamos?
+            </a>
+        </div>
+    </div>
 </section>
+
 <!-- Process Section -->
 <section class="py-32 bg-background-dark text-white" id="proceso">
-<div class="px-10 max-w-[1200px] mx-auto">
-<div class="text-center mb-24">
-<span class="text-primary font-semibold tracking-[0.2em] text-xs uppercase mb-4 block">Nuestro Método</span>
-                    <h2 class="font-display text-4xl lg:text-5xl font-light italic">Convertimos tu servicio en experiencia continua</h2>
-</div>
-<div class="relative grid md:grid-cols-4 gap-12">
-<!-- Process Line -->
-<div class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -translate-y-1/2"></div>
-<!-- Stage 1 -->
-<div class="relative flex flex-col items-center text-center group">
-<div class="size-16 rounded-full bg-background-dark border border-white/20 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary transition-colors">
-<span class="font-display text-2xl text-white/30 group-hover:text-primary/50">1</span>
-</div>
+    <div class="px-6 md:px-10 max-w-[1200px] mx-auto">
+        <div class="text-center mb-24">
+            <span class="text-primary font-semibold tracking-[0.2em] text-xs uppercase mb-4 block">Mi método</span>
+            <h2 class="font-display text-4xl lg:text-5xl font-light italic">Convertimos tu servicio en experiencia continua</h2>
+        </div>
+        <div class="relative grid md:grid-cols-4 gap-12">
+            <!-- Process Line -->
+            <div class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -translate-y-1/2"></div>
+            <!-- Stage 1 -->
+            <div class="relative flex flex-col items-center text-center group">
+                <div class="size-16 rounded-full bg-background-dark border border-white/20 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary transition-colors">
+                    <span class="font-display text-2xl text-white/30 group-hover:text-primary/50">1</span>
+                </div>
                 <h3 class="font-display text-2xl mb-4 relative z-10 bg-background-dark px-2">Escuchamos</h3>
-                    <p class="text-white/50 text-sm leading-relaxed mt-4">Entendemos tu modelo de servicio y cómo acompañas hoy a tus clientes.</p>
-</div>
-<!-- Stage 2 -->
-<div class="relative flex flex-col items-center text-center group">
-<div class="size-16 rounded-full bg-background-dark border border-white/20 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary transition-colors">
-<span class="font-display text-2xl text-white/30 group-hover:text-primary/50">2</span>
-</div>
+                <p class="text-white/50 text-sm leading-relaxed mt-4">Entendemos tu modelo de servicio y cómo acompañas hoy a tus clientes.</p>
+            </div>
+            <!-- Stage 2 -->
+            <div class="relative flex flex-col items-center text-center group">
+                <div class="size-16 rounded-full bg-background-dark border border-white/20 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary transition-colors">
+                    <span class="font-display text-2xl text-white/30 group-hover:text-primary/50">2</span>
+                </div>
                 <h3 class="font-display text-2xl mb-4 relative z-10 bg-background-dark px-2">Definimos</h3>
                 <p class="text-white/50 text-sm leading-relaxed mt-4">Diseñamos una estructura digital clara que prolongue tu valor.</p>
-</div>
-<!-- Stage 3 -->
-<div class="relative flex flex-col items-center text-center group">
-<div class="size-16 rounded-full bg-background-dark border border-white/20 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary transition-colors">
-<span class="font-display text-2xl text-white/30 group-hover:text-primary/50">3</span>
-</div>
+            </div>
+            <!-- Stage 3 -->
+            <div class="relative flex flex-col items-center text-center group">
+                <div class="size-16 rounded-full bg-background-dark border border-white/20 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary transition-colors">
+                    <span class="font-display text-2xl text-white/30 group-hover:text-primary/50">3</span>
+                </div>
                 <h3 class="font-display text-2xl mb-4 relative z-10 bg-background-dark px-2">Construimos</h3>
                 <p class="text-white/50 text-sm leading-relaxed mt-4">Desarrollamos tu aplicación o sistema con criterio y coherencia.</p>
-</div>
-<!-- Stage 4 -->
-<div class="relative flex flex-col items-center text-center group">
-<div class="size-16 rounded-full bg-background-dark border border-white/20 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary transition-colors">
-<span class="font-display text-2xl text-white/30 group-hover:text-primary/50">4</span>
-</div>
+            </div>
+            <!-- Stage 4 -->
+            <div class="relative flex flex-col items-center text-center group">
+                <div class="size-16 rounded-full bg-background-dark border border-white/20 flex items-center justify-center mb-8 relative z-10 group-hover:border-primary transition-colors">
+                    <span class="font-display text-2xl text-white/30 group-hover:text-primary/50">4</span>
+                </div>
                 <h3 class="font-display text-2xl mb-4 relative z-10 bg-background-dark px-2">Acompañamos</h3>
                 <p class="text-white/50 text-sm leading-relaxed mt-4">Evolucionamos contigo para que tu experiencia crezca sin perder esencia.</p>
-</div>
-</div>
-</div>
+            </div>
+        </div>
+        <div class="max-w-3xl mx-auto text-center mt-24 pt-12 border-t border-white/10">
+            <p class="font-display italic text-2xl lg:text-3xl text-white leading-snug">
+                Y te acompañamos después.
+            </p>
+            <p class="text-white/60 text-base lg:text-lg leading-relaxed mt-4">
+                Con planes de mantenimiento para que tu presencia digital siga creciendo contigo.
+            </p>
+        </div>
+    </div>
 </section>
+
+<!-- Casos reales -->
+<section class="py-20 lg:py-28 bg-card-bg/30" id="casos">
+    <div class="px-14 md:px-20 lg:px-28 xl:px-36 2xl:px-44 max-w-[1280px] mx-auto mb-12 lg:mb-16">
+        <div class="text-center">
+            <span class="text-primary font-semibold tracking-[0.2em] text-xs uppercase mb-4 block">Casos reales</span>
+            <h2 class="font-display text-4xl lg:text-5xl text-text-main dark:text-white font-light italic leading-tight">Lo que ya hemos construido</h2>
+        </div>
+    </div>
+    <div class="relative isolate w-full pb-10 lg:pb-14 xl:pb-16">
+        <button
+            type="button"
+            id="casos-carousel-prev"
+            class="casos-carousel-nav-btn absolute z-30 top-1/2 -translate-y-1/2 left-14 sm:left-16 md:left-20 lg:left-24 xl:left-28 2xl:left-36 inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-[#3e3834]/10 bg-[#faf7f3]/95 text-text-main backdrop-blur-sm transition hover:bg-white hover:border-[#3e3834]/14 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/25 dark:border-white/12 dark:bg-[#2c2a28]/95 dark:text-[#faf8f5] dark:hover:bg-[#383532]"
+            aria-controls="casos-carousel"
+            aria-label="Ver casos anteriores"
+        >
+            <span class="material-symbols-outlined text-2xl leading-none" aria-hidden="true">chevron_left</span>
+        </button>
+        <button
+            type="button"
+            id="casos-carousel-next"
+            class="casos-carousel-nav-btn absolute z-30 top-1/2 -translate-y-1/2 right-10 sm:right-12 md:right-16 lg:right-20 xl:right-24 2xl:right-28 inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-[#3e3834]/10 bg-[#faf7f3]/95 text-text-main backdrop-blur-sm transition hover:bg-white hover:border-[#3e3834]/14 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/25 dark:border-white/12 dark:bg-[#2c2a28]/95 dark:text-[#faf8f5] dark:hover:bg-[#383532]"
+            aria-controls="casos-carousel"
+            aria-label="Ver más casos"
+        >
+            <span class="material-symbols-outlined text-2xl leading-none" aria-hidden="true">chevron_right</span>
+        </button>
+    <div
+        class="casos-carousel-strip flex snap-x snap-mandatory gap-7 overflow-x-auto pl-[max(8.75rem,calc(env(safe-area-inset-left,0px)+5.75rem))] pr-14 sm:pl-[9.75rem] sm:pr-[3.75rem] md:pl-44 md:pr-24 lg:pl-48 lg:pr-28 xl:pl-[14rem] xl:pr-[8.5rem] 2xl:pl-[min(21rem,calc(env(safe-area-inset-left,0px)+19rem))] 2xl:pr-[11rem] pb-14 md:pb-16 lg:pb-[4.75rem] outline-none focus-visible:ring-2 focus-visible:ring-text-main/25 focus-visible:ring-offset-4 focus-visible:ring-offset-card-bg dark:focus-visible:ring-white/25 dark:focus-visible:ring-offset-background-dark"
+        id="casos-carousel"
+        data-casos-scroll
+        tabindex="0"
+        role="region"
+        aria-roledescription="carrusel"
+        aria-label="Lo que ya hemos construido — desplaza horizontalmente para ver más casos"
+    >
+            <!-- Case 1: Tinnitus Calm — lila muy claro -->
+            <a href="#caso/tinnitus-calm" class="caso-real-card group snap-start border border-[#3e3834]/[0.06] bg-[#ebe8f2] px-8 py-8 shadow-[0_1px_2px_rgba(45,42,38,0.04)] hover:bg-[#e2dde9] dark:border-white/[0.06] dark:bg-[#342f38] dark:hover:bg-[#2d2831] cursor-pointer text-left text-inherit no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/18 dark:focus-visible:ring-white/22 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark">
+                <div class="min-h-0 flex-1">
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-text-main/42 dark:text-[#faf8f5]/40">App de mindfulness</p>
+                    <h3 class="font-display mt-4 text-[1.5rem] font-semibold leading-[1.18] tracking-tight text-text-main dark:text-[#faf8f5] sm:text-[1.5625rem]">Para una psicóloga clínica</h3>
+                    <p class="mt-4 text-[0.8125rem] leading-relaxed text-text-main/62 dark:text-[#faf8f5]/58">
+                        Meditaciones personalizadas para pacientes con tinnitus. Una herramienta que continúa el trabajo terapéutico fuera de consulta.
+                    </p>
+                </div>
+                <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-text-main/55 transition-colors group-hover:text-text-main dark:text-[#faf8f5]/52 dark:group-hover:text-[#faf8f5]">
+                    Ver caso <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+            </a>
+            <!-- Case 2: Surya Vida — beige terracota suave -->
+            <a href="#caso/surya-vida" class="caso-real-card group snap-start border border-[#3e3834]/[0.06] bg-[#ece4d9] px-8 py-8 shadow-[0_1px_2px_rgba(45,42,38,0.04)] hover:bg-[#e3d8cc] dark:border-white/[0.06] dark:bg-[#3a342f] dark:hover:bg-[#332e2a] cursor-pointer text-left text-inherit no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/18 dark:focus-visible:ring-white/22 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark">
+                <div class="min-h-0 flex-1">
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-text-main/42 dark:text-[#faf8f5]/40">Web para centro de yoga</p>
+                    <h3 class="font-display mt-4 text-[1.5rem] font-semibold leading-[1.18] tracking-tight text-text-main dark:text-[#faf8f5] sm:text-[1.5625rem]">Una comunidad que respira</h3>
+                    <p class="mt-4 text-[0.8125rem] leading-relaxed text-text-main/62 dark:text-[#faf8f5]/58">
+                        Reservas, perfiles de alumnos y comunicación fuera de clase. Retiros, talleres, clases grabadas y contenido personalizado para cada caso.
+                    </p>
+                </div>
+                <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-text-main/55 transition-colors group-hover:text-text-main dark:text-[#faf8f5]/52 dark:group-hover:text-[#faf8f5]">
+                    Ver caso <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+            </a>
+            <!-- María Fitness — rosa muy apagado -->
+            <a href="#caso/maria-fitness" class="caso-real-card group snap-start border border-[#3e3834]/[0.06] bg-[#f0e5e9] px-8 py-8 shadow-[0_1px_2px_rgba(45,42,38,0.04)] hover:bg-[#e8dcdf] dark:border-white/[0.06] dark:bg-[#3a3235] dark:hover:bg-[#332d30] cursor-pointer text-left text-inherit no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/18 dark:focus-visible:ring-white/22 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark">
+                <div class="min-h-0 flex-1">
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-text-main/42 dark:text-[#faf8f5]/40">Web completa + App propia · Entrenadora personal</p>
+                    <h3 class="font-display mt-4 text-[1.5rem] font-semibold leading-[1.18] tracking-tight text-text-main dark:text-[#faf8f5] sm:text-[1.5625rem]">Tu marca. No la de la plataforma.</h3>
+                    <p class="mt-4 text-[0.8125rem] leading-relaxed text-text-main/62 dark:text-[#faf8f5]/58">
+                        De Instagram a una presencia digital que convierte seguidoras en clientas y las retiene semana a semana.
+                    </p>
+                </div>
+                <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-text-main/55 transition-colors group-hover:text-text-main dark:text-[#faf8f5]/52 dark:group-hover:text-[#faf8f5]">
+                    Ver caso <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+            </a>
+            <!-- Matrona — verde salvia muy claro -->
+            <a href="#caso/matrona" class="caso-real-card group snap-start border border-[#3e3834]/[0.06] bg-[#e7ebe3] px-8 py-8 shadow-[0_1px_2px_rgba(45,42,38,0.04)] hover:bg-[#dde3d7] dark:border-white/[0.06] dark:bg-[#323631] dark:hover:bg-[#2c3029] cursor-pointer text-left text-inherit no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/18 dark:focus-visible:ring-white/22 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark">
+                <div class="min-h-0 flex-1">
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-text-main/42 dark:text-[#faf8f5]/40">App madre + Panel matrona</p>
+                    <h3 class="font-display mt-4 text-[1.5rem] font-semibold leading-[1.18] tracking-tight text-text-main dark:text-[#faf8f5] sm:text-[1.5625rem]">Acompañar más allá de la consulta</h3>
+                    <p class="mt-4 text-[0.8125rem] leading-relaxed text-text-main/62 dark:text-[#faf8f5]/58">
+                        Porque el embarazo no pausa entre visitas.
+                    </p>
+                </div>
+                <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-text-main/55 transition-colors group-hover:text-text-main dark:text-[#faf8f5]/52 dark:group-hover:text-[#faf8f5]">
+                    Ver caso <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+            </a>
+            <!-- Pilates — azul pizarra muy pálido -->
+            <a href="#caso/pilates" class="caso-real-card group snap-start border border-[#3e3834]/[0.06] bg-[#e2e8ed] px-8 py-8 shadow-[0_1px_2px_rgba(45,42,38,0.04)] hover:bg-[#d8dfe6] dark:border-white/[0.06] dark:bg-[#2f353c] dark:hover:bg-[#292f36] cursor-pointer text-left text-inherit no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/18 dark:focus-visible:ring-white/22 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark">
+                <div class="min-h-0 flex-1">
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-text-main/42 dark:text-[#faf8f5]/40">App alumna + Panel instructora</p>
+                    <h3 class="font-display mt-4 text-[1.5rem] font-semibold leading-[1.18] tracking-tight text-text-main dark:text-[#faf8f5] sm:text-[1.5625rem]">La instructora que conoce a cada alumna</h3>
+                    <p class="mt-4 text-[0.8125rem] leading-relaxed text-text-main/62 dark:text-[#faf8f5]/58">
+                        Porque no todas las alumnas pueden hacer los mismos ejercicios.
+                    </p>
+                </div>
+                <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-text-main/55 transition-colors group-hover:text-text-main dark:text-[#faf8f5]/52 dark:group-hover:text-[#faf8f5]">
+                    Ver caso <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+            </a>
+            <!-- Meditación — crema suave (segundo beige) -->
+            <a href="#caso/meditacion" class="caso-real-card group snap-start border border-[#3e3834]/[0.06] bg-[#f1ebe4] px-8 py-8 shadow-[0_1px_2px_rgba(45,42,38,0.04)] hover:bg-[#e9e2da] dark:border-white/[0.06] dark:bg-[#39342f] dark:hover:bg-[#322e29] cursor-pointer text-left text-inherit no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/18 dark:focus-visible:ring-white/22 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark">
+                <div class="min-h-0 flex-1">
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-text-main/42 dark:text-[#faf8f5]/40">Web de marca personal + App del practicante</p>
+                    <h3 class="font-display mt-4 text-[1.5rem] font-semibold leading-[1.18] tracking-tight text-text-main dark:text-[#faf8f5] sm:text-[1.5625rem]">Tu método. Tu comunidad. Tu app.</h3>
+                    <p class="mt-4 text-[0.8125rem] leading-relaxed text-text-main/62 dark:text-[#faf8f5]/58">
+                        Para coaches que no quieren que sus clientes estén en la app de otro.
+                    </p>
+                </div>
+                <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-text-main/55 transition-colors group-hover:text-text-main dark:text-[#faf8f5]/52 dark:group-hover:text-[#faf8f5]">
+                    Ver caso <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+            </a>
+            <!-- Psicóloga — verde oscuro muy suave -->
+            <a href="#caso/psicologa" class="caso-real-card group snap-start border border-[#3e3834]/[0.06] bg-[#dde5df] px-8 py-8 shadow-[0_1px_2px_rgba(45,42,38,0.04)] hover:bg-[#d3dcd4] dark:border-white/[0.06] dark:bg-[#2e3531] dark:hover:bg-[#282e2a] cursor-pointer text-left text-inherit no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/18 dark:focus-visible:ring-white/22 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark">
+                <div class="min-h-0 flex-1">
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-text-main/42 dark:text-[#faf8f5]/40">Web de marca personal + App terapéutica</p>
+                    <h3 class="font-display mt-4 text-[1.5rem] font-semibold leading-[1.18] tracking-tight text-text-main dark:text-[#faf8f5] sm:text-[1.5625rem]">La terapia que no para entre sesiones</h3>
+                    <p class="mt-4 text-[0.8125rem] leading-relaxed text-text-main/62 dark:text-[#faf8f5]/58">
+                        Para psicólogas que quieren acompañar a sus pacientes los 7 días de la semana.
+                    </p>
+                </div>
+                <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-text-main/55 transition-colors group-hover:text-text-main dark:text-[#faf8f5]/52 dark:group-hover:text-[#faf8f5]">
+                    Ver caso <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+            </a>
+            <!-- Fisio Connect — salvia azulada -->
+            <a href="#caso/fisio-connect" class="caso-real-card group snap-start border border-[#3e3834]/[0.06] bg-[#e4eae7] px-8 py-8 shadow-[0_1px_2px_rgba(45,42,38,0.04)] hover:bg-[#dae1dd] dark:border-white/[0.06] dark:bg-[#2d3432] dark:hover:bg-[#272e2c] cursor-pointer text-left text-inherit no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-text-main/18 dark:focus-visible:ring-white/22 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light dark:focus-visible:ring-offset-background-dark">
+                <div class="min-h-0 flex-1">
+                    <p class="text-[10px] font-semibold uppercase tracking-[0.22em] text-text-main/42 dark:text-[#faf8f5]/40">App paciente + Panel fisioterapeuta</p>
+                    <h3 class="font-display mt-4 text-[1.5rem] font-semibold leading-[1.18] tracking-tight text-text-main dark:text-[#faf8f5] sm:text-[1.5625rem]">El puente entre sesiones</h3>
+                    <p class="mt-4 text-[0.8125rem] leading-relaxed text-text-main/62 dark:text-[#faf8f5]/58">
+                        Saber cómo está tu paciente antes de que llegue a consulta.
+                    </p>
+                </div>
+                <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-text-main/55 transition-colors group-hover:text-text-main dark:text-[#faf8f5]/52 dark:group-hover:text-[#faf8f5]">
+                    Ver caso <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </span>
+            </a>
+    </div>
+    </div>
+</section>
+
 <!-- Philosophy Section -->
-<section class="py-40 px-10" id="filosofia">
-            <div class="max-w-3xl mx-auto text-center">
-                <span class="text-primary font-semibold tracking-[0.2em] text-xs uppercase mb-6 block">UNA PRESENCIA QUE PERMANECE</span>
-                <h2 class="font-display text-text-main dark:text-white text-3xl lg:text-5xl font-light italic leading-snug mb-8">
-                    Cuando tu cliente siente que sigues ahí, la experiencia se convierte en vínculo.
-                </h2>
-                <p class="font-sans text-text-main/70 dark:text-white/70 text-lg lg:text-xl leading-relaxed mb-8">
-                    Diseñamos esa continuidad.
-                </p>
-                <a href="https://calendar.app.google/oNEgg1MZVqt9Tutx5" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-white font-semibold text-base transition-transform hover:scale-105">
-                    Hablemos de cómo hacer que tu cliente te sienta cerca, incluso cuando no estás.
-                </a>
-            </div>
+<section class="py-40 px-6 md:px-10" id="filosofia">
+    <div class="max-w-3xl mx-auto text-center">
+        <span class="text-primary font-semibold tracking-[0.2em] text-xs uppercase mb-6 block">Una presencia que permanece</span>
+        <h2 class="font-display text-text-main dark:text-white text-3xl lg:text-5xl font-light italic leading-snug mb-8">
+            Cuando tu cliente siente que sigues ahí, la experiencia se convierte en vínculo.
+        </h2>
+        <p class="font-sans text-text-main/70 dark:text-white/70 text-lg lg:text-xl leading-relaxed mb-8">
+            Diseñemos esa continuidad.
+        </p>
+        <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-white font-semibold text-base transition-transform hover:scale-105">
+            ¿Hablamos?
+        </a>
+    </div>
 </section>
+
 </main>
+
 <!-- Footer -->
-<footer class="bg-background-light py-20 px-10 border-t border-text-main/5">
-<div class="max-w-[1200px] mx-auto grid md:grid-cols-4 gap-12">
-<div class="col-span-2">
-            <div class="flex items-center gap-3 text-text-main mb-6">
-                <img src="2.png" alt="BEEAPP Studio & Boutique" class="h-8 w-auto">
-            </div>
-</div>
-<div>
-                <h4 class="font-semibold text-xs uppercase tracking-widest mb-6 text-primary">explora</h4>
-<ul class="flex flex-col gap-4 text-sm text-text-main/60">
-                <li><a class="hover:text-primary transition-colors" href="#boutique">Colección Boutique</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#studio">Servicio personalizado Studio</a></li>
-                <li><a class="hover:text-primary transition-colors" href="#proceso">Nuestro Método</a></li>
+<footer class="bg-background-light py-20 px-6 md:px-10 border-t border-text-main/5">
+    <div class="max-w-[1200px] mx-auto grid md:grid-cols-4 gap-12">
+        <div class="col-span-2">
+            <a href="#" class="font-display text-text-main text-2xl font-medium tracking-tight">Chus Santiago</a>
+            <p class="text-text-main/60 text-sm leading-relaxed mt-4 max-w-md">
+                Tecnología humana y cercana para profesionales de salud y bienestar.
+            </p>
+        </div>
+        <div>
+            <h4 class="font-semibold text-xs uppercase tracking-widest mb-6 text-primary">Explora</h4>
+            <ul class="flex flex-col gap-4 text-sm text-text-main/60">
+                <li><a class="hover:text-primary transition-colors" href="#sobre-mi">Sobre mí</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#servicios">Servicios</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#proceso">Proceso</a></li>
+                <li><a class="hover:text-primary transition-colors" href="#casos">Casos</a></li>
                 <li><a class="hover:text-primary transition-colors" href="#filosofia">Filosofía</a></li>
-</ul>
-</div>
-<div>
-                <h4 class="font-semibold text-xs uppercase tracking-widest mb-6 text-primary">Hablemos</h4>
-                <ul class="flex flex-row gap-6 text-text-main/60">
-                <li><a class="hover:text-primary transition-colors" href="#" aria-label="LinkedIn">
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-semibold text-xs uppercase tracking-widest mb-6 text-primary">Hablemos</h4>
+            <ul class="flex flex-row gap-6 text-text-main/60">
+                <li><a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/mariajesussantiagomartinez/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                     </svg>
                 </a></li>
-                <li><a class="hover:text-primary transition-colors" href="https://www.instagram.com/beeapp_studioboutique/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <li><a class="hover:text-primary transition-colors" href="https://www.instagram.com/chus.sama" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                 </a></li>
-                <li><a class="hover:text-primary transition-colors" href="mailto:beeappstudio@gmail.com" aria-label="Email">
+                <li><a class="hover:text-primary transition-colors" href="mailto:chussama.digital@gmail.com" aria-label="Email">
                     <span class="material-symbols-outlined text-2xl">mail</span>
                 </a></li>
-                </ul>
-</div>
-</div>
-            <div class="max-w-[1200px] mx-auto mt-20 pt-8 border-t border-text-main/5 flex justify-center items-center text-[10px] text-text-main/40 uppercase tracking-[0.2em] font-medium">
-                <p>© 2026 BEEAPP Studio &amp; Boutique. Todos los derechos reservados.</p>
-            </div>
+            </ul>
+            <ul class="mt-8 flex flex-col gap-3 text-sm text-text-main/70">
+                <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base text-primary">person</span>
+                    <span>Chus Santiago</span>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base text-primary">call</span>
+                    <a class="hover:text-primary transition-colors" href="tel:+34606587976">+34 606 587 976</a>
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base text-primary">mail</span>
+                    <a class="hover:text-primary transition-colors" href="mailto:chussama.digital@gmail.com">chussama.digital@gmail.com</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="max-w-[1200px] mx-auto mt-20 pt-8 border-t border-text-main/5 flex justify-center items-center text-[10px] text-text-main/40 uppercase tracking-[0.2em] font-medium">
+        <p>© 2026 Chus Santiago. Todos los derechos reservados.</p>
+    </div>
 </footer>
+
 </div>
 </div>
+
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/34606587976" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group">
+<a href="https://wa.me/[WHATSAPP_NUMBER]" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
     </svg>
     <span class="sr-only">Contactar por WhatsApp</span>
 </a>
-</body></html>
+
+<!-- Overlay: vistas de caso (hash #caso/slug) -->
+<div id="case-overlay" class="fixed inset-0 z-[200] h-[100dvh] max-h-[100vh] w-full overscroll-none bg-background-light" aria-modal="true" role="dialog" aria-hidden="true">
+    <header class="case-page-topbar sticky top-0 z-40 flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-text-main/10 bg-background-light/95 px-4 py-3 backdrop-blur-sm md:gap-6 md:px-8 md:py-4">
+        <a href="#casos" id="case-back-to-casos" class="inline-flex items-center gap-2 text-sm font-semibold text-text-main/80 transition-colors hover:text-primary md:text-base">
+            <span class="material-symbols-outlined text-lg md:text-xl" aria-hidden="true">arrow_back</span>
+            Volver a casos
+        </a>
+        <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:scale-[1.02]">¿Hablamos?</a>
+    </header>
+
+    <div class="relative min-h-0 flex-1" id="case-views-root">
+        <!-- Tinnitus Calm -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto overflow-x-hidden lg:flex-row lg:overflow-hidden" data-case-view="tinnitus-calm">
+            <aside class="scrollbar-thin shrink-0 border-text-main/10 px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid bg-[#EDE8F5]">
+                <span class="text-[#5f4fb5] mb-5 block text-xs font-semibold uppercase tracking-[0.25em]">Caso real</span>
+                <img src="1.png" alt="Tinnitus Calm" width="112" height="112" class="mb-6 h-auto w-28 rounded-2xl shadow-xl md:w-32" />
+                <h1 class="font-display mb-2 text-3xl font-light italic leading-tight text-text-main md:text-4xl">Tinnitus Calm</h1>
+                <p class="mb-10 text-sm leading-snug text-text-main/60">App de mindfulness para psicóloga clínica</p>
+                <div class="mb-8">
+                    <span class="text-primary mb-3 block text-xs font-semibold uppercase tracking-[0.25em]">El reto</span>
+                    <h2 class="font-display mb-4 text-xl font-light italic leading-tight md:text-2xl">El silencio entre sesión y sesión</h2>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una psicóloga especializada en tinnitus necesitaba acompañar a sus pacientes fuera de consulta. Las meditaciones que grababa no tenían un canal propio, llegaban por WhatsApp, sin orden, sin seguimiento. Sus pacientes necesitaban más.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="text-primary mb-3 block text-xs font-semibold uppercase tracking-[0.25em]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una app de mindfulness personalizada con 60 meditaciones grabadas por ella misma, organizadas por categorías: tinnitus, ansiedad, sueño. Sus pacientes acceden con su perfil, guardan favoritos y siguen su propio camino de calma.</p>
+                </div>
+                <div class="border-t border-[#5f4fb5]/20 pt-8">
+                    <p class="font-display mb-4 text-xl font-light italic text-text-main">¿Tienes algo en mente para tus pacientes?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin min-h-[50vh] flex-1 bg-background-light lg:min-h-0 lg:overflow-hidden">
+                <div class="relative flex h-full min-h-0 flex-1 flex-col p-4 md:p-6" data-carousel>
+                    <div class="relative case-carousel-phone-tin min-h-0 flex-1">
+                        <div class="carousel-stage rounded-xl">
+                            <div class="carousel-track" data-carousel-slides="">
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="inicio.jpg" alt="Tinnitus Calm, pantalla de inicio" decoding="async" loading="lazy" /></div>
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="home.jpg" alt="Tinnitus Calm, categorías" decoding="async" loading="lazy" /></div>
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="detalle.jpg" alt="Tinnitus Calm, detalle" decoding="async" loading="lazy" /></div>
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="reproductor.jpg" alt="Tinnitus Calm, reproductor" decoding="async" loading="lazy" /></div>
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="favoritos.jpg" alt="Tinnitus Calm, favoritos" decoding="async" loading="lazy" /></div>
+                            </div>
+                        </div>
+                        <button type="button" data-carousel-prev="" class="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/95 text-text-main shadow-md transition hover:bg-primary hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                        <button type="button" data-carousel-next="" class="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/95 text-text-main shadow-md transition hover:bg-primary hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                    <div class="mt-3 flex shrink-0 flex-wrap justify-center gap-2" data-carousel-dots="">
+                        <button type="button" class="bg-primary h-2 w-6 rounded-full transition-all" data-dot="0" aria-label="Ir a captura 1"></button>
+                        <button type="button" class="h-2 w-2 rounded-full bg-text-main/20 transition-all" data-dot="1" aria-label="Ir a captura 2"></button>
+                        <button type="button" class="h-2 w-2 rounded-full bg-text-main/20 transition-all" data-dot="2" aria-label="Ir a captura 3"></button>
+                        <button type="button" class="h-2 w-2 rounded-full bg-text-main/20 transition-all" data-dot="3" aria-label="Ir a captura 4"></button>
+                        <button type="button" class="h-2 w-2 rounded-full bg-text-main/20 transition-all" data-dot="4" aria-label="Ir a captura 5"></button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Surya Vida -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="surya-vida">
+            <aside class="surya-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#fdf0e8] px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <span class="mb-6 block text-xs font-semibold uppercase tracking-[0.25em] text-[#c45c2e]">Caso real</span>
+                <div class="mb-4 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-5xl text-[#e8742a]" aria-hidden="true">self_improvement</span>
+                    <span class="font-display text-2xl font-medium uppercase leading-tight tracking-[0.12em] text-text-main md:text-3xl">Surya Vida</span>
+                </div>
+                <p class="mb-10 text-xs font-semibold uppercase tracking-[0.2em] text-[#c45c2e]">Web + Software de gestión</p>
+                <h1 id="case-title-surya" class="font-display mb-10 text-2xl font-light italic leading-tight text-text-main md:text-3xl">Más que una web. Un sistema digital para el centro y sus profesoras.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#c45c2e]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Un centro de yoga en apertura necesitaba algo más que una web bonita. Necesitaban gestionar horarios, reservas, membresías y retiros, y además dar a sus profesoras información real de cada alumna antes de cada clase.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#c45c2e]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una plataforma digital completa: web pública para captar alumnas, sistema de reservas con filtros, gestión de membresías, panel de administración y un área exclusiva para el profesorado con información de salud de cada alumna, lesiones, embarazos, necesidades especiales. El trabajo del centro, digitalizado de principio a fin.</p>
+                </div>
+                <div class="border-t border-[#d96532]/25 pt-8">
+                    <p class="font-display mb-4 text-lg italic text-text-main">¿Quieres un sistema así para tu centro o consulta?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#d96532] px-7 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#c45c2e]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin min-h-[50vh] flex-1 bg-background-light lg:min-h-0 lg:overflow-hidden">
+                <div class="flex h-full min-h-0 flex-1 flex-col p-4 md:p-6" data-carousel data-carousel-variant="wide" data-carousel-theme="surya">
+                    <div class="case-carousel-web relative flex min-h-0 flex-1 flex-col">
+                        <div class="carousel-stage w-full flex-1 rounded-lg">
+                            <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                <div class="wide-mockup-frame snap-center"><img src="surya/01-horario.png" alt="Surya Vida, horario" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/02-planes.png" alt="Surya Vida, planes" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/03-alumnas-clase.png" alt="Surya Vida, alumnas" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/04-admin-1.png" alt="Surya Vida, administración" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/05-admin-2.png" alt="Surya Vida, administración" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/06-talleres.png" alt="Surya Vida, talleres" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                            </div>
+                        </div>
+                        <button type="button" data-carousel-prev="" class="absolute left-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#d96532] hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                        <button type="button" data-carousel-next="" class="absolute right-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#d96532] hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                    <div class="mt-4 flex shrink-0 flex-wrap justify-center gap-2 pb-4" data-carousel-dots="">
+                        <button type="button" class="surya-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="4" aria-label="5"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="5" aria-label="6"></button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- María Fitness (web + app) -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="maria-fitness">
+            <aside class="maria-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#faf4f6] px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <p class="mb-10 text-[11px] font-semibold uppercase leading-snug tracking-[0.26em] text-[#8b6972]">Web + App móvil · Entrenamiento femenino</p>
+                <h1 class="font-display mb-10 text-2xl font-light italic leading-tight text-text-main md:text-3xl">Tu marca. No la de la plataforma.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#8b6972]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">María llevaba años entrenando mujeres con resultados reales. Pero su presencia digital no lo reflejaba, dependía de Instagram y de una plataforma genérica que mostraba el logo de otro, no el suyo. Sus clientas abrían la app y veían la marca de la plataforma. No a María.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#8b6972]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una presencia digital completa donde cada punto de contacto lleva su nombre. Una web que cuenta quién es y por qué confiar en ella. Una app con su identidad donde sus alumnas viven su transformación semana a semana. Cuando alguien llega a María Fitness, siente que está en manos de una profesional, no en una plataforma genérica.</p>
+                </div>
+                <div class="border-t border-[#7d5f66]/20 pt-8">
+                    <p class="font-display mb-4 text-lg italic text-text-main">¿Quieres que tus clientas te sientan así de cerca?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#7d5f66] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#6a5058]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin flex flex-1 flex-col gap-12 overflow-y-auto bg-background-light px-4 py-6 md:gap-14 md:px-8 lg:min-h-0 lg:py-10">
+                <section class="flex min-h-0 shrink-0 flex-col">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8b6972]">La web</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col" data-carousel data-carousel-variant="wide" data-carousel-theme="maria">
+                        <div class="case-carousel-web relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage w-full flex-1 rounded-lg">
+                                <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                    <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB%20y%20APP/INTRO.png" alt="María Fitness web, introducción" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB%20y%20APP/SOBRE%20MI.png" alt="María Fitness web, sobre mí" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB%20y%20APP/COMO%20FUNCIONA.png" alt="María Fitness web, cómo funciona" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB%20y%20APP/PLANES.png" alt="María Fitness web, planes" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB%20y%20APP/RESULTADOS.png" alt="María Fitness web, resultados" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB%20y%20APP/CLOSING.png" alt="María Fitness web, cierre" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#7d5f66] hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#7d5f66] hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="mt-4 flex shrink-0 flex-wrap justify-center gap-2 pb-2" data-carousel-dots="">
+                            <button type="button" class="maria-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="4" aria-label="5"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="5" aria-label="6"></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="flex min-h-0 shrink-0 flex-col border-t border-[#e8dde2] pt-10">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8b6972]">La app</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col pb-16" data-carousel data-carousel-theme="maria">
+                        <div class="case-carousel-phone-tin relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage rounded-xl">
+                                <div class="carousel-track" data-carousel-slides="">
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MARIA%20FITNESS%20WEB%20y%20APP/inicio%20APP.png" alt="María Fitness app, inicio" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MARIA%20FITNESS%20WEB%20y%20APP/check%20in%20APP.png" alt="María Fitness app, check-in" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MARIA%20FITNESS%20WEB%20y%20APP/comunidad%20APP.png" alt="María Fitness app, comunidad" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MARIA%20FITNESS%20WEB%20y%20APP/plan%20entreno%20APP.png" alt="María Fitness app, plan de entreno" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MARIA%20FITNESS%20WEB%20y%20APP/plan%20nutricion%20APP.png" alt="María Fitness app, plan de nutrición" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MARIA%20FITNESS%20WEB%20y%20APP/perfil%20APP.png" alt="María Fitness app, perfil" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MARIA%20FITNESS%20WEB%20y%20APP/APP.png" alt="María Fitness app, detalle app" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#dcd0d6] bg-white/95 text-text-main shadow-md transition hover:bg-[#7d5f66] hover:text-white hover:border-transparent" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#dcd0d6] bg-white/95 text-text-main shadow-md transition hover:bg-[#7d5f66] hover:text-white hover:border-transparent" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 mt-4 flex justify-center gap-2 pt-6" data-carousel-dots="">
+                            <button type="button" class="maria-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="4" aria-label="5"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="5" aria-label="6"></button>
+                            <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="6" aria-label="7"></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <!-- Matrona (app madre + panel) -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="matrona">
+            <aside class="matrona-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#faf8fa] px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <p class="mb-10 text-[11px] font-semibold uppercase leading-snug tracking-[0.26em] text-[#5f665c]">APP MÓVIL + PANEL WEB · MATERNIDAD</p>
+                <h1 class="font-display mb-10 text-2xl font-light italic leading-tight text-text-main md:text-3xl">Tu clienta tiene dudas a las 2 de la mañana. Tú no puedes estar.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#6d7568]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una matrona independiente acompaña a sus clientas en el momento más importante de su vida. Pero ese acompañamiento se corta en cuanto salen de la consulta. Las dudas, los miedos, los cambios físicos, todo pasa entre visitas, sin red.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#6d7568]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Un espacio digital donde la madre siente que su matrona sigue ahí. Puede registrar cómo se encuentra, hacer seguimiento de la lactancia, consultar los recursos que su matrona le dejó específicamente para ella. Y la matrona tiene la trazabilidad de todas sus clientas en un vistazo, y sabe cuándo algo merece atención antes de que se convierta en un problema.</p>
+                </div>
+                <div class="border-t border-[#6d7f68]/22 pt-8">
+                    <p class="font-display mb-4 text-lg italic text-text-main">¿Quieres acompañar a tus clientas más allá de la consulta?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#6d7f68] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#5d6e58]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin flex flex-1 flex-col gap-12 overflow-y-auto bg-background-light px-4 py-6 md:gap-14 md:px-8 lg:min-h-0 lg:py-10">
+                <section class="flex min-h-0 shrink-0 flex-col">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6d7568]">La app</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col pb-16" data-carousel data-carousel-theme="matrona">
+                        <div class="case-carousel-phone-tin relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage rounded-xl">
+                                <div class="carousel-track" data-carousel-slides="">
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MATRONA%20APP%20DEMO/INICIO%20APP.png" alt="Matrona app, inicio" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MATRONA%20APP%20DEMO/PACIENTE%20COMO%20TE%20ENCUENTRAS%20HOY%20APP.png" alt="Matrona app, cómo te encuentras hoy" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MATRONA%20APP%20DEMO/PACIENTE%20LACTANCIA%20APP.png" alt="Matrona app, lactancia" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MATRONA%20APP%20DEMO/PACIENTE%20TOMAS%20LACTANCIA%20APP.png" alt="Matrona app, tomas lactancia" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MATRONA%20APP%20DEMO/RECURSOS%20APP.png" alt="Matrona app, recursos" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MATRONA%20APP%20DEMO/CHAT%20APP.png" alt="Matrona app, chat" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#d4dad4] bg-white/95 text-text-main shadow-md transition hover:bg-[#6d7f68] hover:text-white hover:border-transparent" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#d4dad4] bg-white/95 text-text-main shadow-md transition hover:bg-[#6d7f68] hover:text-white hover:border-transparent" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 mt-4 flex justify-center gap-2 pt-6" data-carousel-dots="">
+                            <button type="button" class="matrona-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="matrona-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="matrona-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="matrona-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                            <button type="button" class="matrona-carousel-dot-idle transition-all" data-dot="4" aria-label="5"></button>
+                            <button type="button" class="matrona-carousel-dot-idle transition-all" data-dot="5" aria-label="6"></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="flex min-h-0 shrink-0 flex-col border-t border-[#dfe8df] pt-10">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6d7568]">El panel</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col" data-carousel data-carousel-variant="wide" data-carousel-theme="matrona">
+                        <div class="case-carousel-web relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage w-full flex-1 rounded-lg">
+                                <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                    <div class="wide-mockup-frame snap-center"><img src="MATRONA%20APP%20DEMO/PANEL%20MATRONA%20RESUMEN.png" alt="Matrona panel, resumen" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MATRONA%20APP%20DEMO/PANEL%20MATRONA%20MIS%20PACIENTES.png" alt="Matrona panel, mis pacientes" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MATRONA%20APP%20DEMO/SEGUIMIENTO%20MIS%20PACIENTES.png" alt="Matrona panel, seguimiento" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#6d7f68] hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#6d7f68] hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="mt-4 flex shrink-0 flex-wrap justify-center gap-2 pb-2" data-carousel-dots="">
+                            <button type="button" class="matrona-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="matrona-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="matrona-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <!-- Pilates (app alumna + panel instructora) -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="pilates">
+            <aside class="pilates-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#f2faf9] px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <p class="mb-10 text-[11px] font-semibold uppercase leading-snug tracking-[0.26em] text-[#25636b]">APP MÓVIL + PANEL WEB · PILATES</p>
+                <h1 class="font-display mb-10 text-2xl font-light italic leading-tight text-text-main md:text-3xl">Antes de empezar la clase, ya sabe quién tiene una hernia lumbar.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#2f6570]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una instructora de pilates terapéutico trabaja con alumnas embarazadas, con lesiones, con operaciones recientes. Si no sabe quién es quién antes de empezar, una corrección mal hecha puede hacer daño. Y además, sus alumnas no se conocen entre ellas, cada una viene, hace su clase y se va.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#2f6570]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Un sistema donde la instructora llega a cada clase sabiendo exactamente con quién trabaja y qué limitaciones tiene cada alumna. Y una app donde las alumnas pueden ver quién viene a su misma clase, comentar, coordinarse, generando el ambiente de comunidad que hace que la gente no se vaya.</p>
+                </div>
+                <div class="border-t border-[#217a72]/22 pt-8">
+                    <p class="font-display mb-4 text-lg italic text-text-main">¿Quieres conocer a tus alumnas de verdad?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#217a72] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#1a645e]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin flex flex-1 flex-col gap-12 overflow-y-auto bg-background-light px-4 py-6 md:gap-14 md:px-8 lg:min-h-0 lg:py-10">
+                <section class="flex min-h-0 shrink-0 flex-col">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2f6570]">La app</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col pb-16" data-carousel data-carousel-theme="pilates">
+                        <div class="case-carousel-phone-tin relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage rounded-xl">
+                                <div class="carousel-track" data-carousel-slides="">
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="PILATES%20DEMO/APP%20ALUMNA%20INICIO.png" alt="Pilates app alumna, inicio" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="PILATES%20DEMO/APP%20ALUMNA%20COMUNIDAD.png" alt="Pilates app alumna, comunidad" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="PILATES%20DEMO/APP%20ALUMNA%20PROGRESO.png" alt="Pilates app alumna, progreso" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="PILATES%20DEMO/APP%20ALUMNA%20RESERVAS.png" alt="Pilates app alumna, reservas" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="PILATES%20DEMO/APP%20ALUMNA%20CHAT.png" alt="Pilates app alumna, chat" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#c5dbdc] bg-white/95 text-text-main shadow-md transition hover:bg-[#217a72] hover:text-white hover:border-transparent" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#c5dbdc] bg-white/95 text-text-main shadow-md transition hover:bg-[#217a72] hover:text-white hover:border-transparent" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 mt-4 flex justify-center gap-2 pt-6" data-carousel-dots="">
+                            <button type="button" class="pilates-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="pilates-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="pilates-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="pilates-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                            <button type="button" class="pilates-carousel-dot-idle transition-all" data-dot="4" aria-label="5"></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="flex min-h-0 shrink-0 flex-col border-t border-[#cfe8e6] pt-10">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#2f6570]">El panel</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col" data-carousel data-carousel-variant="wide" data-carousel-theme="pilates">
+                        <div class="case-carousel-web relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage w-full flex-1 rounded-lg">
+                                <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                    <div class="wide-mockup-frame snap-center"><img src="PILATES%20DEMO/PANEL%20INSTRUCTORA%20HOY.png" alt="Pilates panel instructora, hoy" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="PILATES%20DEMO/PANEL%20INSTRUCTORA%20MIS%20ALUMNAS.png" alt="Pilates panel instructora, mis alumnas" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="PILATES%20DEMO/PANEL%20INSTRUCTURO%20FICHAS%20ALUMNAS.png" alt="Pilates panel instructora, fichas alumnas" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="PILATES%20DEMO/HORARIO%20PANEL%20INSTRUCTORA.png" alt="Pilates panel instructora, horario" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="PILATES%20DEMO/PANEL%20INSTRUCTORA%20MENSAJES.png" alt="Pilates panel instructora, mensajes" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#217a72] hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#217a72] hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="mt-4 flex shrink-0 flex-wrap justify-center gap-2 pb-2" data-carousel-dots="">
+                            <button type="button" class="pilates-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="pilates-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="pilates-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="pilates-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                            <button type="button" class="pilates-carousel-dot-idle transition-all" data-dot="4" aria-label="5"></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <!-- Meditación (web + app practicante) -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="meditacion">
+            <aside class="meditacion-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#faf6f2] px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <p class="mb-10 text-[11px] font-semibold uppercase leading-snug tracking-[0.26em] text-[#9c5e46]">WEB + APP MÓVIL · COACH DE MEDITACIÓN</p>
+                <h1 class="font-display mb-10 text-2xl font-light italic leading-tight text-text-main md:text-3xl">Calm tiene millones de usuarios. Ninguno es tuyo.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#a0634e]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Un coach de meditación compite con plataformas con millones de usuarios y presupuestos enormes. Cuando recomienda una app a sus clientes, los está mandando a casa de otro, donde hay anuncios, contenido de otros coaches y ningún rastro de su método.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#a0634e]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una presencia digital propia donde el coach es el centro. Una web que posiciona su método y convierte visitantes en clientes. Una app donde sus practicantes viven su programa semana a semana, con su voz, sus retos, su comunidad. Algo que ninguna plataforma genérica puede darles: la sensación de que alguien les acompaña de verdad.</p>
+                </div>
+                <div class="border-t border-[#b86342]/22 pt-8">
+                    <p class="font-display mb-4 text-lg italic text-text-main">¿Quieres que tus clientes vivan tu método, no el de otro?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#b86342] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#a05538]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin flex flex-1 flex-col gap-12 overflow-y-auto bg-background-light px-4 py-6 md:gap-14 md:px-8 lg:min-h-0 lg:py-10">
+                <section class="flex min-h-0 shrink-0 flex-col">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#a0634e]">La web</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col" data-carousel data-carousel-variant="wide" data-carousel-theme="meditacion">
+                        <div class="case-carousel-web relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage w-full flex-1 rounded-lg">
+                                <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                    <div class="wide-mockup-frame snap-center"><img src="MEDITACION%20DEMO/WEB%20INICIO.png" alt="Meditación web, inicio" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MEDITACION%20DEMO/WEB%20MI%20METODO.png" alt="Meditación web, mi método" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MEDITACION%20DEMO/WEB%20PROGRAMAS.png" alt="Meditación web, programas" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="MEDITACION%20DEMO/WEB%20LA%20APP.png" alt="Meditación web, la app" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#b86342] hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#b86342] hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="mt-4 flex shrink-0 flex-wrap justify-center gap-2 pb-2" data-carousel-dots="">
+                            <button type="button" class="meditacion-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="meditacion-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="meditacion-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="meditacion-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="flex min-h-0 shrink-0 flex-col border-t border-[#edd9cf] pt-10">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#a0634e]">La app</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col pb-16" data-carousel data-carousel-theme="meditacion">
+                        <div class="case-carousel-phone-tin relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage rounded-xl">
+                                <div class="carousel-track" data-carousel-slides="">
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MEDITACION%20DEMO/INICIO%20APP%20DEL%20PRACTICANTE.png" alt="Meditación app practicante, inicio" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MEDITACION%20DEMO/APP%20PRACTICANTE%20COMUNIDAD.png" alt="Meditación app practicante, comunidad" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MEDITACION%20DEMO/APP%20PRACTICANTE%20DIARIO%20DE%20BIENESTAR.png" alt="Meditación app practicante, diario de bienestar" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="MEDITACION%20DEMO/APP%20PRACTICANTE%20PROGRAMA%20MEDITACION.png" alt="Meditación app practicante, programa" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#e8d0c4] bg-white/95 text-text-main shadow-md transition hover:bg-[#b86342] hover:text-white hover:border-transparent" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#e8d0c4] bg-white/95 text-text-main shadow-md transition hover:bg-[#b86342] hover:text-white hover:border-transparent" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 mt-4 flex justify-center gap-2 pt-6" data-carousel-dots="">
+                            <button type="button" class="meditacion-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="meditacion-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="meditacion-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="meditacion-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <!-- Psicóloga (web + app terapéutica) -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="psicologa">
+            <aside class="psicologa-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#f5f8f6] px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <p class="mb-10 text-[11px] font-semibold uppercase leading-snug tracking-[0.26em] text-[#4f675c]">WEB + APP MÓVIL · PSICOLOGÍA</p>
+                <h1 class="font-display mb-10 text-2xl font-light italic leading-tight text-text-main md:text-3xl">Una hora a la semana no es suficiente.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#556e62]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una psicóloga dedica 50 minutos semanales a cada paciente. El trabajo real, identificar pensamientos, gestionar emociones, cambiar hábitos, tiene que ocurrir los otros 6 días y 22 horas. Sin herramientas, ese trabajo queda en manos del paciente solo.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#556e62]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una web que transmite quién es la psicóloga y por qué elegirla, diferenciándola en un mercado saturado. Y una app terapéutica con su nombre donde sus pacientes practican entre sesiones: registran emociones, trabajan pensamientos automáticos, hacen los ejercicios de respiración que ella prescribe y completan los retos semanales que ella asigna. La terapia no para cuando salen de consulta.</p>
+                </div>
+                <div class="border-t border-[#4a6358]/22 pt-8">
+                    <p class="font-display mb-4 text-lg italic text-text-main">¿Quieres acompañar a tus pacientes los 7 días?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#4a6358] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#3d5349]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin flex flex-1 flex-col gap-12 overflow-y-auto bg-background-light px-4 py-6 md:gap-14 md:px-8 lg:min-h-0 lg:py-10">
+                <section class="flex min-h-0 shrink-0 flex-col">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#556e62]">La web</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col" data-carousel data-carousel-variant="wide" data-carousel-theme="psicologa">
+                        <div class="case-carousel-web relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage w-full flex-1 rounded-lg">
+                                <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                    <div class="wide-mockup-frame snap-center"><img src="PSICOLOGA%20DEMO/INTRO.png" alt="Psicóloga web, introducción" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="PSICOLOGA%20DEMO/SOBRE%20MI.png" alt="Psicóloga web, sobre mí" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="PSICOLOGA%20DEMO/SERVICIOS.png" alt="Psicóloga web, servicios" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame snap-center"><img src="PSICOLOGA%20DEMO/LA%20APP%20DESCRIPCION.png" alt="Psicóloga web, la app" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#4a6358] hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#4a6358] hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="mt-4 flex shrink-0 flex-wrap justify-center gap-2 pb-2" data-carousel-dots="">
+                            <button type="button" class="psicologa-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="psicologa-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="psicologa-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="psicologa-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="flex min-h-0 shrink-0 flex-col border-t border-[#d5e0da] pt-10">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#556e62]">La app</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col pb-16" data-carousel data-carousel-theme="psicologa">
+                        <div class="case-carousel-phone-tin relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage rounded-xl">
+                                <div class="carousel-track" data-carousel-slides="">
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="PSICOLOGA%20DEMO/LA%20APP%20IMAGEN.png" alt="Psicóloga app terapéutica" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#cdd9d2] bg-white/95 text-text-main shadow-md transition hover:bg-[#4a6358] hover:text-white hover:border-transparent" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#cdd9d2] bg-white/95 text-text-main shadow-md transition hover:bg-[#4a6358] hover:text-white hover:border-transparent" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 mt-4 flex justify-center gap-2 pt-6" data-carousel-dots="">
+                            <button type="button" class="psicologa-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <!-- Fisio Connect -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="fisio-connect">
+            <aside class="fisio-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#ecf8f5]/95 px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <p class="mb-10 text-[11px] font-semibold uppercase leading-snug tracking-[0.22em] text-[#276a6a]">App móvil + Panel web · Fisioterapia</p>
+                <h1 class="mb-10 text-xl font-semibold tracking-tight text-slate-800 md:text-[1.75rem]">Lo que pasa entre sesión y sesión importa.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#276a6a]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Un fisioterapeuta dedica 45 minutos a un paciente, le explica los ejercicios, le da pautas, y luego no sabe nada de él hasta la siguiente cita. Si el paciente empeoró, si dejó de hacer los ejercicios, si algo fue mal: lo descubre cuando ya es tarde.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#276a6a]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Un sistema donde el paciente reporta cómo está cada día en menos de un minuto. El fisio llega a la sesión sabiendo exactamente qué pasó esa semana, quién empeoró, quién no hizo los ejercicios, quién necesita un ajuste. Menos suposiciones. Más resultados. Y una relación con el paciente que va mucho más allá de la consulta.</p>
+                </div>
+                <div class="border-t border-[#0f7669]/20 pt-8">
+                    <p class="mb-4 text-base font-semibold leading-snug text-slate-800">¿Quieres saber cómo están tus pacientes sin llamarles?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#0f7669] px-7 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#0d5f55]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin flex flex-1 flex-col gap-8 overflow-y-auto bg-gradient-to-b from-white to-slate-50/80 px-4 py-6 md:gap-12 md:px-8 lg:min-h-0 lg:py-10">
+                <section class="flex min-h-0 shrink-0 flex-col">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#0f7669]">La app</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col pb-16" data-carousel data-carousel-theme="fisio">
+                        <div class="case-carousel-fisio-app relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage rounded-xl">
+                                <div class="carousel-track" data-carousel-slides="">
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/INICIO%20PACIENTE%20APP.png" alt="Fisio, inicio paciente" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/EJERCICIOS%20APP.png" alt="Fisio, ejercicios" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/EVOLUCION%20PACIENTE%20APP.png" alt="Fisio, evolución paciente" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/PERFIL%20PACIENTE%20APP.png" alt="Fisio, perfil" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="fisio-carousel-nav absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-slate-200 !bg-white/95 hover:!border-[#0f7669] hover:!bg-[#0f7669] hover:!text-white" aria-label="Anterior"><span class="material-symbols-outlined text-[1.25rem]">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="fisio-carousel-nav absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-slate-200 !bg-white/95 hover:!border-[#0f7669] hover:!bg-[#0f7669] hover:!text-white" aria-label="Siguiente"><span class="material-symbols-outlined text-[1.25rem]">chevron_right</span></button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 mt-4 flex justify-center gap-2 pt-6" data-carousel-dots="">
+                            <button type="button" class="fisio-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="flex min-h-0 flex-1 shrink-0 flex-col border-t border-slate-200 pt-10">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#0f7669]">El panel</h2>
+                    <div class="relative flex flex-1 flex-col" data-carousel data-carousel-variant="wide" data-carousel-theme="fisio">
+                        <div class="case-carousel-web relative mb-24 flex flex-1 flex-col">
+                            <div class="carousel-stage w-full flex-1 rounded-lg">
+                                <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                    <div class="wide-mockup-frame fisio-slide snap-center"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/RESUMEN%20PACIENTES%20PANEL%20FISIO.png" alt="Fisio panel, resumen" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame fisio-slide snap-center"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/MIS%20PACIENTES%20PANEL%20FISIO.png" alt="Fisio panel, pacientes" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame fisio-slide snap-center"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/EVOLUCION%20PANEL%20FISIO.png" alt="Fisio panel, evolución" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="fisio-carousel-nav absolute left-2 top-[40%] z-10 flex -translate-y-1/2" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="fisio-carousel-nav absolute right-2 top-[40%] z-10 flex -translate-y-1/2" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 mb-8 flex justify-center gap-2" data-carousel-dots="">
+                            <button type="button" class="fisio-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+    </div>
+</div>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<script>
+    (function () {
+        const CASE_HASH_PREFIX = '#caso/';
+
+        const parseCaseSlug = () => {
+            const h = window.location.hash || '';
+            if (!h.startsWith(CASE_HASH_PREFIX)) return null;
+            const raw = h.slice(CASE_HASH_PREFIX.length);
+            try {
+                return decodeURIComponent(raw.split('&')[0] || '').trim();
+            } catch {
+                return null;
+            }
+        };
+
+        /** Mostrar/ocultar overlay según hash; devuelve true si hay un caso visible. */
+        const applyCaseOverlay = () => {
+            const overlay = document.getElementById('case-overlay');
+            const articles = document.querySelectorAll('[data-case-view]');
+            if (!overlay || !articles.length) return false;
+
+            const slug = parseCaseSlug();
+            const slugSet = new Set(
+                Array.from(articles)
+                    .map((a) => a.getAttribute('data-case-view'))
+                    .filter(Boolean),
+            );
+
+            if (!slug) {
+                overlay.classList.remove('is-open');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('overflow-hidden');
+                overlay.scrollTop = 0;
+                articles.forEach((article) => {
+                    article.classList.add('hidden');
+                    article.classList.remove('flex');
+                });
+                return false;
+            }
+
+            let shown = false;
+            articles.forEach((article) => {
+                const match = article.getAttribute('data-case-view') === slug;
+                article.classList.toggle('hidden', !match);
+                article.classList.toggle('flex', match);
+                if (match) shown = true;
+            });
+
+            if (!shown || !slugSet.has(slug)) {
+                overlay.classList.remove('is-open');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('overflow-hidden');
+                overlay.scrollTop = 0;
+                articles.forEach((article) => {
+                    article.classList.add('hidden');
+                    article.classList.remove('flex');
+                });
+                if (slug) {
+                    const base = `${window.location.pathname}${window.location.search || ''}`;
+                    window.history.replaceState(null, '', `${base}#casos`);
+                }
+                return false;
+            }
+
+            overlay.classList.add('is-open');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('overflow-hidden');
+            overlay.scrollTop = 0;
+
+            requestAnimationFrame(() => {
+                window.dispatchEvent(new Event('resize'));
+                requestAnimationFrame(() => {
+                    document
+                        .querySelectorAll('#case-overlay.is-open .case-view:not(.hidden) [data-carousel-slides]')
+                        .forEach((slidesEl) => {
+                            const first = slidesEl.children[0];
+                            if (!first) return;
+                            const left = Math.max(
+                                0,
+                                first.offsetLeft - (slidesEl.clientWidth - first.offsetWidth) / 2,
+                            );
+                            slidesEl.scrollTo({ left, behavior: 'auto' });
+                        });
+                });
+            });
+
+            return true;
+        };
+
+        window.addEventListener('hashchange', () => {
+            applyCaseOverlay();
+            if (!parseCaseSlug()) {
+                const sec = document.getElementById('casos');
+                const h = window.location.hash || '';
+                if (sec && (h === '#casos' || h === '')) {
+                    sec.scrollIntoView({ block: 'start', behavior: 'smooth' });
+                }
+            }
+        });
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', applyCaseOverlay);
+        } else {
+            applyCaseOverlay();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            if (!document.getElementById('case-overlay')?.classList.contains('is-open')) return;
+            window.location.hash = '#casos';
+        });
+
+        document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+            const slides = carousel.querySelector('[data-carousel-slides]');
+            if (!slides) return;
+            const total = slides.children.length;
+            const prev = carousel.querySelector('[data-carousel-prev]');
+            const next = carousel.querySelector('[data-carousel-next]');
+            const dots = carousel.querySelectorAll('[data-dot]');
+            const theme = carousel.dataset.carouselTheme || '';
+
+            const updateDots = (i) => {
+                dots.forEach((dot, idx) => {
+                    if (theme === 'surya') {
+                        if (idx === i) {
+                            dot.classList.add('surya-carousel-dot-active');
+                            dot.classList.remove('surya-carousel-dot-idle');
+                        } else {
+                            dot.classList.add('surya-carousel-dot-idle');
+                            dot.classList.remove('surya-carousel-dot-active');
+                        }
+                    } else if (theme === 'maria') {
+                        if (idx === i) {
+                            dot.classList.add('maria-carousel-dot-active');
+                            dot.classList.remove('maria-carousel-dot-idle');
+                        } else {
+                            dot.classList.add('maria-carousel-dot-idle');
+                            dot.classList.remove('maria-carousel-dot-active');
+                        }
+                    } else if (theme === 'matrona') {
+                        if (idx === i) {
+                            dot.classList.add('matrona-carousel-dot-active');
+                            dot.classList.remove('matrona-carousel-dot-idle');
+                        } else {
+                            dot.classList.add('matrona-carousel-dot-idle');
+                            dot.classList.remove('matrona-carousel-dot-active');
+                        }
+                    } else if (theme === 'pilates') {
+                        if (idx === i) {
+                            dot.classList.add('pilates-carousel-dot-active');
+                            dot.classList.remove('pilates-carousel-dot-idle');
+                        } else {
+                            dot.classList.add('pilates-carousel-dot-idle');
+                            dot.classList.remove('pilates-carousel-dot-active');
+                        }
+                    } else if (theme === 'meditacion') {
+                        if (idx === i) {
+                            dot.classList.add('meditacion-carousel-dot-active');
+                            dot.classList.remove('meditacion-carousel-dot-idle');
+                        } else {
+                            dot.classList.add('meditacion-carousel-dot-idle');
+                            dot.classList.remove('meditacion-carousel-dot-active');
+                        }
+                    } else if (theme === 'psicologa') {
+                        if (idx === i) {
+                            dot.classList.add('psicologa-carousel-dot-active');
+                            dot.classList.remove('psicologa-carousel-dot-idle');
+                        } else {
+                            dot.classList.add('psicologa-carousel-dot-idle');
+                            dot.classList.remove('psicologa-carousel-dot-active');
+                        }
+                    } else if (theme === 'fisio') {
+                        if (idx === i) {
+                            dot.classList.add('fisio-carousel-dot-active');
+                            dot.classList.remove('fisio-carousel-dot-idle');
+                        } else {
+                            dot.classList.add('fisio-carousel-dot-idle');
+                            dot.classList.remove('fisio-carousel-dot-active');
+                        }
+                    } else if (theme === 'fitness') {
+                        if (idx === i) {
+                            dot.classList.add('fitness-carousel-dot-active');
+                            dot.classList.remove('fitness-carousel-dot-idle');
+                        } else {
+                            dot.classList.add('fitness-carousel-dot-idle');
+                            dot.classList.remove('fitness-carousel-dot-active');
+                        }
+                    } else if (idx === i) {
+                        dot.classList.add('bg-primary', 'w-6');
+                        dot.classList.remove('bg-text-main/20', 'w-2');
+                    } else {
+                        dot.classList.add('bg-text-main/20', 'w-2');
+                        dot.classList.remove('bg-primary', 'w-6');
+                    }
+                });
+            };
+
+            const currentIndex = () => {
+                const center = slides.scrollLeft + slides.clientWidth / 2;
+                let closest = 0;
+                let minDist = Infinity;
+                Array.from(slides.children).forEach((slide, i) => {
+                    const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+                    const dist = Math.abs(center - slideCenter);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        closest = i;
+                    }
+                });
+                return closest;
+            };
+
+            const goTo = (i) => {
+                const target = Math.max(0, Math.min(total - 1, i));
+                const slide = slides.children[target];
+                if (!slide) return;
+                const left = slide.offsetLeft - (slides.clientWidth - slide.offsetWidth) / 2;
+                slides.scrollTo({ left, behavior: 'smooth' });
+                updateDots(target);
+            };
+
+            prev?.addEventListener('click', () => goTo(currentIndex() - 1));
+            next?.addEventListener('click', () => goTo(currentIndex() + 1));
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => goTo(i));
+            });
+
+            let scrollTimer;
+            slides.addEventListener(
+                'scroll',
+                () => {
+                    clearTimeout(scrollTimer);
+                    scrollTimer = setTimeout(() => updateDots(currentIndex()), 80);
+                },
+                { passive: true },
+            );
+        });
+    })();
+</script>
+
+</body>
+</html>
