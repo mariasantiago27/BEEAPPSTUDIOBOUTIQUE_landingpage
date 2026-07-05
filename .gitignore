@@ -1,0 +1,16 @@
+# Dependencias y caché local
+node_modules/
+.netlify/
+
+# QA y scripts temporales de desarrollo
+qa-*.js
+qa-*.png
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Secretos (nunca subir)
+.env
+.env.*

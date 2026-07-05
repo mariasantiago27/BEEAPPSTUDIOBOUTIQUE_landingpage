@@ -1,0 +1,10 @@
+[build]
+  # No hay build command porque es HTML estático
+  publish = "."
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Recuerda configurar en Netlify (Site settings → Environment variables):
+#   ANTHROPIC_API_KEY  → tu clave secreta de https://console.anthropic.com
