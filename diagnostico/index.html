@@ -61,7 +61,7 @@
   <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;margin:20px 0 10px">¿Para quién es este diagnóstico digital de mi negocio?</h2>
   <p style="font-size:15.5px;margin:0 0 14px">Está pensado para autónomos, emprendedoras y pequeños negocios que quieren digitalizar su negocio sin perder tiempo ni dinero en herramientas que no necesitan. No hace falta tener conocimientos técnicos: las preguntas están redactadas en lenguaje llano.</p>
   <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;margin:20px 0 10px">¿Qué obtengo al terminarlo?</h2>
-  <p style="font-size:15.5px;margin:0 0 4px">Al completar el test recibes un resultado personalizado con tu etapa actual, tus riesgos principales y tus 3 primeros pasos recomendados, además de un mini-diagnóstico generado con IA a partir de tus propias respuestas. Si quieres ir más allá, puedes reservar la <strong>Sesión de Diagnóstico "El Mapa de Safari"</strong>, una auditoría completa de 90 minutos desde 120€.</p>
+  <p style="font-size:15.5px;margin:0 0 4px">Al completar el test recibes un resultado personalizado con tu etapa actual, tus riesgos principales y tus 3 primeros pasos recomendados. Si quieres ir más allá, puedes reservar la <strong>Sesión de Diagnóstico "El Mapa de Safari"</strong>, una auditoría completa de 90 minutos desde 120€.</p>
 </div>
 
 <div id="root"></div>
@@ -94,10 +94,6 @@ const CONFIG = {
   // Webhook de automatización (email + lista): recibirás cada lead por email y en tu lista.
   // ⚠️ Sustitúyelo por tu webhook real antes de publicar.
   webhookLead: "https://hook.eu2.make.com/TU-WEBHOOK-AQUI",
-  // La IA se genera vía una función serverless (netlify/functions/diagnostico-ia.js)
-  // que guarda tu API key de Anthropic a salvo. Solo funciona una vez publicado en Netlify
-  // con la variable de entorno ANTHROPIC_API_KEY configurada.
-  endpointIA: "/.netlify/functions/diagnostico-ia",
 };
 
 // ---- Paleta sabana ----
@@ -351,7 +347,6 @@ function DiagnosticoSafariDigital() {
   const [emailError, setEmailError] = useState("");
   const [kpi, setKpi] = useState(null);
   const [ansiedad, setAnsiedad] = useState("");
-  const [ia, setIa] = useState({ estado: "idle", texto: "" });
 
   // ---- Envío del lead al webhook (email + tu lista) ----
   const enviarLead = async (evento, extra = {}) => {
@@ -397,28 +392,6 @@ function DiagnosticoSafariDigital() {
     return { actual: 4, completo: true };
   };
 
-  const generarFallback = () => {
-    const { actual, completo } = calcular();
-    const e = ETAPAS[actual];
-    const prioridadLabel = kpi
-      ? (KPIS.find((k) => k.id === kpi)?.t || "").replace(/^[^\s]+\s/, "")
-      : "ordenar tu tecnología sin perderte";
-    const saludo = nombre ? `${nombre}, ` : "";
-
-    const respEtapa = respuestas.filter((_, i) => PREGUNTAS[i]?.etapa === actual);
-    const citas = (respEtapa.length ? respEtapa : respuestas.slice(0, 2)).slice(0, 2).map((r) => r.respuesta);
-
-    if (completo) {
-      return `${saludo}has completado las cinco etapas del safari: tu base digital es sólida. Lo que más te importa ahora es ${prioridadLabel.toLowerCase()}, y tus respuestas lo confirman. Tu siguiente reto no es acumular más herramientas: es aplicar la IA con criterio, en un solo proceso con volumen real, sin comprometer la confianza de tus clientes ni la privacidad de sus datos. El paso más inteligente desde aquí: elige ese proceso repetitivo, define qué datos nunca entran en una herramienta de IA, y pon revisión humana antes de que llegue a tus clientes.`;
-    }
-
-    const cita = citas[0] ? `Cuando respondes que «${citas[0]}»,` : "Por lo que cuentas,";
-    const ansiedadTxt = ansiedad.trim() ? ` Y encaja con lo que comentas: «${ansiedad.trim()}».` : "";
-    const espejo = e.espejo.split(".").filter(Boolean).slice(0, 2).join(".") + ".";
-
-    return `${saludo}${cita} encajas con la etapa ${e.animal.toLowerCase()}: ${e.fase.toLowerCase()}. ${espejo} Dijiste que lo que más buscas es ${prioridadLabel.toLowerCase()}.${ansiedadTxt} Si no actúas aquí, el riesgo no es que todo colapse mañana, sino seguir avanzando sin el control que tu negocio merece. Tu primer paso más inteligente: ${e.pasos[0].charAt(0).toLowerCase()}${e.pasos[0].slice(1)}`;
-  };
-
   const irAResultado = () => {
     const { actual, completo } = calcular();
     enviarLead("diagnostico_completado", {
@@ -429,39 +402,6 @@ function DiagnosticoSafariDigital() {
       respuestas,
     });
     setFase("resultado");
-  };
-
-  const generarIA = async () => {
-    setIa({ estado: "cargando", texto: "" });
-    const { actual, completo } = calcular();
-    const e = ETAPAS[actual];
-    const prioridad = kpi ? KPIS.find((k) => k.id === kpi)?.t : "no indicada";
-    const prompt = `Eres la guía de safari digital detrás de "${CONFIG.nombreMarca}" y su "${CONFIG.nombreMetodo}": ayudas a emprendedores y pequeños negocios a convertir su caos digital en un negocio ordenado, usando la analogía del safari Big Five (búfalo=cimientos y seguridad, elefante=memoria y orden/CRM, león=operación al mando, rinoceronte=escalabilidad y automatización, leopardo=IA con precisión). Tono: cálido, directo, empresarial, con toques ligeros de la metáfora del safari sin abusar de ella. Cero jerga técnica sin traducir.
-
-Una persona${nombre ? ` llamada ${nombre}` : ""} acaba de completar el autodiagnóstico. ${completo ? "Ha completado los Big Five: su madurez digital es alta en las 5 etapas." : `Su etapa actual del safari: "${e.animal}: ${e.fase}".`}
-Puntuación por etapas (sobre 4): Búfalo ${puntos[0]}, Elefante ${puntos[1]}, León ${puntos[2]}, Rinoceronte ${puntos[3]}, Leopardo ${puntos[4]}.
-Lo que más querría recuperar: "${prioridad}".
-Sus respuestas: ${respuestas.map((r) => `[${r.pregunta}] → ${r.respuesta}`).join(" | ")}
-Lo que más le quita el sueño (en sus palabras): "${ansiedad || "no lo ha especificado"}"
-
-Escribe un mini-diagnóstico personalizado en español de 130-170 palabras, en segunda persona: (1) espejo empático conectando 2-3 respuestas concretas suyas y su prioridad declarada, (2) el riesgo principal si no actúa (o la oportunidad, si completó los Big Five), (3) el primer paso más inteligente para su caso. Solo prosa cercana, sin listas ni encabezados. No menciones precios ni vendas nada.`;
-
-    try {
-      const res = await fetch(CONFIG.endpointIA, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
-      });
-      const data = await res.json();
-      if (!res.ok || data.error) throw new Error(data.error || "error");
-      if (data.texto) {
-        setIa({ estado: "ok", texto: data.texto });
-      } else {
-        setIa({ estado: "ok", texto: generarFallback() });
-      }
-    } catch {
-      setIa({ estado: "ok", texto: generarFallback() });
-    }
   };
 
   const s = {
@@ -677,7 +617,7 @@ Escribe un mini-diagnóstico personalizado en español de 130-170 palabras, en s
               En tus propias palabras: ¿qué parte de tu negocio digital no te deja dormir?
             </h2>
             <p style={{ fontSize: 14, color: C.dim, margin: "0 0 18px" }}>
-              La IA la usará para personalizar tu diagnóstico.
+              Opcional: ayuda a conectar tu resultado con lo que más te preocupa.
             </p>
             <textarea
               value={ansiedad}
@@ -754,39 +694,6 @@ Escribe un mini-diagnóstico personalizado en español de 130-170 palabras, en s
                       ))}
                     </div>
                   </>
-                )}
-              </div>
-
-              {/* Diagnóstico IA */}
-              <div style={{ background: C.greenDark, borderRadius: 16, padding: "28px 32px", marginBottom: 16 }}>
-                <div style={{ ...s.display, fontSize: 18, fontWeight: 700, color: C.white, marginBottom: 6 }}>
-                  Tu mini-diagnóstico personalizado con IA
-                </div>
-                {ia.estado === "idle" && (
-                  <>
-                    <p style={{ color: "#D5DECF", fontSize: 14, lineHeight: 1.6, margin: "0 0 16px" }}>
-                      Basado en tus respuestas concretas, no en plantillas.
-                    </p>
-                    <button style={{ ...s.btn, background: C.amber }} onClick={generarIA}>
-                      Generar mi diagnóstico ✦
-                    </button>
-                  </>
-                )}
-                {ia.estado === "cargando" && (
-                  <p style={{ color: "#D5DECF", fontSize: 15 }}>Rastreando tus respuestas…</p>
-                )}
-                {ia.estado === "ok" && (
-                  <p style={{ color: C.white, fontSize: 15.5, lineHeight: 1.75, whiteSpace: "pre-wrap", margin: 0 }}>
-                    {ia.texto}
-                  </p>
-                )}
-                {ia.estado === "error" && (
-                  <p style={{ color: "#D5DECF", fontSize: 14 }}>
-                    No se pudo generar ahora mismo.{" "}
-                    <button onClick={generarIA} style={{ background: "none", border: "none", color: C.amber, cursor: "pointer", fontWeight: 600, fontSize: 14, fontFamily: "inherit", textDecoration: "underline" }}>
-                      Reintentar
-                    </button>
-                  </p>
                 )}
               </div>
 
