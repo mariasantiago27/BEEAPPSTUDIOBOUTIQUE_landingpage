@@ -1,0 +1,270 @@
+<!-- Overlay: vistas de caso (hash #caso/slug) -->
+<div id="case-overlay" class="fixed inset-0 z-[200] h-[100dvh] max-h-[100vh] w-full overscroll-none bg-background-light" aria-modal="true" role="dialog" aria-hidden="true">
+    <header class="case-page-topbar sticky top-0 z-40 flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-text-main/10 bg-background-light/95 px-4 py-3 backdrop-blur-sm md:gap-6 md:px-8 md:py-4">
+        <a href="#casos" id="case-back-to-casos" class="inline-flex items-center gap-2 text-sm font-semibold text-text-main/80 transition-colors hover:text-primary md:text-base">
+            <span class="material-symbols-outlined text-lg md:text-xl" aria-hidden="true">arrow_back</span>
+            Volver a casos
+        </a>
+        <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:scale-[1.02]">¿Hablamos?</a>
+    </header>
+
+    <div class="relative min-h-0 flex-1" id="case-views-root">
+        <!-- Tinnitus Calm -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto overflow-x-hidden lg:flex-row lg:overflow-hidden" data-case-view="tinnitus-calm">
+            <aside class="scrollbar-thin shrink-0 border-text-main/10 px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid bg-[#EDE8F5]">
+                <span class="text-[#5f4fb5] mb-5 block text-xs font-semibold uppercase tracking-[0.25em]">Caso real</span>
+                <img src="1.png" alt="Tinnitus Calm" width="112" height="112" class="mb-6 h-auto w-28 rounded-2xl shadow-xl md:w-32" />
+                <h1 class="font-display mb-2 text-3xl font-light italic leading-tight text-text-main md:text-4xl">Tinnitus Calm</h1>
+                <p class="mb-10 text-sm leading-snug text-text-main/60">App de mindfulness para psicóloga clínica</p>
+                <div class="mb-8">
+                    <span class="text-primary mb-3 block text-xs font-semibold uppercase tracking-[0.25em]">El reto</span>
+                    <h2 class="font-display mb-4 text-xl font-light italic leading-tight md:text-2xl">El silencio entre sesión y sesión</h2>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una psicóloga especializada en tinnitus necesitaba acompañar a sus pacientes fuera de consulta. Las meditaciones que grababa no tenían un canal propio, llegaban por WhatsApp, sin orden, sin seguimiento. Sus pacientes necesitaban más.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="text-primary mb-3 block text-xs font-semibold uppercase tracking-[0.25em]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una app de mindfulness personalizada con 60 meditaciones grabadas por ella misma, organizadas por categorías: tinnitus, ansiedad, sueño. Sus pacientes acceden con su perfil, guardan favoritos y siguen su propio camino de calma.</p>
+                </div>
+                <div class="border-t border-[#5f4fb5]/20 pt-8">
+                    <p class="font-display mb-4 text-xl font-light italic text-text-main">¿Tienes algo en mente para tus pacientes?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin min-h-[50vh] flex-1 bg-background-light lg:min-h-0 lg:overflow-hidden">
+                <div class="relative flex h-full min-h-0 flex-1 flex-col p-4 md:p-6" data-carousel>
+                    <div class="relative case-carousel-phone-tin min-h-0 flex-1">
+                        <div class="carousel-stage rounded-xl">
+                            <div class="carousel-track" data-carousel-slides="">
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="inicio.jpg" alt="Tinnitus Calm, pantalla de inicio" decoding="async" loading="lazy" /></div>
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="home.jpg" alt="Tinnitus Calm, categorías" decoding="async" loading="lazy" /></div>
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="detalle.jpg" alt="Tinnitus Calm, detalle" decoding="async" loading="lazy" /></div>
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="reproductor.jpg" alt="Tinnitus Calm, reproductor" decoding="async" loading="lazy" /></div>
+                                <div class="case-slide-mobile-img snap-center py-2"><img src="favoritos.jpg" alt="Tinnitus Calm, favoritos" decoding="async" loading="lazy" /></div>
+                            </div>
+                        </div>
+                        <button type="button" data-carousel-prev="" class="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/95 text-text-main shadow-md transition hover:bg-primary hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                        <button type="button" data-carousel-next="" class="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/95 text-text-main shadow-md transition hover:bg-primary hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                    <div class="mt-3 flex shrink-0 flex-wrap justify-center gap-2" data-carousel-dots="">
+                        <button type="button" class="bg-primary h-2 w-6 rounded-full transition-all" data-dot="0" aria-label="Ir a captura 1"></button>
+                        <button type="button" class="h-2 w-2 rounded-full bg-text-main/20 transition-all" data-dot="1" aria-label="Ir a captura 2"></button>
+                        <button type="button" class="h-2 w-2 rounded-full bg-text-main/20 transition-all" data-dot="2" aria-label="Ir a captura 3"></button>
+                        <button type="button" class="h-2 w-2 rounded-full bg-text-main/20 transition-all" data-dot="3" aria-label="Ir a captura 4"></button>
+                        <button type="button" class="h-2 w-2 rounded-full bg-text-main/20 transition-all" data-dot="4" aria-label="Ir a captura 5"></button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Surya Vida -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="surya-vida">
+            <aside class="surya-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#fdf0e8] px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <span class="mb-6 block text-xs font-semibold uppercase tracking-[0.25em] text-[#c45c2e]">Caso real</span>
+                <div class="mb-4 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-5xl text-[#e8742a]" aria-hidden="true">self_improvement</span>
+                    <span class="font-display text-2xl font-medium uppercase leading-tight tracking-[0.12em] text-text-main md:text-3xl">Surya Vida</span>
+                </div>
+                <p class="mb-10 text-xs font-semibold uppercase tracking-[0.2em] text-[#c45c2e]">Web + Software de gestión</p>
+                <h1 id="case-title-surya" class="font-display mb-10 text-2xl font-light italic leading-tight text-text-main md:text-3xl">Más que una web. Un sistema digital para el centro y sus profesoras.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#c45c2e]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Un centro de yoga en apertura necesitaba algo más que una web bonita. Necesitaban gestionar horarios, reservas, membresías y retiros, y además dar a sus profesoras información real de cada alumna antes de cada clase.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#c45c2e]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una plataforma digital completa: web pública para captar alumnas, sistema de reservas con filtros, gestión de membresías, panel de administración y un área exclusiva para el profesorado con información de salud de cada alumna, lesiones, embarazos, necesidades especiales. El trabajo del centro, digitalizado de principio a fin.</p>
+                </div>
+                <div class="border-t border-[#d96532]/25 pt-8">
+                    <p class="font-display mb-4 text-lg italic text-text-main">¿Quieres un sistema así para tu centro o consulta?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#d96532] px-7 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#c45c2e]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin min-h-[50vh] flex-1 bg-background-light lg:min-h-0 lg:overflow-hidden">
+                <div class="flex h-full min-h-0 flex-1 flex-col p-4 md:p-6" data-carousel data-carousel-variant="wide" data-carousel-theme="surya">
+                    <div class="case-carousel-web relative flex min-h-0 flex-1 flex-col">
+                        <div class="carousel-stage w-full flex-1 rounded-lg">
+                            <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                <div class="wide-mockup-frame snap-center"><img src="surya/01-horario.png" alt="Surya Vida, horario" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/02-planes.png" alt="Surya Vida, planes" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/03-alumnas-clase.png" alt="Surya Vida, alumnas" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/04-admin-1.png" alt="Surya Vida, administración" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/05-admin-2.png" alt="Surya Vida, administración" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="surya/06-talleres.png" alt="Surya Vida, talleres" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                            </div>
+                        </div>
+                        <button type="button" data-carousel-prev="" class="absolute left-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#d96532] hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                        <button type="button" data-carousel-next="" class="absolute right-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#d96532] hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                    <div class="mt-4 flex shrink-0 flex-wrap justify-center gap-2 pb-4" data-carousel-dots="">
+                        <button type="button" class="surya-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="4" aria-label="5"></button>
+                        <button type="button" class="surya-carousel-dot-idle transition-all" data-dot="5" aria-label="6"></button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- María Fitness Web -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="maria-fitness-web">
+            <aside class="maria-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#faf4f6] px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <p class="mb-10 text-[11px] font-semibold uppercase leading-snug tracking-[0.26em] text-[#8b6972]">Web completa · Entrenamiento femenino</p>
+                <h1 class="font-display mb-10 text-2xl font-light italic leading-tight text-text-main md:text-3xl">Tu marca. No la de la plataforma.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#8b6972]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">María llevaba años entrenando mujeres con resultados reales. Pero su presencia digital no lo reflejaba, dependía de Instagram y de una plataforma genérica que mostraba el logo de otro, no el suyo. Sus clientas abrían la app y veían la marca de la plataforma. No a María.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#8b6972]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Una presencia digital completa donde cada punto de contacto lleva su nombre. Una web que cuenta quién es y por qué confiar en ella. Una app con su identidad donde sus alumnas viven su transformación semana a semana. Cuando alguien llega a María Fitness, siente que está en manos de una profesional, no en una plataforma genérica.</p>
+                </div>
+                <div class="border-t border-[#7d5f66]/20 pt-8">
+                    <p class="font-display mb-4 text-lg italic text-text-main">¿Quieres una web así?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#7d5f66] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#6a5058]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin min-h-[50vh] flex-1 bg-background-light lg:min-h-0 lg:overflow-hidden">
+                <div class="flex h-full min-h-0 flex-1 flex-col p-4 md:p-6" data-carousel data-carousel-variant="wide" data-carousel-theme="maria">
+                    <div class="case-carousel-web relative flex min-h-0 flex-1 flex-col">
+                        <div class="carousel-stage w-full flex-1 rounded-lg">
+                            <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB/INTRO.png" alt="María Fitness, intro" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB/SOBRE%20MI.png" alt="María Fitness, sobre mí" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB/COMO%20FUNCIONA.png" alt="María Fitness, cómo funciona" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB/APP.png" alt="María Fitness, app" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB/PLANES.png" alt="María Fitness, planes" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB/RESULTADOS.png" alt="María Fitness, resultados" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                <div class="wide-mockup-frame snap-center"><img src="MARIA%20FITNESS%20WEB/CLOSING.png" alt="María Fitness, cierre" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                            </div>
+                        </div>
+                        <button type="button" data-carousel-prev="" class="absolute left-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#7d5f66] hover:text-white" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                        <button type="button" data-carousel-next="" class="absolute right-3 top-[42%] z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-text-main shadow-md transition hover:bg-[#7d5f66] hover:text-white" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                    <div class="mt-4 flex shrink-0 flex-wrap justify-center gap-2 pb-4" data-carousel-dots="">
+                        <button type="button" class="maria-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                        <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                        <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                        <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                        <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="4" aria-label="5"></button>
+                        <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="5" aria-label="6"></button>
+                        <button type="button" class="maria-carousel-dot-idle transition-all" data-dot="6" aria-label="7"></button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Fisio Connect -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="fisio-connect">
+            <aside class="fisio-modal-aside scrollbar-thin shrink-0 border-text-main/10 bg-[#ecf8f5]/95 px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:overflow-y-auto lg:border-r lg:border-solid">
+                <p class="mb-10 text-[11px] font-semibold uppercase leading-snug tracking-[0.22em] text-[#276a6a]">App móvil + Panel web · Fisioterapia</p>
+                <h1 class="mb-10 text-xl font-semibold tracking-tight text-slate-800 md:text-[1.75rem]">Lo que pasa entre sesión y sesión importa.</h1>
+                <div class="mb-8">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#276a6a]">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Un fisioterapeuta dedica 45 minutos a un paciente, le explica los ejercicios, le da pautas, y luego no sabe nada de él hasta la siguiente cita. Si el paciente empeoró, si dejó de hacer los ejercicios, si algo fue mal: lo descubre cuando ya es tarde.</p>
+                </div>
+                <div class="mb-10">
+                    <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-[#276a6a]">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/75">Un sistema donde el paciente reporta cómo está cada día en menos de un minuto. El fisio llega a la sesión sabiendo exactamente qué pasó esa semana, quién empeoró, quién no hizo los ejercicios, quién necesita un ajuste. Menos suposiciones. Más resultados. Y una relación con el paciente que va mucho más allá de la consulta.</p>
+                </div>
+                <div class="border-t border-[#0f7669]/20 pt-8">
+                    <p class="mb-4 text-base font-semibold leading-snug text-slate-800">¿Quieres saber cómo están tus pacientes sin llamarles?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#0f7669] px-7 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-[#0d5f55]">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin flex flex-1 flex-col gap-8 overflow-y-auto bg-gradient-to-b from-white to-slate-50/80 px-4 py-6 md:gap-12 md:px-8 lg:min-h-0 lg:py-10">
+                <section class="flex min-h-0 shrink-0 flex-col">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#0f7669]">La app</h2>
+                    <div class="relative flex min-h-0 flex-1 flex-col pb-16" data-carousel data-carousel-theme="fisio">
+                        <div class="case-carousel-fisio-app relative flex min-h-0 flex-1 flex-col">
+                            <div class="carousel-stage rounded-xl">
+                                <div class="carousel-track" data-carousel-slides="">
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/INICIO%20PACIENTE%20APP.png" alt="Fisio, inicio paciente" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/EJERCICIOS%20APP.png" alt="Fisio, ejercicios" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/EVOLUCION%20PACIENTE%20APP.png" alt="Fisio, evolución paciente" decoding="async" loading="lazy" /></div>
+                                    <div class="case-slide-mobile-img snap-center py-2"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/PERFIL%20PACIENTE%20APP.png" alt="Fisio, perfil" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="fisio-carousel-nav absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-slate-200 !bg-white/95 hover:!border-[#0f7669] hover:!bg-[#0f7669] hover:!text-white" aria-label="Anterior"><span class="material-symbols-outlined text-[1.25rem]">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="fisio-carousel-nav absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-slate-200 !bg-white/95 hover:!border-[#0f7669] hover:!bg-[#0f7669] hover:!text-white" aria-label="Siguiente"><span class="material-symbols-outlined text-[1.25rem]">chevron_right</span></button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 mt-4 flex justify-center gap-2 pt-6" data-carousel-dots="">
+                            <button type="button" class="fisio-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="3" aria-label="4"></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="flex min-h-0 flex-1 shrink-0 flex-col border-t border-slate-200 pt-10">
+                    <h2 class="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#0f7669]">El panel</h2>
+                    <div class="relative flex flex-1 flex-col" data-carousel data-carousel-variant="wide" data-carousel-theme="fisio">
+                        <div class="case-carousel-web relative mb-24 flex flex-1 flex-col">
+                            <div class="carousel-stage w-full flex-1 rounded-lg">
+                                <div class="wide-carousel-track carousel-track" data-carousel-slides="">
+                                    <div class="wide-mockup-frame fisio-slide snap-center"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/RESUMEN%20PACIENTES%20PANEL%20FISIO.png" alt="Fisio panel, resumen" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame fisio-slide snap-center"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/MIS%20PACIENTES%20PANEL%20FISIO.png" alt="Fisio panel, pacientes" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                    <div class="wide-mockup-frame fisio-slide snap-center"><img src="FISIO%20CONNECT%20WEB%20Y%20APP/EVOLUCION%20PANEL%20FISIO.png" alt="Fisio panel, evolución" width="2560" height="1600" decoding="async" loading="lazy" /></div>
+                                </div>
+                            </div>
+                            <button type="button" data-carousel-prev="" class="fisio-carousel-nav absolute left-2 top-[40%] z-10 flex -translate-y-1/2" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <button type="button" data-carousel-next="" class="fisio-carousel-nav absolute right-2 top-[40%] z-10 flex -translate-y-1/2" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 mb-8 flex justify-center gap-2" data-carousel-dots="">
+                            <button type="button" class="fisio-carousel-dot-active transition-all" data-dot="0" aria-label="1"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="1" aria-label="2"></button>
+                            <button type="button" class="fisio-carousel-dot-idle transition-all" data-dot="2" aria-label="3"></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <!-- Fitness App -->
+        <article class="case-view scrollbar-thin absolute inset-0 hidden h-full min-h-0 flex-col overflow-y-auto lg:flex-row lg:overflow-hidden" data-case-view="fitness-app">
+            <aside class="fitness-modal-aside scrollbar-thin flex shrink-0 flex-col gap-10 border-text-main/10 bg-[#FAF8F5] px-6 py-8 md:px-10 md:py-11 lg:h-full lg:w-[35%] lg:max-w-[35%] lg:justify-start lg:border-r lg:border-solid">
+                <div class="flex flex-col gap-4">
+                    <span class="text-[11px] font-semibold uppercase tracking-[0.2em] text-teal-800">App móvil · Entrenamiento femenino</span>
+                    <h1 class="font-display text-2xl font-light italic leading-tight text-text-main md:text-3xl lg:text-[2rem]">Una app con tu nombre. No una plataforma genérica.</h1>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-xs font-semibold uppercase tracking-[0.25em] text-teal-800">El reto</span>
+                    <p class="text-sm leading-relaxed text-text-main/80">Las entrenadoras personales dependen de Harbiz, Trainerize o plataformas genéricas que cobran cada mes y muestran su marca, no la tuya. La clienta abre la app y ve Harbiz, no a su entrenadora.</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-xs font-semibold uppercase tracking-[0.25em] text-teal-800">Lo que construimos</span>
+                    <p class="text-sm leading-relaxed text-text-main/80">Una app propia con identidad de marca completa: mensaje de voz semanal de la entrenadora, plan de entrenamiento y nutrición personalizado, check-in semanal estructurado, comunidad privada con retos y una pantalla de perfil con historial de progreso. Todo navegable, todo con la estética de la entrenadora.</p>
+                </div>
+                <div class="mt-auto border-t border-stone-300/60 pt-8">
+                    <p class="font-display mb-4 text-lg font-light italic text-text-main md:text-xl">¿Quieres una app así?</p>
+                    <a href="https://calendly.com/chussama-digital/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-teal-700 px-8 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-teal-800">¿Hablamos?</a>
+                </div>
+            </aside>
+            <div class="case-media-col scrollbar-thin flex min-h-[50vh] flex-1 overflow-y-auto bg-gradient-to-b from-teal-50/80 via-[#FAF8F5]/90 to-stone-100/90 p-6 md:p-10 lg:min-h-0">
+                <div class="flex w-full min-h-0 flex-1 flex-col items-center justify-center gap-8">
+                    <div id="fitness-app-iframe-wrap" class="flex w-full flex-col items-center justify-center">
+                        <div class="fitness-demo-viewport-case w-full">
+                            <iframe id="fitness-app-iframe" src="fitness_app_demo.html" title="Demo app de entrenamiento" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div id="fitness-app-carousel-fallback" class="fitness-fb-row mx-auto hidden w-full max-w-xl flex-row items-center justify-center gap-2" data-carousel data-carousel-theme="fitness">
+                        <button type="button" data-carousel-prev="" class="fitness-fb-arrow shrink-0" aria-label="Anterior"><svg class="fitness-fb-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                        <div class="fitness-fb-track-wrap relative min-w-0 flex-1">
+                            <div class="carousel-stage rounded-lg bg-transparent">
+                                <div class="carousel-track" data-carousel-slides="">
+                                    <div class="fitness-mock-slide snap-center"><img src="fitness app/inicio.png" alt="Fitness app, inicio" loading="lazy" decoding="async" /></div>
+                                    <div class="fitness-mock-slide snap-center"><img src="fitness app/plan entreno.png" alt="Fitness app, plan" loading="lazy" decoding="async" /></div>
+                                    <div class="fitness-mock-slide snap-center"><img src="fitness app/check in.png" alt="Fitness app, check-in" loading="lazy" decoding="async" /></div>
+                                    <div class="fitness-mock-slide snap-center"><img src="fitness app/comunidad.png" alt="Fitness app, comunidad" loading="lazy" decoding="async" /></div>
+                                    <div class="fitness-mock-slide snap-center"><img src="fitness app/perfil.png" alt="Fitness app, perfil" loading="lazy" decoding="async" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" data-carousel-next="" class="fitness-fb-arrow shrink-0" aria-label="Siguiente"><svg class="fitness-fb-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
