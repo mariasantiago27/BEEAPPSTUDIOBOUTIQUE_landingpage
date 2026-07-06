@@ -91,7 +91,7 @@ const CONFIG = {
   precioDiagnostico: "120 €",
   nombreMarca: "Tu Caos Digital, Ordenado",
   nombreMetodo: "El Método Big Five",
-  // Webhook de Make/Brevo: recibirás cada lead por email y en tu lista.
+  // Webhook de automatización (email + lista): recibirás cada lead por email y en tu lista.
   // ⚠️ Sustitúyelo por tu webhook real antes de publicar.
   webhookLead: "https://hook.eu2.make.com/TU-WEBHOOK-AQUI",
   // La IA se genera vía una función serverless (netlify/functions/diagnostico-ia.js)
@@ -353,7 +353,7 @@ function DiagnosticoSafariDigital() {
   const [ansiedad, setAnsiedad] = useState("");
   const [ia, setIa] = useState({ estado: "idle", texto: "" });
 
-  // ---- Envío del lead al webhook (Make → tu email + tu lista) ----
+  // ---- Envío del lead al webhook (email + tu lista) ----
   const enviarLead = async (evento, extra = {}) => {
     try {
       await fetch(CONFIG.webhookLead, {
