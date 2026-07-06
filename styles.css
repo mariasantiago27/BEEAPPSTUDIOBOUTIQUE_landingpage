@@ -113,6 +113,10 @@ nav{
   display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;
   color:var(--dim);text-decoration:none;margin-bottom:26px;transition:color .2s;
 }
+.page-hero .back-link,
+.case-hero .back-link{
+  display:flex;justify-content:flex-start;width:100%;text-align:left;
+}
 .back-link:hover{color:var(--amber)}
 
 /* ---------- HERO: la sabana ---------- */
