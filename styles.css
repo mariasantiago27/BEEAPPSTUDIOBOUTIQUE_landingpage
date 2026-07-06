@@ -407,9 +407,9 @@ section{padding:110px 0}
 .logos img:hover{opacity:.85}
 
 /* ---------- CASOS REALES ---------- */
-#casos{padding:64px 0 76px;overflow:hidden}
+#casos{padding:64px 0 76px;overflow:visible}
 #casos .sec-head{margin-bottom:32px}
-.cases-wrap{position:relative}
+.cases-wrap{position:relative;overflow:visible}
 .cases-track{
   display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
   padding:4px 4px 10px;-webkit-overflow-scrolling:touch;
@@ -441,7 +441,7 @@ section{padding:110px 0}
 .case-link{margin-top:16px;font-weight:700;font-size:14px;color:var(--sand);display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:color .2s}
 .case-card:hover .case-link,a.case-link:hover{color:var(--amber)}
 .cases-nav{
-  position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:40px;height:40px;border-radius:50%;
+  position:absolute;top:50%;transform:translateY(-50%);z-index:65;width:40px;height:40px;border-radius:50%;
   border:1px solid var(--line);background:rgba(20,27,20,.9);backdrop-filter:blur(6px);
   color:var(--sand);display:flex;align-items:center;justify-content:center;cursor:pointer;
   transition:opacity .2s,background .2s,border-color .2s;
@@ -449,8 +449,8 @@ section{padding:110px 0}
 .cases-nav:hover{background:var(--amber);color:var(--night);border-color:var(--amber)}
 .cases-nav:disabled{opacity:.25;cursor:not-allowed}
 .cases-nav:disabled:hover{background:rgba(20,27,20,.9);color:var(--sand);border-color:var(--line)}
-.cases-nav.prev{left:-4px}
-.cases-nav.next{right:-4px}
+.cases-nav.prev{left:8px}
+.cases-nav.next{right:8px}
 @media(max-width:640px){.cases-nav{display:none}}
 
 /* ---------- FAQ ---------- */
@@ -495,7 +495,7 @@ details p{padding:0 26px 24px;color:var(--dim);font-size:15.5px}
   font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
   color:var(--dim);margin-bottom:18px;
 }
-.case-carousel{position:relative}
+.case-carousel{position:relative;overflow:visible}
 .case-track{
   display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
   padding:2px 2px 8px;scrollbar-width:none;-ms-overflow-style:none;
@@ -508,9 +508,9 @@ details p{padding:0 26px 24px;color:var(--dim);font-size:15.5px}
 .case-slide img{display:block;width:100%;height:auto}
 .case-slide.phone{flex:0 0 auto;width:min(280px,72vw)}
 .case-slide.phone img{border-radius:14px}
-.case-nav-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5}
-.case-nav-btn.prev{left:-6px}
-.case-nav-btn.next{right:-6px}
+.case-nav-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:65}
+.case-nav-btn.prev{left:8px}
+.case-nav-btn.next{right:8px}
 @media(max-width:640px){.case-nav-btn{display:none}}
 .case-dots{display:flex;gap:6px;justify-content:center;margin-top:16px}
 .case-dot{width:7px;height:7px;border-radius:999px;background:var(--line);border:0;padding:0;cursor:pointer;transition:all .25s}
