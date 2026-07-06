@@ -397,6 +397,28 @@ function DiagnosticoSafariDigital() {
     return { actual: 4, completo: true };
   };
 
+  const generarFallback = () => {
+    const { actual, completo } = calcular();
+    const e = ETAPAS[actual];
+    const prioridadLabel = kpi
+      ? (KPIS.find((k) => k.id === kpi)?.t || "").replace(/^[^\s]+\s/, "")
+      : "ordenar tu tecnología sin perderte";
+    const saludo = nombre ? `${nombre}, ` : "";
+
+    const respEtapa = respuestas.filter((_, i) => PREGUNTAS[i]?.etapa === actual);
+    const citas = (respEtapa.length ? respEtapa : respuestas.slice(0, 2)).slice(0, 2).map((r) => r.respuesta);
+
+    if (completo) {
+      return `${saludo}has completado las cinco etapas del safari: tu base digital es sólida. Lo que más te importa ahora es ${prioridadLabel.toLowerCase()}, y tus respuestas lo confirman. Tu siguiente reto no es acumular más herramientas: es aplicar la IA con criterio, en un solo proceso con volumen real, sin comprometer la confianza de tus clientes ni la privacidad de sus datos. El paso más inteligente desde aquí: elige ese proceso repetitivo, define qué datos nunca entran en una herramienta de IA, y pon revisión humana antes de que llegue a tus clientes.`;
+    }
+
+    const cita = citas[0] ? `Cuando respondes que «${citas[0]}»,` : "Por lo que cuentas,";
+    const ansiedadTxt = ansiedad.trim() ? ` Y encaja con lo que comentas: «${ansiedad.trim()}».` : "";
+    const espejo = e.espejo.split(".").filter(Boolean).slice(0, 2).join(".") + ".";
+
+    return `${saludo}${cita} encajas con la etapa ${e.animal.toLowerCase()}: ${e.fase.toLowerCase()}. ${espejo} Dijiste que lo que más buscas es ${prioridadLabel.toLowerCase()}.${ansiedadTxt} Si no actúas aquí, el riesgo no es que todo colapse mañana, sino seguir avanzando sin el control que tu negocio merece. Tu primer paso más inteligente: ${e.pasos[0].charAt(0).toLowerCase()}${e.pasos[0].slice(1)}`;
+  };
+
   const irAResultado = () => {
     const { actual, completo } = calcular();
     enviarLead("diagnostico_completado", {
@@ -432,9 +454,13 @@ Escribe un mini-diagnóstico personalizado en español de 130-170 palabras, en s
       });
       const data = await res.json();
       if (!res.ok || data.error) throw new Error(data.error || "error");
-      setIa({ estado: data.texto ? "ok" : "error", texto: data.texto || "" });
+      if (data.texto) {
+        setIa({ estado: "ok", texto: data.texto });
+      } else {
+        setIa({ estado: "ok", texto: generarFallback() });
+      }
     } catch {
-      setIa({ estado: "error", texto: "" });
+      setIa({ estado: "ok", texto: generarFallback() });
     }
   };
 

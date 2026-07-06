@@ -575,14 +575,6 @@ details p{padding:0 26px 24px;color:var(--dim);font-size:15.5px}
 .case-dot{width:7px;height:7px;border-radius:999px;background:var(--line);border:0;padding:0;cursor:pointer;transition:all .25s}
 .case-dot.active{width:22px;background:var(--amber)}
 
-/* Caso María Fitness: web arriba, texto en medio, app abajo */
-.case-stack{display:flex;flex-direction:column;gap:0}
-.case-stack .case-section-web{margin-bottom:52px}
-.case-stack .case-info{
-  position:static;max-width:820px;width:100%;margin:0 auto 52px;
-}
-.case-stack .case-section-app{margin-bottom:0}
-
 /* ---------- FOOTER ---------- */
 footer{border-top:1px solid var(--line);padding:60px 0 40px}
 .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
