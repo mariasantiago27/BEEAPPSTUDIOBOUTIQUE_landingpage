@@ -92,16 +92,18 @@ nav{
   padding:158px 0 64px;text-align:center;background:var(--dusk);
   border-bottom:1px solid var(--line);
 }
-.page-hero .wrap{max-width:1100px}
+.page-hero .wrap{
+  max-width:1100px;display:flex;flex-direction:column;align-items:stretch;
+}
 .page-hero .back-link{
-  display:flex;justify-content:flex-start;width:100%;text-align:left;
-  margin-bottom:26px;
+  align-self:flex-start;display:inline-flex;margin-bottom:26px;
 }
 .page-hero .eyebrow,
 .page-hero h1,
 .page-hero p{
-  max-width:760px;margin-left:auto;margin-right:auto;
+  align-self:center;width:100%;max-width:760px;text-align:center;
 }
+.page-hero .eyebrow{display:block}
 .page-hero h1{font-size:clamp(34px,5.6vw,58px);letter-spacing:-.015em;margin-bottom:18px}
 .page-hero p{color:var(--dim);font-size:17px}
 .page-hero p.lede-definition{color:var(--sand);font-size:16px;line-height:1.6;margin-bottom:14px}
@@ -122,10 +124,19 @@ nav{
   display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;
   color:var(--dim);text-decoration:none;transition:color .2s;
 }
-.case-hero .back-link{
-  display:flex;justify-content:flex-start;width:100%;text-align:left;
-  margin-bottom:26px;
+.case-hero .wrap{
+  max-width:1100px;display:flex;flex-direction:column;align-items:stretch;
 }
+.case-hero .back-link{
+  align-self:flex-start;display:inline-flex;margin-bottom:26px;
+}
+.case-hero .eyebrow,
+.case-hero h1,
+.case-hero .lede{
+  align-self:center;width:100%;max-width:820px;text-align:center;
+}
+.case-hero .lede{max-width:640px}
+.case-hero .eyebrow{display:block}
 .back-link:hover{color:var(--amber)}
 
 /* ---------- HERO: la sabana ---------- */
@@ -483,12 +494,6 @@ details p{padding:0 26px 24px;color:var(--dim);font-size:15.5px}
 
 /* ---------- CASO DE ESTUDIO (página individual) ---------- */
 .case-hero{padding:150px 0 48px;background:var(--dusk);border-bottom:1px solid var(--line)}
-.case-hero .wrap{max-width:1100px}
-.case-hero .eyebrow,
-.case-hero h1,
-.case-hero .lede{
-  max-width:820px;margin-left:auto;margin-right:auto;
-}
 .case-hero h1{font-size:clamp(28px,4.2vw,42px);letter-spacing:-.01em;margin-bottom:16px}
 .case-hero .lede{color:var(--dim);font-size:17px;max-width:640px}
 .case-body{padding:64px 0 100px}
