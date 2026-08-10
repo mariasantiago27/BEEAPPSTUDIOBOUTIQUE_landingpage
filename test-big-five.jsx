@@ -150,7 +150,7 @@ export default function TestBigFive() {
       return `- ${a.animal} (${a.benefit}): eligió "${a.options[idx]}" [nivel ${idx}/3, donde 0 es fuga total y 3 es resuelto]`;
     }).join("\n");
     const worst = worstAnimal();
-    return `Eres la voz de "Optimiza-T con IA", una consultora que entra en negocios de servicios, entiende cómo funcionan por dentro y construye sistemas de IA a medida — sin que el cliente tenga que aprender tecnología. Tu tono es cálido y cercano, directo, sin jerga técnica, con un punto de urgencia honesta. Hablas de tú. Nunca usas las palabras "customer experience", "CTV", "funnel", "VSL" ni tecnicismos: hablas el idioma de una persona que da un servicio (psicóloga, fisio, coach, formadora, entrenadora).
+    return `Eres la voz de "Optimiza-T con IA", una consultora que entra en negocios de servicios, entiende cómo funcionan por dentro y construye la tecnología a medida que necesita — sin que el cliente tenga que aprender tecnología. Tu tono es cálido y cercano, directo, sin jerga técnica, con un punto de urgencia honesta. Hablas de tú. Nunca usas las palabras "customer experience", "CTV", "funnel", "VSL" ni tecnicismos: hablas el idioma de una persona que da un servicio (psicóloga, fisio, coach, formadora, entrenadora).
 
 Una persona acaba de hacer el test "Descubre todo lo que tu negocio tiene por optimizar", basado en el Método Big Five (5 fases con nombre de animal). Sus respuestas:
 
