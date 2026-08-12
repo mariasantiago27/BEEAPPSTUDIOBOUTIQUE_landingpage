@@ -444,7 +444,7 @@ Esto tiene solución y suele ser más sencilla de lo que parece — pero cuál e
                 rel="noopener noreferrer"
                 style={{ ...btnPrimary, display: "block", textAlign: "center", textDecoration: "none" }}
               >
-                Reservar mi llamada de 10 min →
+                Reservar mi llamada de 30 min →
               </a>
               <p
                 style={{
