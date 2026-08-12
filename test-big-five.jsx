@@ -1,5 +1,5 @@
 /**
- * Optimiza-T con IA — Test Big Five (lead magnet)
+ * Optimiza-T con IA · Test Big Five (lead magnet)
  * Prototipo oficial. Flujo: intro → preguntas → email → radiografía.
  *
  * Producción: CONFIG.claudeProxy (Netlify function) + CONFIG.webhookLead (Make → Brevo).
@@ -31,7 +31,7 @@ const ANIMALS = [
     glyph: "🐃",
     benefit: "Que te encuentren",
     lore:
-      "En la sabana, los búfalos se mueven en manadas de cientos. Destacar entre tantos iguales es lo más difícil. Tu negocio empieza aquí: que alguien te vea entre toda la manada — y no te pierda de vista.",
+      "En la sabana, los búfalos se mueven en manadas de cientos. Destacar entre tantos iguales es lo más difícil. Tu negocio empieza aquí: que alguien te vea entre toda la manada, y no te pierda de vista.",
     question: "Cuando alguien te descubre por primera vez, ¿qué se encuentra?",
     options: [
       "Un perfil de redes y poco más",
@@ -46,7 +46,7 @@ const ANIMALS = [
     glyph: "🐘",
     benefit: "Que te compren",
     lore:
-      "El elefante nunca olvida: recuerda caras y caminos durante décadas. Tu negocio necesita esa memoria — que nadie que mostró interés se pierda solo porque no le diste seguimiento a tiempo.",
+      "El elefante nunca olvida: recuerda caras y caminos durante décadas. Tu negocio necesita esa memoria, para que nadie que mostró interés se pierda solo porque no le diste seguimiento a tiempo.",
     question: "Cuando alguien muestra interés pero no compra al momento, ¿qué pasa?",
     options: [
       "Si no me escriben ellos otra vez, se pierde",
@@ -61,7 +61,7 @@ const ANIMALS = [
     glyph: "🦁",
     benefit: "Que se sientan cuidados",
     lore:
-      "La leona no caza y desaparece: la manada cuida a sus crías en grupo, sin descuidar a ninguna. Cuando alguien te paga, empieza justo ahí el cuidado — no termina.",
+      "La leona no caza y desaparece: la manada cuida a sus crías en grupo, sin descuidar a ninguna. Cuando alguien te paga, empieza justo ahí el cuidado. No termina.",
     question: "Justo después de que alguien te paga, ¿qué recibe?",
     options: [
       "Mi servicio, y ya",
@@ -91,9 +91,9 @@ const ANIMALS = [
     glyph: "🐆",
     benefit: "Que te sobre tiempo",
     lore:
-      "El leopardo es puro ahorro de energía: preciso, silencioso, no malgasta un solo movimiento. Tu tiempo debería ir a lo que solo tú sabes hacer — no a repetir lo mismo una y otra vez.",
+      "El leopardo es puro ahorro de energía: preciso, silencioso, no malgasta un solo movimiento. Tu tiempo debería ir a lo que solo tú sabes hacer, no a repetir lo mismo una y otra vez.",
     question:
-      "¿Cuánto de tu semana se va en tareas repetitivas — agendar, recordar, cobrar, contestar las mismas preguntas una y otra vez?",
+      "¿Cuánto de tu semana se va en tareas repetitivas: agendar, recordar, cobrar, contestar las mismas preguntas una y otra vez?",
     options: [
       "Muchísimo, vivo apagando fuegos",
       "Bastante, pero no sé por dónde empezar a soltarlo",
@@ -150,7 +150,7 @@ export default function TestBigFive() {
       return `- ${a.animal} (${a.benefit}): eligió "${a.options[idx]}" [nivel ${idx}/3, donde 0 es fuga total y 3 es resuelto]`;
     }).join("\n");
     const worst = worstAnimal();
-    return `Eres la voz de "Optimiza-T con IA", una consultora que entra en negocios de servicios, entiende cómo funcionan por dentro y construye la tecnología a medida que necesita — sin que el cliente tenga que aprender tecnología. Tu tono es cálido y cercano, directo, sin jerga técnica, con un punto de urgencia honesta. Hablas de tú. Nunca usas las palabras "customer experience", "CTV", "funnel", "VSL" ni tecnicismos: hablas el idioma de una persona que da un servicio (psicóloga, fisio, coach, formadora, entrenadora).
+    return `Eres la voz de "Optimiza-T con IA", una consultora que entra en negocios de servicios, entiende cómo funcionan por dentro y construye la tecnología a medida que necesita, sin que el cliente tenga que aprender tecnología. Tu tono es cálido y cercano, directo, sin jerga técnica, con un punto de urgencia honesta. Hablas de tú. Nunca usas las palabras "customer experience", "CTV", "funnel", "VSL" ni tecnicismos: hablas el idioma de una persona que da un servicio (psicóloga, fisio, coach, formadora, entrenadora). Nunca uses rayas largas (—).
 
 Una persona acaba de hacer el test "Descubre todo lo que tu negocio tiene por optimizar", basado en el Método Big Five (5 fases con nombre de animal). Sus respuestas:
 
@@ -162,9 +162,9 @@ Su mayor fuga está en el ${worst.animal} (${worst.benefit}).
 Escribe una devolución personalizada, en español, de unas 130-170 palabras, con esta estructura exacta (sin encabezados, en prosa fluida y cálida, con saltos de párrafo):
 
 1. Un saludo breve y humano que conecte con su profesión.
-2. Nombra su MAYOR fuga (el ${worst.animal} — ${worst.benefit}) con claridad y sin culpa: qué está pasando y, sobre todo, qué le está costando (tiempo, dinero o clientes que se escapan). Puedes apoyarte una vez, con sutileza, en la metáfora del animal (${worst.animal}) si suma; no fuerces. Sé concreto y que le duela un poco, pero desde el cuidado, no desde el miedo.
+2. Nombra su MAYOR fuga (el ${worst.animal}, ${worst.benefit}) con claridad y sin culpa: qué está pasando y, sobre todo, qué le está costando (tiempo, dinero o clientes que se escapan). Puedes apoyarte una vez, con sutileza, en la metáfora del animal (${worst.animal}) si suma; no fuerces. Sé concreto y que le duela un poco, pero desde el cuidado, no desde el miedo.
 3. Menciona en una frase que hay otras fases donde también hay margen, sin enumerarlas todas.
-4. Cierra abriendo un bucle sin resolverlo: dile que esto tiene solución y que suele ser más sencilla de lo que parece, pero que cuál es la suya depende de cómo funciona su negocio por dentro — y por eso el siguiente paso es una llamada corta y sin compromiso. No des la solución concreta. Invita a la llamada.
+4. Cierra abriendo un bucle sin resolverlo: dile que esto tiene solución y que suele ser más sencilla de lo que parece, pero que cuál es la suya depende de cómo funciona su negocio por dentro. Por eso el siguiente paso es una llamada corta y sin compromiso. No des la solución concreta. Invita a la llamada.
 
 No uses viñetas ni listas. No firmes. No inventes datos que no tienes. Devuelve solo el texto de la devolución.`;
   };
@@ -173,13 +173,13 @@ No uses viñetas ni listas. No firmes. No inventes datos que no tienes. Devuelve
     const worst = worstAnimal();
     const saludo = name ? `${name}, ` : "";
     const prof = profession || "profesional de servicios";
-    return `${saludo}por lo que cuentas como ${prof}, tu mayor margen ahora mismo está en ${worst.benefit.toLowerCase()} — la fase del ${worst.animal}.
+    return `${saludo}por lo que cuentas como ${prof}, tu mayor margen ahora mismo está en ${worst.benefit.toLowerCase()}: la fase del ${worst.animal}.
 
 ${worst.lore.split(".")[0]}. En tu negocio eso se traduce en tiempo que se te escapa, clientes que se enfrían o valor que aún no capturas: no porque te falte capacidad, sino porque nadie ha mirado tu negocio entero con ese foco.
 
 Hay más margen en las otras fases del Método Big Five. La buena noticia: no hace falta hacerlo todo a la vez; hace falta empezar por el agujero que más te cuesta hoy.
 
-Esto tiene solución y suele ser más sencilla de lo que parece — pero cuál es la tuya depende de cómo funciona tu negocio por dentro. Por eso el siguiente paso es una llamada corta y sin compromiso.`;
+Esto tiene solución y suele ser más sencilla de lo que parece, pero cuál es la tuya depende de cómo funciona tu negocio por dentro. Por eso el siguiente paso es una llamada corta y sin compromiso.`;
   };
 
   const enviarLead = async () => {
@@ -230,7 +230,7 @@ Esto tiene solución y suele ser más sencilla de lo que parece — pero cuál e
       scrollTop();
     } catch {
       setError(
-        "No he podido generar tu radiografía ahora mismo. Inténtalo de nuevo en un momento."
+        "No he podido generar tu informe personalizado ahora mismo. Inténtalo de nuevo en un momento."
       );
     } finally {
       setLoading(false);
@@ -304,10 +304,10 @@ Esto tiene solución y suele ser más sencilla de lo que parece — pero cuál e
             </p>
             <p style={{ fontSize: 18, lineHeight: 1.6, color: PALETTE.ink, margin: "0 0 14px" }}>
               Cinco preguntas para ver qué parte de tu negocio ya vuela sola y cuál te está
-              costando tiempo, dinero o clientes — muchas veces sin que te enteres.
+              costando tiempo, dinero o clientes, muchas veces sin que te enteres.
             </p>
             <p style={{ fontSize: 15, lineHeight: 1.6, color: PALETTE.muted, margin: "0 0 34px" }}>
-              Tarda menos de dos minutos. Y al terminar recibes tu radiografía.
+              Tarda menos de dos minutos. Y al terminar recibes tu informe personalizado.
             </p>
 
             <label style={miniLabel}>¿A qué te dedicas?</label>
@@ -365,11 +365,11 @@ Esto tiene solución y suele ser más sencilla de lo que parece — pero cuál e
           <div>
             <div style={glyphBadge}>{worst.glyph}</div>
             <h2 style={{ fontSize: 28, fontWeight: 400, margin: "0 0 14px" }}>
-              Tu radiografía está lista.
+              Tu informe personalizado está listo.
             </h2>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: PALETTE.ink, margin: "0 0 28px" }}>
-              Déjame dónde enviártela y te la muestro ahora mismo. Nada de spam — solo tu
-              radiografía y, si quieres, cómo darle solución.
+              Déjame dónde enviártelo y te lo muestro ahora mismo. Nada de spam. Solo tu
+              informe y, si quieres, cómo darle solución.
             </p>
 
             <label style={miniLabel}>Tu nombre</label>
@@ -405,7 +405,7 @@ Esto tiene solución y suele ser más sencilla de lo que parece — pero cuál e
                   emailValid && name.trim() && !loading ? "pointer" : "not-allowed",
               }}
             >
-              {loading ? "Revelando tu radiografía…" : "Ver mi radiografía →"}
+              {loading ? "Revelando tu informe…" : "Ver mi informe →"}
             </button>
           </div>
         )}
@@ -423,7 +423,7 @@ Esto tiene solución y suele ser más sencilla de lo que parece — pero cuál e
                 fontFamily: "'Helvetica Neue', Arial, sans-serif",
               }}
             >
-              Tu mayor fuga · {worst.animal} — {worst.benefit}
+              Tu mayor fuga · {worst.animal}: {worst.benefit}
             </div>
             <div
               style={{
