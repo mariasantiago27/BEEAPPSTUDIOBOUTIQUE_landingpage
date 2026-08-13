@@ -246,7 +246,7 @@ nav{
   font-size:clamp(16px,2.1vw,20px);color:var(--dim);
   max-width:640px;margin:0 auto 34px;
 }
-.hero-ctas{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:12px}
+.hero-ctas{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:22px}
 .btn-hero-primary{padding:18px 38px;font-size:17px}
 .hero-alt-cta{font-size:14px;color:var(--dim);line-height:1.55;margin:0 auto 22px;max-width:520px}
 .hero-alt-cta a{color:var(--clay);font-weight:600;text-decoration:underline;text-underline-offset:3px;transition:color .2s}
