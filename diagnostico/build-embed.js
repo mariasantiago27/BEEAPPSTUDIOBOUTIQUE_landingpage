@@ -5,8 +5,8 @@ const dir = __dirname;
 const root = path.join(dir, "..");
 
 let code = fs.readFileSync(path.join(root, "test-big-five.jsx"), "utf8");
-code = code.replace(/^import[^\n]+\n\n/m, "");
-code = code.replace("export default function TestBigFive", "function TestBigFive");
+code = code.replace(/^import\s+.*from\s+["']react["'];?\s*\r?\n/gm, "");
+code = code.replace(/^export\s+default\s+/m, "");
 code = "const { useState, useRef } = React;\n\n" + code;
 code +=
   '\n\nconst root = ReactDOM.createRoot(document.getElementById("root"));\nroot.render(<TestBigFive />);\n';
