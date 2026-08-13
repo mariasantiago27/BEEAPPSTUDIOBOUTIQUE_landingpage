@@ -137,7 +137,7 @@ nav{
   margin:0;text-align:center;font-size:15px;line-height:1.7;color:var(--dim);
 }
 .definition-block strong{color:var(--ink)}
-.local-anchor{padding:0 0 28px;background:var(--bg);border-bottom:1px solid var(--line)}
+.local-anchor{padding:28px 0 32px;background:var(--bg);border-bottom:1px solid var(--line)}
 .local-head{
   margin:0;text-align:center;font-size:clamp(18px,2.4vw,22px);font-weight:700;
   color:var(--green);letter-spacing:-.01em;
@@ -246,7 +246,11 @@ nav{
   font-size:clamp(16px,2.1vw,20px);color:var(--dim);
   max-width:640px;margin:0 auto 34px;
 }
-.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.hero-ctas{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:12px}
+.btn-hero-primary{padding:18px 38px;font-size:17px}
+.hero-alt-cta{font-size:14px;color:var(--dim);line-height:1.55;margin:0 auto 22px;max-width:520px}
+.hero-alt-cta a{color:var(--clay);font-weight:600;text-decoration:underline;text-underline-offset:3px;transition:color .2s}
+.hero-alt-cta a:hover{color:var(--amber)}
 .hero-note{font-size:13px;color:var(--dim)}
 .rise{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
 .d1{animation-delay:.15s}.d2{animation-delay:.3s}.d3{animation-delay:.45s}.d4{animation-delay:.6s}.d5{animation-delay:.75s}
@@ -284,7 +288,9 @@ nav{
 .doubt-note{font-size:14px;color:var(--dim);line-height:1.6}
 .doubts-cta{text-align:center;max-width:620px;margin:0 auto}
 .doubts-cta p{color:var(--ink);font-size:16px;margin-bottom:24px;line-height:1.6}
-.doubts-cta .hero-ctas{margin-bottom:0}
+.doubts-cta .hero-ctas{
+  flex-direction:row;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:0;
+}
 
 /* ---------- SECCIONES ---------- */
 section{padding:110px 0}
@@ -363,6 +369,21 @@ section{padding:110px 0}
 }
 .process-result strong{color:var(--clay);font-weight:800}
 .process-cta{text-align:center}
+.process-summary{
+  list-style:none;margin:0 auto 32px;padding:0;width:100%;max-width:640px;
+  display:grid;gap:10px;
+}
+.process-summary li{
+  display:flex;align-items:center;gap:14px;padding:14px 18px;
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15.5px;
+  color:var(--ink);box-shadow:0 4px 16px var(--shadow);
+}
+.process-summary-num{
+  flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  font-size:14px;font-weight:800;color:var(--clay);
+  background:rgba(166,83,59,.12);border:1px solid rgba(166,83,59,.22);
+}
 
 /* ---------- MÉTODO ---------- */
 #metodo{background:var(--bg-alt)}
