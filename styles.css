@@ -226,32 +226,33 @@ nav{
 @keyframes walk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes walkRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.hero-content{position:relative;z-index:4;max-width:880px}
+.hero-content{position:relative;z-index:4;max-width:920px}
 .hero-content::before{
   content:"";position:absolute;inset:-6% -10% -8%;z-index:-1;pointer-events:none;
   background:radial-gradient(58% 60% at 50% 40%,rgba(255,253,248,.55),transparent 68%);
 }
+.hero .eyebrow{font-size:13px;letter-spacing:.22em;margin-bottom:22px}
 .hero h1{
-  font-size:clamp(44px,8.4vw,96px);letter-spacing:-.02em;margin-bottom:22px;color:var(--ink);
+  font-size:clamp(50px,9.8vw,112px);letter-spacing:-.02em;margin-bottom:26px;color:var(--ink);
   text-shadow:0 1px 0 rgba(255,253,248,.8);
 }
 .hero h1 .serif{color:var(--clay);font-size:1.06em}
 .hero-kicker{
   font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
-  font-size:clamp(20px,3vw,28px);color:var(--ink);line-height:1.35;
-  max-width:680px;margin:0 auto 18px;
+  font-size:clamp(22px,3.5vw,34px);color:var(--ink);line-height:1.38;
+  max-width:720px;margin:0 auto 24px;
 }
 .hero-kicker .serif{color:var(--clay);font-style:italic;font-family:'Instrument Serif',serif;font-weight:400}
 .hero p.lead{
   font-size:clamp(16px,2.1vw,20px);color:var(--dim);
   max-width:640px;margin:0 auto 34px;
 }
-.hero-ctas{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:22px}
-.btn-hero-primary{padding:18px 38px;font-size:17px}
+.hero-ctas{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:24px}
+.btn-hero-primary{padding:20px 42px;font-size:18px}
 .hero-alt-cta{font-size:14px;color:var(--dim);line-height:1.55;margin:0 auto 22px;max-width:520px}
 .hero-alt-cta a{color:var(--clay);font-weight:600;text-decoration:underline;text-underline-offset:3px;transition:color .2s}
 .hero-alt-cta a:hover{color:var(--amber)}
-.hero-note{font-size:13px;color:var(--dim)}
+.hero-note{font-size:14px;color:var(--dim)}
 .rise{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
 .d1{animation-delay:.15s}.d2{animation-delay:.3s}.d3{animation-delay:.45s}.d4{animation-delay:.6s}.d5{animation-delay:.75s}
 @keyframes rise{to{opacity:1;transform:none}}
