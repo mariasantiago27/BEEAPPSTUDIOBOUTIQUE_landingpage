@@ -69,15 +69,15 @@ const { useState, useRef } = React;
 
 /**
  * Optimiza-T con IA · Test Big Five (lead magnet)
- * Prototipo oficial. Flujo: intro → preguntas → email → radiografía.
+ * Prototipo oficial. Flujo: intro → branch → preguntas → email → radiografía.
  *
- * Producción: CONFIG.claudeProxy (Netlify function) + CONFIG.webhookLead (Make → Brevo).
+ * Producción: Netlify Functions (submit-lead → Brevo + email; claude-radiografia → informe IA).
  */
 const CONFIG = {
   enlaceLlamada: "https://calendly.com/chussama-digital/30min",
   enlaceRadiografia: "https://calendly.com/chussama-digital/30min",
-  webhookLead: "https://hook.eu2.make.com/TU-WEBHOOK-AQUI",
-  claudeProxy: "", // POST { prompt, name, email, profession, answers }
+  webhookLead: "/.netlify/functions/submit-lead",
+  claudeProxy: "/.netlify/functions/claude-radiografia",
 };
 
 const PALETTE = {
@@ -106,6 +106,13 @@ const ANIMALS = [
       "Todo depende de si me escriben por WhatsApp",
       "Tengo un sistema pensado para captar y no perder el contacto",
     ],
+    questionArrancando: "Cuando quieras que la gente te descubra, ¿qué vas a tener listo?",
+    optionsArrancando: [
+      "Nada montado todavía, ni sé por dónde empezar",
+      "Tengo alguna idea, pero está todo en mi cabeza",
+      "Voy a montar algo, pero improvisado",
+      "Ya tengo pensado un sistema claro para captar y no perder el contacto",
+    ],
   },
   {
     key: "elefante",
@@ -120,6 +127,14 @@ const ANIMALS = [
       "Intento acordarme de escribir, pero no siempre llego",
       "Tengo algo de seguimiento, pero manual",
       "Tengo un sistema que los acompaña hasta que deciden",
+    ],
+    questionArrancando:
+      "Cuando alguien muestre interés pero no compre al momento, ¿qué tienes pensado hacer?",
+    optionsArrancando: [
+      "No lo he pensado, ya se verá",
+      "Intentaré acordarme de escribirle",
+      "Algo tengo en mente, pero manual",
+      "Ya tengo pensado un sistema que los acompañe hasta que decidan",
     ],
   },
   {
@@ -136,6 +151,13 @@ const ANIMALS = [
       "Recibe algo, pero distinto cada vez según mi día",
       "Vive una experiencia cuidada desde el minuto uno",
     ],
+    questionArrancando: "Justo después de que alguien te pague por primera vez, ¿qué va a recibir?",
+    optionsArrancando: [
+      "No lo he decidido todavía",
+      "Le escribiré yo a mano, cuando pueda",
+      "Algo tengo pensado, pero sin definir del todo",
+      "Ya tengo diseñada una experiencia cuidada desde el minuto uno",
+    ],
   },
   {
     key: "rinoceronte",
@@ -150,6 +172,13 @@ const ANIMALS = [
       "Le escribo cuando me acuerdo yo",
       "Tengo alguna cosa, pero sin constancia",
       "Tengo un sistema que mantiene el vínculo vivo",
+    ],
+    questionArrancando: "Cuando un cliente termine contigo la primera vez, ¿qué harás para que vuelva?",
+    optionsArrancando: [
+      "No lo he pensado, si vuelve es porque se acuerda solo",
+      "Le escribiré cuando me acuerde yo",
+      "Tengo alguna idea, pero sin sistema",
+      "Ya tengo pensado un sistema que mantenga el vínculo vivo",
     ],
   },
   {
@@ -167,11 +196,30 @@ const ANIMALS = [
       "Algo tengo automatizado, poco",
       "Lo justo, tengo lo importante automatizado",
     ],
+    questionArrancando:
+      "¿Cuánto de tu semana crees que se irá en tareas repetitivas — agendar, recordar, cobrar, contestar las mismas preguntas una y otra vez?",
+    optionsArrancando: [
+      "Imagino que muchísimo, no tengo ni idea de cómo evitarlo",
+      "Bastante probablemente, pero no sé por dónde empezar a soltarlo",
+      "Algo habré pensado automatizar, poco",
+      "Ya tengo pensado automatizar lo importante desde el principio",
+    ],
   },
 ];
 
+function animalCopy(animal, stage) {
+  if (stage === "arrancando") {
+    return {
+      question: animal.questionArrancando,
+      options: animal.optionsArrancando,
+    };
+  }
+  return { question: animal.question, options: animal.options };
+}
+
 function TestBigFive() {
   const [screen, setScreen] = useState("intro");
+  const [stage, setStage] = useState(null); // "marcha" | "arrancando"
   const [qIndex, setQIndex] = useState(0);
   const [profession, setProfession] = useState("");
   const [answers, setAnswers] = useState({});
@@ -212,15 +260,25 @@ function TestBigFive() {
   };
 
   const buildPrompt = () => {
+    const stageLabel =
+      stage === "arrancando"
+        ? "Está a punto de montar su negocio, aún sin clientes en marcha"
+        : "Ya tiene negocio en marcha con clientes";
+    const costeHint =
+      stage === "arrancando"
+        ? "tiempo mal invertido, decisiones que tendrá que deshacer o oportunidades que perderá al arrancar mal"
+        : "tiempo, dinero o clientes que se escapan";
     const lines = ANIMALS.map((a) => {
       const idx = answers[a.key] !== undefined ? answers[a.key] : 3;
-      return `- ${a.animal} (${a.benefit}): eligió "${a.options[idx]}" [nivel ${idx}/3, donde 0 es fuga total y 3 es resuelto]`;
+      const { options } = animalCopy(a, stage);
+      return `- ${a.animal} (${a.benefit}): eligió "${options[idx]}" [nivel ${idx}/3, donde 0 es fuga total y 3 es resuelto]`;
     }).join("\n");
     const worst = worstAnimal();
     return `Eres la voz de "Optimiza-T con IA", una consultora que entra en negocios de servicios, entiende cómo funcionan por dentro y construye la tecnología a medida que necesita, sin que el cliente tenga que aprender tecnología. Tu tono es cálido y cercano, directo, sin jerga técnica, con un punto de urgencia honesta. Hablas de tú. Nunca usas las palabras "customer experience", "CTV", "funnel", "VSL" ni tecnicismos: hablas el idioma de una persona que da un servicio (psicóloga, fisio, coach, formadora, entrenadora). Nunca uses rayas largas (—).
 
 Una persona acaba de hacer el test "Descubre todo lo que tu negocio tiene por optimizar", basado en el Método Big Five (5 fases con nombre de animal). Sus respuestas:
 
+Momento del negocio: ${stageLabel}
 Profesión: ${profession || "profesional de servicios"}
 ${lines}
 
@@ -228,10 +286,10 @@ Su mayor fuga está en el ${worst.animal} (${worst.benefit}).
 
 Escribe una devolución personalizada, en español, de unas 130-170 palabras, con esta estructura exacta (sin encabezados, en prosa fluida y cálida, con saltos de párrafo):
 
-1. Un saludo breve y humano que conecte con su profesión.
-2. Nombra su MAYOR fuga (el ${worst.animal}, ${worst.benefit}) con claridad y sin culpa: qué está pasando y, sobre todo, qué le está costando (tiempo, dinero o clientes que se escapan). Puedes apoyarte una vez, con sutileza, en la metáfora del animal (${worst.animal}) si suma; no fuerces. Sé concreto y que le duela un poco, pero desde el cuidado, no desde el miedo.
+1. Un saludo breve y humano que conecte con su profesión${stage === "arrancando" ? " y con que está por arrancar" : ""}.
+2. Nombra su MAYOR fuga (el ${worst.animal}, ${worst.benefit}) con claridad y sin culpa: qué está pasando y, sobre todo, qué le está costando (${costeHint}). Puedes apoyarte una vez, con sutileza, en la metáfora del animal (${worst.animal}) si suma; no fuerces. Sé concreto y que le duela un poco, pero desde el cuidado, no desde el miedo.
 3. Menciona en una frase que hay otras fases donde también hay margen, sin enumerarlas todas.
-4. Cierra abriendo un bucle sin resolverlo: dile que esto tiene solución y que suele ser más sencilla de lo que parece, pero que cuál es la suya depende de cómo funciona su negocio por dentro. Por eso el siguiente paso es una llamada corta y sin compromiso. No des la solución concreta. Invita a la llamada.
+4. Cierra abriendo un bucle sin resolverlo: dile que esto tiene solución y que suele ser más sencilla de lo que parece, pero que cuál es la suya depende de cómo funciona su negocio por dentro${stage === "arrancando" ? " o de cómo lo va a montar" : ""}. Por eso el siguiente paso es una llamada corta y sin compromiso. No des la solución concreta. Invita a la llamada.
 
 No uses viñetas ni listas. No firmes. No inventes datos que no tienes. Devuelve solo el texto de la devolución.`;
   };
@@ -240,19 +298,27 @@ No uses viñetas ni listas. No firmes. No inventes datos que no tienes. Devuelve
     const worst = worstAnimal();
     const saludo = name ? `${name}, ` : "";
     const prof = profession || "profesional de servicios";
+    const contexto =
+      stage === "arrancando"
+        ? "De cara a arrancar, eso se traduce en decisiones que tendrás que deshacer, tiempo mal invertido o oportunidades que se te escaparán si nadie mira el conjunto antes de montar nada"
+        : "En tu negocio eso se traduce en tiempo que se te escapa, clientes que se enfrían o valor que aún no capturas: no porque te falte capacidad, sino porque nadie ha mirado tu negocio entero con ese foco";
+    const cierre =
+      stage === "arrancando"
+        ? "Esto tiene solución y suele ser más sencilla de lo que parece, pero cuál es la tuya depende de cómo vas a montar tu negocio por dentro. Por eso el siguiente paso es una llamada corta y sin compromiso."
+        : "Esto tiene solución y suele ser más sencilla de lo que parece, pero cuál es la tuya depende de cómo funciona tu negocio por dentro. Por eso el siguiente paso es una llamada corta y sin compromiso.";
     return `${saludo}por lo que cuentas como ${prof}, tu mayor margen ahora mismo está en ${worst.benefit.toLowerCase()}: la fase del ${worst.animal}.
 
-${worst.lore.split(".")[0]}. En tu negocio eso se traduce en tiempo que se te escapa, clientes que se enfrían o valor que aún no capturas: no porque te falte capacidad, sino porque nadie ha mirado tu negocio entero con ese foco.
+${worst.lore.split(".")[0]}. ${contexto}.
 
 Hay más margen en las otras fases del Método Big Five. La buena noticia: no hace falta hacerlo todo a la vez; hace falta empezar por el agujero que más te cuesta hoy.
 
-Esto tiene solución y suele ser más sencilla de lo que parece, pero cuál es la tuya depende de cómo funciona tu negocio por dentro. Por eso el siguiente paso es una llamada corta y sin compromiso.`;
+${cierre}`;
   };
 
   const enviarLead = async () => {
-    if (!CONFIG.webhookLead || CONFIG.webhookLead.includes("TU-WEBHOOK-AQUI")) return;
+    if (!CONFIG.webhookLead) return;
     try {
-      await fetch(CONFIG.webhookLead, {
+      const res = await fetch(CONFIG.webhookLead, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -260,11 +326,13 @@ Esto tiene solución y suele ser más sencilla de lo que parece, pero cuál es l
           nombre: name,
           email,
           profesion: profession,
+          etapa: stage,
           respuestas: answers,
           mayor_fuga: worstAnimal().key,
           fecha: new Date().toISOString(),
         }),
       });
+      if (!res.ok) console.warn("Lead no guardado:", res.status);
     } catch {
       /* no bloquear el test */
     }
@@ -284,12 +352,16 @@ Esto tiene solución y suele ser más sencilla de lo que parece, pero cuál es l
             name,
             email,
             profession,
+            stage,
             answers,
           }),
         });
-        if (!res.ok) throw new Error("proxy");
-        const data = await res.json();
-        setResult(data.radiografia || data.text || radiografiaPlantilla());
+        if (res.ok) {
+          const data = await res.json();
+          setResult(data.radiografia || data.text || radiografiaPlantilla());
+        } else {
+          setResult(radiografiaPlantilla());
+        }
       } else {
         setResult(radiografiaPlantilla());
       }
@@ -388,8 +460,7 @@ Esto tiene solución y suele ser más sencilla de lo que parece, pero cuál es l
             <button
               type="button"
               onClick={() => {
-                setScreen("q");
-                setQIndex(0);
+                setScreen("branch");
                 scrollTop();
               }}
               disabled={!profession.trim()}
@@ -405,19 +476,88 @@ Esto tiene solución y suele ser más sencilla de lo que parece, pero cuál es l
           </div>
         )}
 
+        {screen === "branch" && (
+          <div>
+            <h2
+              style={{
+                fontSize: "clamp(21px, 4vw, 27px)",
+                fontWeight: 400,
+                lineHeight: 1.3,
+                margin: "0 0 24px",
+              }}
+            >
+              ¿Tu negocio ya está en marcha, con clientes, o estás en el momento de montarlo?
+            </h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {[
+                { value: "marcha", label: "Ya tengo negocio, con clientes" },
+                { value: "arrancando", label: "Estoy a punto de montarlo" },
+              ].map(({ value, label }) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => {
+                    setStage(value);
+                    setScreen("q");
+                    setQIndex(0);
+                    scrollTop();
+                  }}
+                  style={{
+                    textAlign: "left",
+                    padding: "16px 18px",
+                    borderRadius: 12,
+                    border: `1px solid ${stage === value ? PALETTE.clay : "#D9CFBB"}`,
+                    background: stage === value ? "#F0E7D4" : "#FFFDF8",
+                    color: PALETTE.ink,
+                    fontSize: 16,
+                    lineHeight: 1.4,
+                    cursor: "pointer",
+                    fontFamily: "'Georgia', serif",
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setScreen("intro");
+                scrollTop();
+              }}
+              style={btnGhost}
+            >
+              ← Atrás
+            </button>
+          </div>
+        )}
+
         {screen === "q" && (
           <div>
             <Progress current={qIndex + 1} total={ANIMALS.length} />
             <QuestionCard
               data={ANIMALS[qIndex]}
+              question={animalCopy(ANIMALS[qIndex], stage).question}
+              options={animalCopy(ANIMALS[qIndex], stage).options}
               selected={answers[ANIMALS[qIndex].key]}
               onPick={(i) => pickAnswer(ANIMALS[qIndex].key, i)}
             />
-            {qIndex > 0 && (
+            {qIndex > 0 ? (
               <button
                 type="button"
                 onClick={() => {
                   setQIndex((i) => i - 1);
+                  scrollTop();
+                }}
+                style={btnGhost}
+              >
+                ← Atrás
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setScreen("branch");
                   scrollTop();
                 }}
                 style={btnGhost}
@@ -575,7 +715,7 @@ function Progress({ current, total }) {
   );
 }
 
-function QuestionCard({ data, selected, onPick }) {
+function QuestionCard({ data, question, options, selected, onPick }) {
   return (
     <div>
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }}>
@@ -616,10 +756,10 @@ function QuestionCard({ data, selected, onPick }) {
           margin: "20px 0 24px",
         }}
       >
-        {data.question}
+        {question}
       </h2>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        {data.options.map((opt, i) => (
+        {options.map((opt, i) => (
           <button
             key={opt}
             type="button"
