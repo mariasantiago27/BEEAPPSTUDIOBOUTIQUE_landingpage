@@ -9,6 +9,38 @@ import React, { useState, useRef, useEffect } from "react";
 const STORAGE_KEY = "chussama_test_result_v1";
 const LEAD_LOG_KEY = "chussama_test_lead_log_v1";
 
+const NAME_PARTICLES = new Set(["de", "del", "la", "las", "los", "y"]);
+
+function titleCaseSegment(segment, isFirstWord) {
+  const lower = segment.toLowerCase();
+  if (!isFirstWord && NAME_PARTICLES.has(lower)) return lower;
+  return lower.charAt(0).toUpperCase() + lower.slice(1);
+}
+
+function normalizeNamePart(part, isFirstWord) {
+  const pieces = part.split(/(['-])/);
+  let subIndex = 0;
+  return pieces
+    .map((piece) => {
+      if (piece === "-" || piece === "'") return piece;
+      const out = titleCaseSegment(piece, isFirstWord && subIndex === 0);
+      subIndex += 1;
+      return out;
+    })
+    .join("");
+}
+
+function normalizeName(name) {
+  const collapsed = String(name || "")
+    .trim()
+    .replace(/\s+/g, " ");
+  if (!collapsed) return "";
+  return collapsed
+    .split(" ")
+    .map((word, index) => normalizeNamePart(word, index === 0))
+    .join(" ");
+}
+
 function loadSavedResult() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -212,7 +244,11 @@ const CONFIG = {
   webhookLead: "/.netlify/functions/submit-lead",
   sendInforme: "/.netlify/functions/send-informe",
   claudeProxy: "/.netlify/functions/claude-radiografia",
+  privacidadUrl: "/privacidad/",
 };
+
+const MARKETING_CONSENT_TEXT =
+  "Sí, quiero recibir emails con ideas para ordenar la tecnología de mi negocio. Escribo cuando tengo algo útil que contar, no cada semana, y te puedes dar de baja cuando quieras.";
 
 const PALETTE = {
   night: "#1C1A17",
@@ -360,6 +396,7 @@ export default function TestBigFive() {
   const [answers, setAnswers] = useState(savedInitial?.answers ?? {});
   const [email, setEmail] = useState(savedInitial?.email ?? "");
   const [name, setName] = useState(savedInitial?.name ?? "");
+  const [marketingOptIn, setMarketingOptIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(savedInitial?.result ?? null);
   const [informeSource, setInformeSource] = useState(savedInitial?.informeSource ?? null);
@@ -453,6 +490,7 @@ export default function TestBigFive() {
     setAnswers({});
     setEmail("");
     setName("");
+    setMarketingOptIn(false);
     setResult(null);
     setInformeSource(null);
     setInformeEmailSent(false);
@@ -486,7 +524,7 @@ export default function TestBigFive() {
     return worst;
   };
 
-  const buildPrompt = () => {
+  const buildPrompt = (nombreNorm = normalizeName(name)) => {
     const stageLabel =
       stage === "arrancando"
         ? "Está a punto de montar su negocio, aún sin clientes en marcha"
@@ -506,6 +544,7 @@ export default function TestBigFive() {
 Una persona acaba de hacer el test "Descubre todo lo que tu negocio tiene por optimizar", basado en el Método Big Five (5 fases con nombre de animal). Sus respuestas:
 
 Momento del negocio: ${stageLabel}
+Nombre: ${nombreNorm || "no indicado"}
 Profesión: ${profession || "profesional de servicios"}
 ${lines}
 
@@ -513,7 +552,7 @@ Su mayor fuga está en el ${worst.animal} (${worst.benefit}).
 
 Escribe una devolución personalizada, en español, de unas 130-170 palabras, con esta estructura exacta (sin encabezados, en prosa fluida y cálida, con saltos de párrafo):
 
-1. Un saludo breve y humano que conecte con su profesión${stage === "arrancando" ? " y con que está por arrancar" : ""}.
+1. Un saludo breve y humano${nombreNorm ? ` dirigido a ${nombreNorm}` : ""} que conecte con su profesión${stage === "arrancando" ? " y con que está por arrancar" : ""}.
 2. Nombra su MAYOR fuga (el ${worst.animal}, ${worst.benefit}) con claridad y sin culpa: qué está pasando y, sobre todo, qué le está costando (${costeHint}). Puedes apoyarte una vez, con sutileza, en la metáfora del animal (${worst.animal}) si suma; no fuerces. Sé concreto y que le duela un poco, pero desde el cuidado, no desde el miedo.
 3. Menciona en una frase que hay otras fases donde también hay margen, sin enumerarlas todas.
 4. Cierra abriendo un bucle sin resolverlo: dile que esto tiene solución y que suele ser más sencilla de lo que parece, pero que cuál es la suya depende de cómo funciona su negocio por dentro${stage === "arrancando" ? " o de cómo lo va a montar" : ""}. Por eso el siguiente paso es una llamada corta y sin compromiso. No des la solución concreta. Invita a la llamada.
@@ -521,9 +560,9 @@ Escribe una devolución personalizada, en español, de unas 130-170 palabras, co
 No uses viñetas ni listas. No firmes. No inventes datos que no tienes. Devuelve solo el texto de la devolución.`;
   };
 
-  const radiografiaPlantilla = () => {
+  const radiografiaPlantilla = (nombreNorm = normalizeName(name)) => {
     const worst = worstAnimal();
-    const saludo = name ? `${name}, ` : "";
+    const saludo = nombreNorm ? `${nombreNorm}, ` : "";
     const prof = profession || "profesional de servicios";
     const contexto =
       stage === "arrancando"
@@ -542,31 +581,32 @@ Hay más margen en las otras fases del Método Big Five. La buena noticia: no ha
 ${cierre}`;
   };
 
-  const buildLeadPayload = () => ({
+  const buildLeadPayload = (nombreNorm = normalizeName(name)) => ({
     evento: "test_completado",
-    nombre: name,
+    nombre: nombreNorm,
     email,
     profesion: profession,
     etapa: stage,
     respuestas: answers,
     mayor_fuga: worstAnimal().key,
+    marketing_opt_in: marketingOptIn,
     fecha: new Date().toISOString(),
   });
 
-  const buildInformePayload = (radiografia) => ({
-    nombre: name,
+  const buildInformePayload = (radiografia, nombreNorm = normalizeName(name)) => ({
+    nombre: nombreNorm,
     email,
     radiografia,
     mayor_fuga: worstAnimal().key,
   });
 
-  const persistResult = (radiografia, leadPayload, leadResult, informePayload, informeResult, source) => {
+  const persistResult = (radiografia, leadPayload, leadResult, informePayload, informeResult, source, nombreNorm = normalizeName(name)) => {
     saveResult({
       stage,
       answers,
       profession,
       email,
-      name,
+      name: nombreNorm,
       result: radiografia,
       informeSource: source,
       mayor_fuga: worstAnimal().key,
@@ -589,14 +629,14 @@ ${cierre}`;
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  const fetchRadiografia = async () => {
+  const fetchRadiografia = async (nombreNorm = normalizeName(name)) => {
     if (!CONFIG.claudeProxy) {
-      return { text: radiografiaPlantilla(), source: "plantilla" };
+      return { text: radiografiaPlantilla(nombreNorm), source: "plantilla" };
     }
 
     const requestBody = {
-      prompt: buildPrompt(),
-      name,
+      prompt: buildPrompt(nombreNorm),
+      name: nombreNorm,
       email,
       profession,
       stage,
@@ -623,25 +663,27 @@ ${cierre}`;
       if (attempt === 0) await sleep(2000);
     }
 
-    return { text: radiografiaPlantilla(), source: "plantilla" };
+    return { text: radiografiaPlantilla(nombreNorm), source: "plantilla" };
   };
 
   const generateResult = async () => {
+    const nombreNorm = normalizeName(name);
+    setName(nombreNorm);
     setLoading(true);
     setError(null);
     try {
-      const leadPayload = buildLeadPayload();
+      const leadPayload = buildLeadPayload(nombreNorm);
       const leadResult = await submitLead(leadPayload);
 
-      const { text: radiografia, source } = await fetchRadiografia();
+      const { text: radiografia, source } = await fetchRadiografia(nombreNorm);
       setResult(radiografia);
       setInformeSource(source);
 
-      const informePayload = buildInformePayload(radiografia);
+      const informePayload = buildInformePayload(radiografia, nombreNorm);
       const informeResult = await submitInforme(informePayload);
       setInformeEmailSent(informeResult.ok);
 
-      persistResult(radiografia, leadPayload, leadResult, informePayload, informeResult, source);
+      persistResult(radiografia, leadPayload, leadResult, informePayload, informeResult, source, nombreNorm);
       setIsRestoredResult(false);
       setResultUrl(true);
       setScreen("result");
@@ -855,8 +897,7 @@ ${cierre}`;
               Tu informe personalizado está listo.
             </h2>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: PALETTE.ink, margin: "0 0 28px" }}>
-              Déjame dónde enviártelo y te lo muestro ahora mismo. Nada de spam. Solo tu
-              informe y, si quieres, cómo darle solución.
+              Déjame dónde enviártelo y te lo muestro ahora mismo.
             </p>
 
             <label style={miniLabel}>Tu nombre</label>
@@ -875,6 +916,49 @@ ${cierre}`;
               type="email"
               style={inputStyle}
             />
+
+            <p
+              style={{
+                fontSize: 14,
+                lineHeight: 1.55,
+                color: PALETTE.muted,
+                margin: "18px 0 0",
+                fontFamily: "'Helvetica Neue', Arial, sans-serif",
+              }}
+            >
+              Trato tus datos para generarte el informe y responderte. No se los cedo a nadie. Puedes ver el detalle en la{" "}
+              <a
+                href={CONFIG.privacidadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: PALETTE.clay, textDecoration: "underline" }}
+              >
+                política de privacidad
+              </a>
+              .
+            </p>
+
+            <label
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 10,
+                marginTop: 18,
+                cursor: "pointer",
+                fontSize: 14,
+                lineHeight: 1.55,
+                color: PALETTE.ink,
+                fontFamily: "'Helvetica Neue', Arial, sans-serif",
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={marketingOptIn}
+                onChange={(e) => setMarketingOptIn(e.target.checked)}
+                style={{ marginTop: 3, flexShrink: 0, width: 16, height: 16, accentColor: PALETTE.clay }}
+              />
+              <span>{MARKETING_CONSENT_TEXT}</span>
+            </label>
 
             {error && (
               <p style={{ color: PALETTE.clay, fontSize: 14, marginTop: 12 }}>{error}</p>

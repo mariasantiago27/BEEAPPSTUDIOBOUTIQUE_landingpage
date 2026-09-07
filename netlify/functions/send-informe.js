@@ -1,4 +1,4 @@
-const { json, corsPreflight, parseJsonBody, isValidEmail } = require("./_helpers");
+const { json, corsPreflight, parseJsonBody, isValidEmail, normalizeName } = require("./_helpers");
 
 const FUGA_LABELS = {
   bufalo: "Búfalo · Que te encuentren",
@@ -32,14 +32,17 @@ async function sendInformeEmail(apiKey, payload) {
   }
 
   const worst = FUGA_LABELS[payload.mayor_fuga] || payload.mayor_fuga || "Tu mayor fuga";
-  const firstName = payload.nombre || "Hola";
+  const greeting = payload.nombre
+    ? `Hola ${escapeHtml(payload.nombre)},`
+    : "Hola,";
+  const subjectName = payload.nombre || "Tu informe";
 
   const html = `
     <div style="font-family:Georgia,'Times New Roman',serif;color:#33302A;line-height:1.72;max-width:620px;margin:0 auto">
       <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A6533B;margin:0 0 18px">
         Tu informe · Test Big Five
       </p>
-      <p style="margin:0 0 16px">Hola ${escapeHtml(firstName)},</p>
+      <p style="margin:0 0 16px">${greeting}</p>
       <p style="margin:0 0 10px;font-size:13px;color:#8A8171">Mayor fuga: ${escapeHtml(worst)}</p>
       <div style="font-size:16px;margin:0 0 28px">${radiografiaToHtml(payload.radiografia)}</div>
       <hr style="border:none;border-top:1px solid #D9CFBB;margin:28px 0">
@@ -64,7 +67,7 @@ async function sendInformeEmail(apiKey, payload) {
       sender: { name: senderName, email: senderEmail },
       to: [{ email: payload.email, name: payload.nombre || payload.email }],
       replyTo: { email: senderEmail, name: senderName },
-      subject: `${payload.nombre || "Tu informe"}, aquí tienes tu Test Big Five`,
+      subject: `${subjectName}, aquí tienes tu Test Big Five`,
       htmlContent: html,
     }),
   });
@@ -91,7 +94,7 @@ exports.handler = async (event) => {
   if (!body) return json(400, { error: "Invalid JSON body" });
 
   const email = String(body.email || "").trim();
-  const nombre = String(body.nombre || body.name || "").trim();
+  const nombre = normalizeName(body.nombre || body.name || "");
   const radiografia = String(body.radiografia || body.radiografia_text || "").trim();
   const mayor_fuga = body.mayor_fuga || "";
 

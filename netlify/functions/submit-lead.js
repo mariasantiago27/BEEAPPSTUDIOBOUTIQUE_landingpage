@@ -1,4 +1,7 @@
-const { json, corsPreflight, parseJsonBody, isValidEmail } = require("./_helpers");
+const { json, corsPreflight, parseJsonBody, isValidEmail, normalizeName } = require("./_helpers");
+
+const MARKETING_CONSENT_TEXT =
+  "Sí, quiero recibir emails con ideas para ordenar la tecnología de mi negocio. Escribo cuando tengo algo útil que contar, no cada semana, y te puedes dar de baja cuando quieras.";
 
 const FUGA_LABELS = {
   bufalo: "Búfalo · Que te encuentren",
@@ -25,6 +28,8 @@ function formatAnswers(respuestas) {
 
 async function upsertBrevoContact(apiKey, payload) {
   const listId = Number(process.env.BREVO_LIST_ID || 0);
+  const marketingOptIn = Boolean(payload.marketing_opt_in);
+  const consentFecha = payload.fecha || new Date().toISOString();
   const body = {
     email: payload.email,
     updateEnabled: true,
@@ -35,9 +40,12 @@ async function upsertBrevoContact(apiKey, payload) {
       TEST_RESPUESTAS: JSON.stringify(payload.respuestas || {}),
       ORIGEN: "test_big_five",
       ETAPA: payload.etapa === "arrancando" ? "Por arrancar" : payload.etapa === "marcha" ? "En marcha" : payload.etapa || "",
+      CONSENT_MARKETING: marketingOptIn ? "sí" : "no",
+      CONSENT_FECHA: consentFecha,
+      CONSENT_TEXTO: marketingOptIn ? MARKETING_CONSENT_TEXT : "",
     },
   };
-  if (listId > 0) body.listIds = [listId];
+  if (marketingOptIn && listId > 0) body.listIds = [listId];
 
   const res = await fetch("https://api.brevo.com/v3/contacts", {
     method: "POST",
@@ -117,7 +125,7 @@ exports.handler = async (event) => {
   if (!body) return json(400, { error: "Invalid JSON body" });
 
   const email = String(body.email || "").trim();
-  const nombre = String(body.nombre || body.name || "").trim();
+  const nombre = normalizeName(body.nombre || body.name || "");
   const profesion = String(body.profesion || body.profession || "").trim();
 
   if (!isValidEmail(email)) return json(400, { error: "Invalid email" });
@@ -131,6 +139,7 @@ exports.handler = async (event) => {
     etapa: body.etapa || body.stage || "",
     respuestas: body.respuestas || body.answers || {},
     mayor_fuga: body.mayor_fuga || "",
+    marketing_opt_in: Boolean(body.marketing_opt_in),
     fecha: body.fecha || new Date().toISOString(),
   };
 
