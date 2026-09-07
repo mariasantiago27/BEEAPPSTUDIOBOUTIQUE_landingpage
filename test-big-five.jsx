@@ -102,6 +102,76 @@ async function retryPendingLead() {
   });
 }
 
+async function submitInforme(payload) {
+  if (!CONFIG.sendInforme) {
+    return { ok: false, error: "send-informe not configured" };
+  }
+  try {
+    const res = await fetch(CONFIG.sendInforme, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    let body = {};
+    try {
+      body = await res.json();
+    } catch {
+      /* ignore */
+    }
+    if (res.ok) return { ok: true };
+    const error = body.detail || body.error || `HTTP ${res.status}`;
+    return { ok: false, status: res.status, error };
+  } catch (err) {
+    return { ok: false, error: err.message || "network error" };
+  }
+}
+
+function logInformeFailure(result, payload) {
+  const entry = {
+    at: new Date().toISOString(),
+    status: result.status ?? null,
+    error: result.error || "unknown",
+    email: payload?.email || "",
+    nombre: payload?.nombre || "",
+  };
+  console.error("[Optimiza-T · Test Big Five] send-informe falló:", entry);
+  try {
+    const prev = JSON.parse(localStorage.getItem(LEAD_LOG_KEY) || "[]");
+    prev.push({ ...entry, type: "informe" });
+    localStorage.setItem(LEAD_LOG_KEY, JSON.stringify(prev.slice(-10)));
+  } catch {
+    /* ignore */
+  }
+}
+
+async function retryPendingInforme() {
+  const saved = loadSavedResult();
+  if (!saved?.informePending || !saved?.informePayload) return;
+  const informeResult = await submitInforme(saved.informePayload);
+  if (informeResult.ok) {
+    saveResult({
+      ...saved,
+      informePending: false,
+      informeLastError: null,
+      informeSentAt: new Date().toISOString(),
+    });
+    console.info("[Optimiza-T · Test Big Five] send-informe reintentado con éxito:", saved.informePayload.email);
+    return;
+  }
+  logInformeFailure(informeResult, saved.informePayload);
+  saveResult({
+    ...saved,
+    informeLastError: informeResult.error,
+    informeLastAttemptAt: new Date().toISOString(),
+    informeAttempts: (saved.informeAttempts || 1) + 1,
+  });
+}
+
+async function retryPendingOperations() {
+  await retryPendingLead();
+  await retryPendingInforme();
+}
+
 function clearSavedResult() {
   try {
     localStorage.removeItem(STORAGE_KEY);
@@ -130,15 +200,17 @@ function applySavedResult(saved, setters) {
   setters.setEmail(saved.email || "");
   setters.setName(saved.name || "");
   setters.setResult(saved.result);
+  setters.setInformeSource(saved.informeSource || null);
   setters.setScreen("result");
   setters.setError(null);
   setters.setQIndex(ANIMALS.length - 1);
 }
 
 const CONFIG = {
-  enlaceLlamada: "https://calendly.com/chussama-digital/30min",
-  enlaceRadiografia: "https://calendly.com/chussama-digital/30min",
+  enlaceLlamada: "https://calendly.com/chussama-digital/15min",
+  enlaceRadiografia: "https://calendly.com/chussama-digital/15min",
   webhookLead: "/.netlify/functions/submit-lead",
+  sendInforme: "/.netlify/functions/send-informe",
   claudeProxy: "/.netlify/functions/claude-radiografia",
 };
 
@@ -290,13 +362,15 @@ export default function TestBigFive() {
   const [name, setName] = useState(savedInitial?.name ?? "");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(savedInitial?.result ?? null);
+  const [informeSource, setInformeSource] = useState(savedInitial?.informeSource ?? null);
+  const [informeEmailSent, setInformeEmailSent] = useState(!!savedInitial?.informeSentAt);
   const [error, setError] = useState(null);
   const topRef = useRef(null);
 
   useEffect(() => {
     const saved = loadSavedResult();
     if (!saved?.result) {
-      retryPendingLead();
+      retryPendingOperations();
       return;
     }
     applySavedResult(saved, {
@@ -306,12 +380,13 @@ export default function TestBigFive() {
       setEmail,
       setName,
       setResult,
+      setInformeSource,
       setScreen,
       setError,
       setQIndex,
     });
     if (!isResultUrl()) setResultUrl(true, { replace: true });
-    retryPendingLead();
+    retryPendingOperations();
   }, []);
 
   useEffect(() => {
@@ -325,6 +400,7 @@ export default function TestBigFive() {
           setEmail,
           setName,
           setResult,
+          setInformeSource,
           setScreen,
           setError,
           setQIndex,
@@ -344,6 +420,7 @@ export default function TestBigFive() {
           setEmail,
           setName,
           setResult,
+          setInformeSource,
           setScreen,
           setError,
           setQIndex,
@@ -374,6 +451,8 @@ export default function TestBigFive() {
     setEmail("");
     setName("");
     setResult(null);
+    setInformeSource(null);
+    setInformeEmailSent(false);
     setError(null);
     setLoading(false);
     scrollTop();
@@ -471,7 +550,14 @@ ${cierre}`;
     fecha: new Date().toISOString(),
   });
 
-  const persistResult = (radiografia, leadPayload, leadResult) => {
+  const buildInformePayload = (radiografia) => ({
+    nombre: name,
+    email,
+    radiografia,
+    mayor_fuga: worstAnimal().key,
+  });
+
+  const persistResult = (radiografia, leadPayload, leadResult, informePayload, informeResult, source) => {
     saveResult({
       stage,
       answers,
@@ -479,6 +565,7 @@ ${cierre}`;
       email,
       name,
       result: radiografia,
+      informeSource: source,
       mayor_fuga: worstAnimal().key,
       leadPayload,
       leadPending: !leadResult.ok,
@@ -486,8 +573,54 @@ ${cierre}`;
       leadLastAttemptAt: new Date().toISOString(),
       leadAttempts: leadResult.ok ? 0 : 1,
       ...(leadResult.ok ? { leadSentAt: new Date().toISOString() } : {}),
+      informePayload,
+      informePending: !informeResult.ok,
+      informeLastError: informeResult.ok ? null : informeResult.error,
+      informeLastAttemptAt: new Date().toISOString(),
+      informeAttempts: informeResult.ok ? 0 : 1,
+      ...(informeResult.ok ? { informeSentAt: new Date().toISOString() } : {}),
     });
     if (!leadResult.ok) logLeadFailure(leadResult, leadPayload);
+    if (!informeResult.ok) logInformeFailure(informeResult, informePayload);
+  };
+
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const fetchRadiografia = async () => {
+    if (!CONFIG.claudeProxy) {
+      return { text: radiografiaPlantilla(), source: "plantilla" };
+    }
+
+    const requestBody = {
+      prompt: buildPrompt(),
+      name,
+      email,
+      profession,
+      stage,
+      answers,
+    };
+
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      try {
+        const res = await fetch(CONFIG.claudeProxy, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(requestBody),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const text = data.radiografia || data.text;
+          if (text) return { text, source: "claude" };
+        } else {
+          console.error("[Optimiza-T · Test Big Five] claude-radiografia falló:", res.status);
+        }
+      } catch (err) {
+        console.error("[Optimiza-T · Test Big Five] claude-radiografia error:", err);
+      }
+      if (attempt === 0) await sleep(2000);
+    }
+
+    return { text: radiografiaPlantilla(), source: "plantilla" };
   };
 
   const generateResult = async () => {
@@ -496,33 +629,17 @@ ${cierre}`;
     try {
       const leadPayload = buildLeadPayload();
       const leadResult = await submitLead(leadPayload);
-      if (CONFIG.claudeProxy) {
-        const res = await fetch(CONFIG.claudeProxy, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            prompt: buildPrompt(),
-            name,
-            email,
-            profession,
-            stage,
-            answers,
-          }),
-        });
-        let radiografia = radiografiaPlantilla();
-        if (res.ok) {
-          const data = await res.json();
-          radiografia = data.radiografia || data.text || radiografiaPlantilla();
-        }
-        setResult(radiografia);
-        persistResult(radiografia, leadPayload, leadResult);
-        setResultUrl(true);
-      } else {
-        const radiografia = radiografiaPlantilla();
-        setResult(radiografia);
-        persistResult(radiografia, leadPayload, leadResult);
-        setResultUrl(true);
-      }
+
+      const { text: radiografia, source } = await fetchRadiografia();
+      setResult(radiografia);
+      setInformeSource(source);
+
+      const informePayload = buildInformePayload(radiografia);
+      const informeResult = await submitInforme(informePayload);
+      setInformeEmailSent(informeResult.ok);
+
+      persistResult(radiografia, leadPayload, leadResult, informePayload, informeResult, source);
+      setResultUrl(true);
       setScreen("result");
       scrollTop();
     } catch (err) {
@@ -791,6 +908,19 @@ ${cierre}`;
             >
               Tu mayor fuga · {worst.animal}: {worst.benefit}
             </div>
+            {informeSource === "plantilla" && informeEmailSent && (
+              <p
+                style={{
+                  fontSize: 14,
+                  lineHeight: 1.55,
+                  color: PALETTE.muted,
+                  margin: "0 0 18px",
+                  fontFamily: "'Helvetica Neue', Arial, sans-serif",
+                }}
+              >
+                Te hemos enviado una copia de este informe a tu correo.
+              </p>
+            )}
             <div
               style={{
                 fontSize: 18,
@@ -822,7 +952,7 @@ ${cierre}`;
                 rel="noopener noreferrer"
                 style={{ ...btnPrimary, display: "block", textAlign: "center", textDecoration: "none" }}
               >
-                Reserva tu llamada gratis de 30 min →
+                Reserva tu llamada gratis de 15 min →
               </a>
               <p
                 style={{

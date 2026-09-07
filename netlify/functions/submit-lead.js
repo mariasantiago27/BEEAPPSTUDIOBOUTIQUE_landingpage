@@ -75,7 +75,7 @@ async function notifyOwner(apiKey, payload) {
       <p><strong>Respuestas:</strong><br>${formatAnswers(payload.respuestas)}</p>
       <p style="color:#666;font-size:13px">Fecha: ${escapeHtml(payload.fecha || new Date().toISOString())}</p>
       <hr style="border:none;border-top:1px solid #ddd;margin:20px 0">
-      <p style="font-size:14px">Siguiente paso: revisa el perfil en Brevo y, si encaja, escríbele o espera a que reserve la llamada de 30 min.</p>
+      <p style="font-size:14px">Siguiente paso: revisa el perfil en Brevo y, si encaja, escríbele o espera a que reserve la llamada de 15 min.</p>
     </div>
   `.trim();
 
