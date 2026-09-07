@@ -364,6 +364,7 @@ export default function TestBigFive() {
   const [result, setResult] = useState(savedInitial?.result ?? null);
   const [informeSource, setInformeSource] = useState(savedInitial?.informeSource ?? null);
   const [informeEmailSent, setInformeEmailSent] = useState(!!savedInitial?.informeSentAt);
+  const [isRestoredResult, setIsRestoredResult] = useState(!!savedInitial?.result);
   const [error, setError] = useState(null);
   const topRef = useRef(null);
 
@@ -405,6 +406,7 @@ export default function TestBigFive() {
           setError,
           setQIndex,
         });
+        setIsRestoredResult(true);
       } else if (!isResultUrl()) {
         setScreen("intro");
       }
@@ -426,6 +428,7 @@ export default function TestBigFive() {
           setQIndex,
         });
         if (!isResultUrl()) setResultUrl(true, { replace: true });
+        setIsRestoredResult(true);
       }
     };
     window.addEventListener("popstate", onPopState);
@@ -639,6 +642,7 @@ ${cierre}`;
       setInformeEmailSent(informeResult.ok);
 
       persistResult(radiografia, leadPayload, leadResult, informePayload, informeResult, source);
+      setIsRestoredResult(false);
       setResultUrl(true);
       setScreen("result");
       scrollTop();
@@ -909,17 +913,31 @@ ${cierre}`;
               Tu mayor fuga · {worst.animal}: {worst.benefit}
             </div>
             {informeSource === "plantilla" && informeEmailSent && (
-              <p
-                style={{
-                  fontSize: 14,
-                  lineHeight: 1.55,
-                  color: PALETTE.muted,
-                  margin: "0 0 18px",
-                  fontFamily: "'Helvetica Neue', Arial, sans-serif",
-                }}
-              >
-                Te hemos enviado una copia de este informe a tu correo.
-              </p>
+              <div style={{ margin: "0 0 18px" }}>
+                <p
+                  style={{
+                    fontSize: 14,
+                    lineHeight: 1.55,
+                    color: PALETTE.muted,
+                    margin: 0,
+                    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+                  }}
+                >
+                  Te hemos enviado una copia de este informe a tu correo.
+                </p>
+                <p
+                  style={{
+                    fontSize: 12,
+                    lineHeight: 1.5,
+                    color: PALETTE.muted,
+                    margin: "8px 0 0",
+                    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+                  }}
+                >
+                  ¿No lo ves? Revisa la pestaña Promociones o la carpeta de spam: a veces Gmail
+                  lo clasifica ahí. Busca el remitente Optimiza-T con IA.
+                </p>
+              </div>
             )}
             <div
               style={{
@@ -964,9 +982,34 @@ ${cierre}`;
               >
                 Sin compromiso. Si no hace falta que hagas nada, te lo digo yo.
               </p>
-              <button type="button" onClick={resetTest} style={{ ...btnGhost, width: "100%" }}>
-                Hacer el test otra vez
-              </button>
+              {isRestoredResult && (
+                <p
+                  style={{
+                    fontSize: 12,
+                    color: PALETTE.muted,
+                    marginTop: 20,
+                    textAlign: "center",
+                    fontFamily: "'Helvetica Neue', Arial, sans-serif",
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={resetTest}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      color: PALETTE.muted,
+                      textDecoration: "underline",
+                      cursor: "pointer",
+                      fontSize: 12,
+                      fontFamily: "inherit",
+                    }}
+                  >
+                    Hacer el test otra vez
+                  </button>
+                </p>
+              )}
             </div>
           </div>
         )}
