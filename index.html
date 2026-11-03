@@ -2,576 +2,168 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Desarrollo de Apps y Automatización con IA para Autónomos | Optimiza-T</title>
-<meta name="description" content="Desarrollo apps, webs y automatizaciones con IA para autónomos y pymes de servicios en Barcelona. Analizo tu negocio y construyo la tecnología que necesita, sin que tengas que aprenderla.">
-<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Convierte tu conocimiento en un producto digital | Optimiza-T</title>
+<meta name="description" content="Convierto lo que sabes en tu producto digital: taller, curso online, membresía, app propia o una IA. Para psicólogas, fisios, nutricionistas y profes.">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://chussama.com/">
-
-<!-- Open Graph / redes y crawlers de IA -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
-<meta property="og:site_name" content="Optimiza-T con IA">
-<meta property="og:title" content="Desarrollo de Apps y Automatización con IA para Autónomos | Optimiza-T">
-<meta property="og:description" content="Desarrollo apps, webs y automatizaciones con IA para autónomos y pymes de servicios en Barcelona. Analizo tu negocio y construyo la tecnología que necesita, sin que tengas que aprenderla.">
+<meta property="og:site_name" content="Optimiza-T · Chus Sama">
+<meta property="og:title" content="Convierte tu conocimiento en un producto digital | Optimiza-T">
+<meta property="og:description" content="Convierto lo que sabes en tu producto digital: taller, curso online, membresía, app propia o una IA. Para psicólogas, fisios, nutricionistas y profes.">
 <meta property="og:url" content="https://chussama.com/">
-<meta property="og:image" content="https://chussama.com/images/chus-sama-og.png">
+<meta property="og:image" content="https://chussama.com/images/v2/og-chus-sama.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Desarrollo de Apps y Automatización con IA para Autónomos | Optimiza-T">
-<meta name="twitter:description" content="Desarrollo apps, webs y automatizaciones con IA para autónomos y pymes de servicios en Barcelona. Analizo tu negocio y construyo la tecnología que necesita, sin que tengas que aprenderla.">
-<meta name="twitter:image" content="https://chussama.com/images/chus-sama-og.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- JSON-LD: LocalBusiness + FAQPage para Google y LLMs -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Optimiza-T con IA",
-  "url": "https://chussama.com/",
-  "image": "https://chussama.com/images/chus-sama-og.png",
-  "email": "chussama.digital@gmail.com",
-  "telephone": "+34 606 587 976",
-  "priceRange": "€€",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Carrer Llibertat 27",
-    "addressLocality": "Castelldefels",
-    "addressRegion": "Barcelona",
-    "postalCode": "08860",
-    "addressCountry": "ES"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 41.2811,
-    "longitude": 1.9752
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "España"
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Chus Santiago",
-    "alternateName": "María Jesús Santiago Martínez",
-    "jobTitle": "Fundadora de Optimiza-T con IA"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/in/mariajesussantiagomartinez/",
-    "https://www.instagram.com/chus.sama"
-  ],
-  "description": "Desarrollo de apps, webs y automatizaciones con IA para autónomos y pymes de servicios. Analizo tu negocio y construyo la tecnología que necesita, con el Método Big Five.",
-  "makesOffer": [
-    { "@type": "Offer", "name": "Diagnóstico 1:1", "price": "120", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "Diagnóstico 1:1: mapa as-is → to-be con presupuesto cerrado" } },
-    { "@type": "Offer", "name": "Proyecto llave en mano", "itemOffered": { "@type": "Service", "name": "Tecnología a medida: optimización completa con el Método Big Five" } }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "¿Necesito saber de tecnología para trabajar contigo?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No, al contrario. Justo para eso estoy yo. Tú te encargas de tu negocio, que es lo que sabes hacer, y yo me encargo de la tecnología. No vas a tener que aprender nada ni pelearte con ninguna herramienta." }
-    },
-    {
-      "@type": "Question",
-      "name": "Ya tengo web y varias herramientas, pero siento que no me funcionan bien juntas. ¿Me ayudas?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Sí, y es de lo más común. Muchas veces el problema no es que falte tecnología, es que hay varias piezas sueltas que no hablan entre sí. Miro tu negocio entero y ordeno lo que ya tienes, o te digo qué montar primero si empiezas de cero, sumando solo lo que de verdad haga falta." }
-    },
-    {
-      "@type": "Question",
-      "name": "¿En qué se diferencia esto de contratar a un freelance o una agencia?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Un freelance te resuelve una parcela concreta (una web, una automatización) y se va. Yo miro tu negocio completo, encuentro dónde está el problema real, y construyo la solución acompañándote, como haría un equipo interno, pero sin sus costes. No te entrego un proyecto y desaparezco." }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Qué pasa después de que entregues? ¿Me quedo sola?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. Al entregar te entreno para que sepas manejar lo que hemos construido, y me quedo cerca un tiempo para resolver dudas y asegurarme de que todo funciona. La tecnología es tuya desde el primer día, pero no te dejo sola con ella." }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Las cuentas y el dominio quedan a mi nombre?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Sí, siempre. Todo lo que construimos es tuyo: dominio, cuentas, datos, contenido. Nada queda atado a mí. Si un día quisieras seguir por tu cuenta o con otra persona, podrías hacerlo sin depender de mí." }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Para qué tipo de negocio funciona el Método Big Five?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Para negocios de servicios: autónomos y pequeños negocios en marcha o por arrancar (psicólogas, fisios, coaches, formadores, consultores, terapeutas y muchos más). Tanto si ya facturas como si estás montando el proyecto, encaja." }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Aplicas IA en negocios pequeños, o es solo para grandes empresas?",
-      "acceptedAnswer": { "@type": "Answer", "text": "En negocios pequeños, precisamente. Vengo del mundo de las grandes empresas, pero hoy pongo esa experiencia al servicio de autónomos y pequeños negocios, que la necesitan más y casi nunca tienen quién se la dé bien." }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Y si después del diagnóstico resulta que no hace falta construir nada?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Te lo digo yo misma, con total honestidad. Mi trabajo no es venderte tecnología, es que tu negocio funcione mejor. Si veo que no necesitas construir nada, o que hay una solución más simple, te lo digo. Prefiero tu confianza a una factura." }
-    },
-    {
-      "@type": "Question",
-      "name": "No estoy segura de necesitar esto. ¿Cómo empiezo sin arriesgar?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Empezamos por una llamada gratuita de 15 minutos, sin compromiso. Me cuentas cómo funciona tu negocio o qué quieres montar, y te digo con honestidad si puedo ayudarte y por dónde empezaría. Sin discurso de venta. Desde ahí decides tú, con calma." }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Cuánto cuesta Optimiza-T con IA?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Depende de lo que tu negocio necesite, y eso se ve en el diagnóstico. Empezamos con un Diagnóstico 1:1 (120€) donde analizo tu negocio a fondo y te entrego una propuesta con presupuesto claro. Si luego decides hacer el proyecto, esos 120€ se descuentan. Así sabes exactamente qué inviertes antes de comprometerte a nada grande." }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Haces páginas web y apps a medida en Barcelona?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Sí. Diseño y construyo webs, apps y automatizaciones a medida para negocios de servicios. Estoy en Barcelona y trabajo tanto con negocios de aquí como de toda España en remoto." }
-    }
-  ]
-}
-</script>
-<link rel="stylesheet" href="styles.css">
+<meta name="twitter:title" content="Convierte tu conocimiento en un producto digital | Optimiza-T">
+<meta name="twitter:description" content="Convierto lo que sabes en tu producto digital: taller, curso online, membresía, app propia o una IA. Para psicólogas, fisios, nutricionistas y profes.">
+<meta name="twitter:image" content="https://chussama.com/images/v2/og-chus-sama.png">
+<meta name="theme-color" content="#F7DDE3">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/v2.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://chussama.com/#negocio", "name": "Optimiza-T · Chus Sama", "url": "https://chussama.com/", "image": "https://chussama.com/images/v2/og-chus-sama.png", "logo": "https://chussama.com/images/v2/og-chus-sama.png", "description": "Convierto el conocimiento de profesionales (psicólogas, fisios, nutricionistas, profes de yoga, formadoras y coaches) en un producto digital propio: taller, curso, membresía, app o una IA con lo que saben, y monto todo lo que necesita para venderse.", "email": "chussama.digital@gmail.com", "telephone": "+34 606 587 976", "areaServed": {"@type": "Country", "name": "España"}, "address": {"@type": "PostalAddress", "streetAddress": "Carrer Llibertat 27", "postalCode": "08860", "addressLocality": "Castelldefels", "addressRegion": "Barcelona", "addressCountry": "ES"}, "founder": {"@id": "https://chussama.com/#chus"}, "sameAs": ["https://www.instagram.com/chus.sama", "https://www.linkedin.com/in/mariajesussantiagomartinez/", "https://www.skool.com/rentabiliza-t-con-ia-4357"], "knowsAbout": ["producto digital", "curso online", "membresía online", "app propia", "inteligencia artificial", "automatizaciones"]}, {"@type": "Person", "@id": "https://chussama.com/#chus", "name": "Chus Sama", "jobTitle": "Fundadora de Optimiza-T", "url": "https://chussama.com/sobre-mi/", "image": "https://chussama.com/images/v2/chus-sama.jpg", "sameAs": ["https://www.instagram.com/chus.sama", "https://www.linkedin.com/in/mariajesussantiagomartinez/"], "alumniOf": "Ingeniería y ADE"}, {"@type": "WebSite", "@id": "https://chussama.com/#web", "url": "https://chussama.com/", "name": "Optimiza-T · Chus Sama", "inLanguage": "es-ES", "publisher": {"@id": "https://chussama.com/#negocio"}}]}</script>
 </head>
 <body>
-
-<!-- Siluetas reales del Big Five (búfalo, elefante, león, rinoceronte, leopardo).
-     Ilustraciones de "Six Plus by Libé", Wikimedia Commons, licencia CC BY-SA 4.0. -->
-<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
-  <defs>
-    <symbol id="ic-buffalo" viewBox="0 0 84.9 47.2">
-      <path d="M63.1,5.7c-1.8,1-6.2,3.6-9.3,1.6c-1.8-1.2-1.4-2.7,1.4-5.1c1,0.2,3.8,1.1,5.2,1.7C61.7,4.5,62.5,5.4,63.1,5.7z"/>
-      <path d="M0.7,31.4c0.3-0.7,0-2.7-0.1-3.2s0.2-1.3,0-2.3c-0.2-1,0.2-3.4,0.4-4c0.2-0.6,0.1-1.2,0-1.9c-0.1-0.7-0.5-2.5-0.6-3.2
-		s0.4-3.3,0.5-3.9C0.9,12.3,1,9.9,1.2,9s1-2.2,1.6-2.7s1.7-1.7,2.5-1.7s2.2-0.8,3-1.4s2.4-1.8,3.1-2.3s1.4-0.6,2.3-0.6
-		s7.1,0.4,9.6,0.6S32.9,2,33.6,2.1c0.7,0.1,1.4-0.1,3.8-0.6s6.9-0.8,9.5-0.8s5.2,0.8,5.2,0.8s1.6-0.8,3.6-1.3c2-0.5,1.7-0.1,0.9,0.5
-		c-1.6,1-6.5,4.6-3.4,7.1c3.3,2.6,10.4-1.6,10.4-1.6C64,6,65,5.9,66.3,6c1.3,0.1,3.9,0.5,4.7,0.6S73.2,7,73.7,7s1.4,0.9,2.1,1.7
-		s4.4,4,6.4,0.6c2-3.4-4.9-6.8-4.7-6.7c2.9,0.2,3.9,1,5.8,2.6c1.9,1.6,2.1,3.9,1,6.3c-1.1,2.4-4.6,2.6-5.8,2.5
-		c-1.2-0.1-3-1.5-3.5-1.7c-0.5-0.2-0.3,0.5-0.2,0.9c0.2,0.4,0.4,1.6,0.4,1.6c0.7-0.1,2,1,2.9,1.9c1,0.9,0.8,4.9,0.8,4.9
-		c-2.7-0.1-3.3-1.6-3.7-1.6s-0.4,0.2-0.7,1c-0.4,0.8-0.8,1.3-1.2,1.2c-0.4-0.1-0.9-0.4-0.9-0.3c0,0.1-0.6,0.4-1.4,0.4
-		s-2,0.3-2.4,0.4c-0.4,0.1-1.9,0.5-3.7,1.1c-1.8,0.6-6.2,2.2-7.2,2.7c-0.9,0.5-4.2,2.4-4.5,2.9c-0.3,0.5-1.4,1.2-1.8,1.7
-		c-0.5,0.5-0.9,2.9-1.1,3.5s-0.5,1.7-0.5,2.9s-0.4,2.5-0.5,2.9c-0.1,0.4-0.1,2.6-0.1,2.9s-0.1,1.5-0.1,1.7c0.1,0.3,0.5,2.1,0.2,2.1
-		c-0.3,0-4.2,0.2-4.2,0s0.3-2.5,0.6-2.9c0.3-0.4,0.1-2-0.1-2.5c-0.1-0.5-0.2-1.2-0.5-1.4c-0.3-0.3-0.6-0.1-0.6-0.1s0,0.5-0.1,1
-		c-0.1,0.5-0.7,1.4-0.9,2.1S43.7,45,44,45.6s0,1.6,0,1.6H40c0,0-0.1-1.2,0.4-1.8c0.4-0.6,0.8-3.2,1-3.7c0.2-0.5-0.1-1.6-0.4-2.1
-		c-0.3-0.5,0-2.5,0-3.6s-0.1-4.2-0.4-5c-0.3-0.8-1.9-1.2-3.1-1.4s-6.6-0.1-7.8,0.2c-1.1,0.2-3.6,1.3-4.5,1.7
-		c-0.9,0.4-1.8-0.3-2.8-0.7c-1-0.4-5.4-3.2-5.6-3.3c-0.2-0.2-1.1-0.2-1.1-0.2s0,0-0.2,0.4s-1.7,4.2-2,4.9c-0.3,0.7-0.7,2.1-0.7,2.6
-		c-0.1,0.5,0,6.5,0,6.8s0.5,1.2,0.6,1.4c0.1,0.2-0.2,0.5-0.2,0.7s0.3,0.7,0.7,1.6c0.4,0.9,0.6,1.5,0.6,1.5s-5.3,0-6.2,0
-		c-0.4,0-0.8-1.6-0.9-2c-0.1-0.5-1.3-8.4-1.6-9.4s-0.3-2.1,0.3-2.9c0.6-0.8,0.7-1.6,0.7-1.6C6.6,30.9,5,26.9,4.6,26
-		c-0.4-0.9-0.4-2.2-0.4-2.6S4,22.2,3.6,21.2c-0.4-0.9-1.3-4.9-1.4-5.6c-0.1-0.7-0.4-1.4-0.4-1.4s0,0-0.2,1.3s-0.1,3.1-0.1,3.7
-		s0.8,2.3,1.1,3.2c0.4,0.9,0.6,4.3,0.7,6c0.1,1.7-1.8,4-2.3,4.4c-0.5,0.5-1.1,1-1.1,0.7C0,33.2,0.4,32.1,0.7,31.4z"/>
-    </symbol>
-    <symbol id="ic-elephant" viewBox="0 0 93.3 68.9">
-      <path d="M67.5,3.3c1.3,0.1,6-0.2,7.3,0c1.3,0.2,3.2,0.7,4.7,1.3s2,0.7,2.9,1.9c0.9,1.3,1.9,3,2.3,3.4c0.3,0.4,1.4,1.8,2.2,2.9
-	c0.8,1.2,1,1.6,2,4c1,2.3,2.3,4,2.6,4.8s0.9,3.3,1.2,4.4c0.3,1,0.6,3.1,0.6,4.1c0,1-0.1,4.9-0.3,6.1c-0.2,1.2-2,18.8-2.1,19.9
-	s-0.7,6.9-0.9,7.6c-0.2,0.7-0.8,3.3-1.1,3.9c-0.3,0.6-1.1,1.3-1.8,1.3s-1.4,0-1.4,0s-0.3-0.4-0.3-0.6c0-0.1,0.3-0.2,0.4-0.8
-	c0.1-0.6,0.3-4.2,0.3-5.5c0-1.3,0-13.1,0.1-14.7c0-1.6,0-4.8-0.2-6.3c-0.2-1.5-0.4-4-1-5.4c-0.5-1.4-1.2-3.7-2-4.6
-	c-0.8-1-1.4-1.4-1.6-1.4c-0.2,0-0.5,0.5-1,0.3c-0.5-0.1-1.1-0.9-1.6-0.9s-1.3,0.2-1.8,0.2s-1.9,0.2-2.2,0.4c-0.3,0.2-0.1,3.2-0.3,4
-	c-0.3,0.8-0.4,0.8-0.6,0.7s0.2-2-0.3-2.6c-0.5-0.6-1-0.7-1.7-0.8c-0.6-0.1-0.9-0.1-0.9-0.1s0.6,2.3,0.6,2.6s-0.9,0.4-1.6,0.3
-	c-0.7-0.2-3.5-1.5-3.5-1.5s-1.4,0.1-1.7,0.4c-0.3,0.3-1.6,2.3-1.6,2.3s0.5,2,0.5,2.5s0,1.3,0,1.3s0.6,3.2,0.8,5.3s0.3,7,0.3,7.5
-	s0.3,2.3,0.3,3c0.1,0.7,0.2,2.3,0.1,3c-0.1,0.7-0.5,3.2-0.5,3.6c0,0.3-0.1,1.1,0.4,2.1c0.6,1,1.8,2.6,1.9,3.2s0.4,1.2,0.2,1.6
-	s-10.6,0-10.6,0l-0.4-0.1c0,0-0.6-0.9-0.4-1.7c0.2-0.8,0.8-1.7,1.1-1.9c0.3-0.3,0.7-1.2,0.8-1.8c0-0.6-0.2-3.3-0.4-4.7
-	c-0.2-1.4-1.3-5.4-1.3-5.4s-1.8,5-1.8,5.5s-0.5,1.5-0.9,2.1c-0.4,0.6-1.2,1.3-1.2,1.6c0,0.2-0.2,1,0.2,1.6c0.4,0.6,2.4,2.3,2.6,2.8
-	c0.2,0.4,0.5,1.6,0,2H44.5c0,0-0.7-0.7-0.5-2.2c0.2-1.4,0.9-2,1.3-2.3c0.4-0.3,0.9-1,1-1.4s1.1-6.4,1.4-7.7c0.3-1.3,0.8-5.5,0.8-6.1
-	c0-0.6,0-4.2,0.2-5.4c0.2-1.1,0.4-2.3,0.4-2.3s-0.5-1.1-0.5-1.3c0-0.3-0.7,0-0.9,0c-0.2,0-0.5,0.4-1.9,0.8s-3.5,1.3-5,1.9
-	s-5.5,2-8.7,2.4c-3.2,0.3-7.6-0.6-7.6-0.6s-3.4-0.6-4.1-0.2c-0.6,0.3-1.6,2.5-2.1,4s-0.9,2.7-0.9,3.9c0,1.3,0.1,8.7,0.2,9.3
-	c0.1,0.6,0.5,1.6,1.2,2.3c0.7,0.6,2.9,2.6,2.9,2.9c0,0.2,0,0.9-0.3,1.2c-0.3,0.3-6.5,0-6.5,0s-0.5,0.6-0.7,0.7c-0.3,0-10.5,0-11.1,0
-	s-1-1.6-0.6-2.3c0.4-0.8,0.6-1.2,0.6-1.6s0-1.6-0.1-2.1s0.1-1.9,0.4-3.1c0.3-1.1,1.1-7.8,1.1-8.4c0-0.6,0.2-2.9,0-3.4
-	c-0.2-0.6-1-2.6-0.9-3.6c0-1-0.3-3.4-0.2-4.4c0.1-1,0.4-3.5,0.4-4.2c0-0.6,0.1-2.3-0.2-2.8c-0.3-0.6-1-2.4-1-3c0-0.5,0-0.5,0-0.5
-	s-0.1,2.3-0.1,2.6c0,0.3,0,3.6-0.2,4.2c-0.2,0.6-0.3,2.3-0.4,3.2c-0.1,1-0.1,4-0.2,4.5s-0.4,4.5-0.4,4.9c0,0.4-0.2,0.8-0.5,0.8
-	s-1,0-0.8-1.2c0.1-1.2,0.5-4.3,0.6-5.1c0.1-0.7,0-4.8,0-5.2s0-1.6,0.1-2.2s0.1-3.1,0-3.6s-0.4-1.1-0.3-2.1s0.1-2,0-2.2
-	s0-1.3,0.1-1.7c0.1-0.4,0.1-2.1,0.1-2.4s0.2-1.1,0.7-1.8c0.6-0.7,2-3.2,2.5-3.9s1.6-2.9,2.1-3.7c0.5-0.8,2.3-3.2,4.2-4.7
-	s4.4-3.6,5-4s2.5-1.8,3.2-2.3s2.9-1.6,5.6-1.9s5.9,0,6.9,0.3s3,1,4.1,1.3s2.5,1.3,5.1,1.3c2.6,0,6.1-0.6,8.4-1.1
-	c2.4-0.5,3.7-0.7,4.2-0.9S55.1,0,56.4,0c1.3,0,2.6,0.2,3,0.3s1.4,0.2,1.7,0.3c0.3,0.1,1.2,0.7,2,1.1C64,2.2,66.1,3.2,67.5,3.3z"/>
-    </symbol>
-    <symbol id="ic-lion" viewBox="0 0 76 57.3">
-      <path d="M75.3,13.1l0.6-0.4l-0.6-0.7v-0.8L74,9.8l0.3-0.4l0.6-0.4l-0.3-0.6l0.6-0.1l-0.3-0.8h0.6L75,7V6.5l-0.3-0.3L75,5.8l-0.4-0.4
-	L75,5l-0.9-0.4l0.4-0.3l-1.1-0.4l0.3-0.5l-1,0.2L73,3.1l-0.9,0.1V2.5l-0.9,0.1V1.8L70.5,2V1.3l-1,0.2V0.8l-0.9,0.4V0.7L67.7,1V0.5
-	l-0.9,0.4V0.4l-1,0.5V0.4L65,0.6V0l-0.6,0.7l-0.6-0.3l-0.9,0.5l-0.4-0.3l-0.6,0.6l-0.7-0.3l-0.5,0.7l-0.7-0.3V2l-0.3-0.4v0.7H59
-	l-0.5,0.5h-0.6l-0.4,0.7h-0.6v0.4l-0.4,0.3v0.7h-0.6v0.5h-0.8v0.4l-0.6,0.5c0,0,0.4,0.6,0,0.6s-1,0.4-1,0.4l0.4,0.3l-0.8,0.3
-	l0.3,0.4c0,0,0,0-0.9,0.1s-1.7,0.5-1.7,0.5l0.6,0.3c0,0-0.6,0-1.5,0c-0.9,0-1.8,0.7-1.8,0.7h1l-0.4,0.3l1.3,0.3c0,0-0.5-0.1-1.3,0
-	c-0.9,0.1-1.3,0.3-1.3,0.3l0.5,0.4c0,0,0,0-0.8,0.2c-0.8,0.2-2.1,1.1-2.1,1.1h0.5l-1.1,0.5h0.4c0,0-1,0.6-0.9,0.8
-	c0.1,0.2,0.2,0.7,0.2,0.7s-0.4,0.2-1.3,0.2c-1,0.1-12.5-0.4-13.5-0.6c-1.1-0.2-5-0.6-8.4-0.3s-5.2,1.2-6.6,1.8
-	c-0.8,0.4-2.4,1.7-3.9,3.6c-1.5,2-1.5,4.8-1.7,6.9s0.4,7.7,0.3,9.3c-0.1,1.6-0.4,3.9-0.7,6c-0.3,2.2-1.3,5.2-1.6,6.4
-	c-0.4,1.2-1.6,2.6-2.3,3.2c-0.7,0.6-2.6,1.8-3.5,2.5S0,55,0,55.6c0,0.6,0.1,1.5,0.5,1.6s2.2-0.1,2.3-0.4c0.1-0.3,0.4-1.3,0.6-2
-	c0.2-0.7,1.1-1.8,1.8-2.7c0.7-0.9,1.4-1.9,1.9-3s1.7-4,2-4.9c0.3-0.9,0.5-2,0.5-2s0.1,2.1,0,2.7c-0.1,0.6-1.1,2.8-1.4,3.3
-	c-0.3,0.5-0.2,1.1-0.1,1.3c0.1,0.1,0.9,2.3,0.9,3.2c0,0.8,0.4,1.5,0.6,1.9c0.2,0.4,1.1,2,1.1,2H11l-0.1,0.1h7.9c0,0,0,0,0-0.7
-	c0-0.7-0.8-1.6-1.5-2.1c-0.6-0.4-0.8,0-1-0.1c-0.1-0.1-0.2-0.1-0.3-0.2c-0.1-0.2-0.1-0.3-0.2-0.5c-0.4-1.2-0.7-3.2-0.7-3.9
-	c0-0.7,0.8-2.2,1.6-3.3c0.8-1.1,1.9-2.3,2.5-3.7c0.6-1.4,1.4-2.3,2.3-3.8c0.9-1.5,1.3-1.8,2.2-2.3c0.9-0.5,1.8-1.2,2-1.1
-	c0.2,0,0.1,0.2,0.3,0.8c0.2,0.6,2.2,3.7,2.2,3.7c-0.3-0.5-0.3-1.6-0.3-1.6s0,0,0.3,0.5c0.3,0.5,1.3,1.4,1.3,1.4s0,0-0.5-1.4
-	c-0.5-1.4-0.2-2.2-0.2-2.2s0.4,0.8,0.8,1.9c0.4,1.1,1.8,2.1,1.8,2.1c-0.2-0.4-0.3-1.8-0.3-1.8c0.1,1.1,1.1,2.3,1.1,2.3
-	c-0.2-0.7-0.1-2.1-0.1-1.9c0,0.1,0.2,0.6,0.5,0.9c0.3,0.3,0.6-0.2,0.9,0.4c0.3,0.6,0.7,0.7,0.6,0.5c-0.1-0.2-0.1-0.6-0.1-0.6
-	l0.5,0.5c-0.2-0.7,0.1-1,0.1-1s0.7,1.4,0.8,1.5c0.1,0.1,0.7,0.4,0.8,0.5c0.2,0.1,1.2,1.4,1.2,1.4s0,0-0.2-0.8
-	c-0.2-0.8-0.1-1.3,0.2-1.3s0.4,0.5,0.4,0.5c0.1,0.8,1.3,1.6,1.3,1.6c-0.2-1,0.1-1.8,0.1-1.7c0,0.2,1,0.9,1,0.9l0.1-0.5l0.5,0.4
-	l0.2-0.6l0.4,0.4l0.2-0.4l0.5,0.5v-0.4c0,0,0.5,0,0.9-0.1s1.1-0.5,1.8-0.8c0.7-0.3,1.6-0.1,1.6-0.1l0.4,0.4l0.2-0.2l0.6,0.3l0.2-0.4
-	l0.4,0.4l0.3-0.6l0.2,0.3l0.4-0.7l0.2,0.4c0,0,0.2-0.5,0.5-0.2c0.3,0.3,1.1,2.5,1.1,2.9c0.1,0.4,0.2,1.7,0.6,2.6s1.6,3.8,1.8,4.2
-	c0.2,0.4-0.1,1.4-0.2,2c-0.1,0.6,0.4,1.3,0.7,1.6c0.3,0.3,0.4,1.5,0.4,1.9c0.1,0.4,0.1,0.2-0.2,0.5c-0.3,0.3-0.1,1-0.1,1h14
-	c0,0,0,0,0-0.7c0-0.7-0.8-1.6-1.5-2.1c-0.6-0.4-1.8,0-2-0.1c-0.2-0.2-0.2-0.4-0.3-1.4c-0.2-1,0-2.9,0.2-4.4c0.2-1.5,0.5-4.1,0.5-5.2
-	s-0.1-2.1-0.1-2.1h0.4l-0.2-1.3l0.5,0.4l0.1-1l0.6,0.7l-0.1-1l0.8,0.7l-0.2-1.2h0.5l-0.2-0.8l0.7,0.6l0.1-0.7l1.3,0.7l-0.4-1
-	l1.3,0.7l-0.3-1l0.3-0.5L70,34.7h0.5l-0.2-1.2l0.7,0.9c0,0-0.1-1.2-0.7-1.9c-0.6-0.7-0.2-1.3,0.1-1.2c0.3,0.1,1.3,0.9,1.3,0.9
-	l-0.3-0.9l1.1,0.6l-0.4-1.1l0.8,0.3l-0.2-0.8h0.5c0,0,0,0-1-1c-1-1-1.2-3.2-1.2-3.2l0.7,0.5l-0.6-1.2h0.4l-0.2-1h0.3l0.3-1.2
-	l0.6-0.3l0.1-0.6H73l-0.1-0.9l0.4-0.4l0.1-0.9H74v-0.7h0.6v-0.9l0.4-0.5l-0.6-1.1h0.4l-0.3-0.8H75V16l0.7,0.3l-0.5-1.4l0.5,0.4
-	l-0.2-0.8l0.5-0.9L75.3,13.1z"/>
-    </symbol>
-    <symbol id="ic-rhino" viewBox="0 0 92.4 43.1">
-      <path d="M88.1,19.8c-1.7,0.9-5.5,1.9-6.5,2c-1.1,0.1-1.4-0.4-1.4-0.4s-0.4-0.8,0.2-1.4c0.5-0.6,0.4-1.2,0.4-1.2s-0.2-0.4-1.1-0.5
-		c-0.9-0.1-2.5,0.5-2.5,0.5s-1.5-1.5-2.1-2.6c-0.6-1.1-0.8-2.3-1-3c-0.2-0.7-0.3-2.4-0.6-3.2s-0.3-1.1-0.3-1.4
-		c0-0.2,1.2-0.1,1.7-0.2c0.5-0.1,1.6-2.1,2.1-3.4c0.5-1.3,0-1.6,0-1.6c-0.3,0-2.5,1.2-3.8,1.8c-0.8,0.4-1.7,0.9-2.2,1.2
-		c-0.1-0.8-0.6-2-1.5-2.3c-0.6-0.2-1.7-0.7-2.6-1.1c-0.1-0.2-0.2-0.4-0.4-0.7c-0.4-0.6-1.3-1-1.9-1.2c-0.6-0.2-0.8-0.6-1.2-0.8
-		c-0.4-0.2-0.9-0.1-1.2-0.1S61.3,0.1,60.9,0c-0.4-0.1-1.1,0.6-2,0.9C58,1.2,56,1.2,55,1.1c-1-0.1-3.3-0.3-4.6-0.2s-2.6,0.7-4.8,1.4
-		s-5.9,0.4-8.1,0.3c-2.1-0.2-10.1-1.8-11-2c-0.9-0.2-1.6-0.1-3.7,0.4c-2.1,0.5-6.7,1-9.3,1.1C11,2.2,9.7,3,7.5,4.6
-		c0,0-2.1,2.1-2.4,2.5C4.9,7.6,3.4,8.8,2.5,9.7c-0.8,0.9-1.7,3.8-1.8,4.8c-0.1,1-0.4,6-0.6,7.1c-0.2,1.1-0.2,3.3,0,4.3
-		c0.2,1,0.9,0.7,0.9-0.1c0-0.7-0.3-1.9-0.3-2.2c0-0.3,0.4-2,0.4-2.3c0-0.4,0.2-1.6,0.4-1.1c0,0,0,0,0,0c0,0.2,0,1.3,0.3,1.9
-		c0.4,0.8,1.7,3.6,1.6,4.2c-0.1,0.5,0.2,2-0.4,3.1c-0.6,1.1-0.9,2.4-1,2.5c-0.1,0.1-0.5,0.4-0.5,1.3c0,0.8,0.4,1.2,1,2
-		c0.6,0.8,1.3,1.9,1.4,2.4c0,0.6,0,2.6-0.4,3.2s-0.9,2.1-0.1,2.3h7c1,0,0.3-1.2-0.1-2.1c-0.2-0.3-1.3-0.8-1.5-0.9
-		c-0.2,0-0.9-4-0.8-4.4c0.1-0.5,0.6-2.2,0.8-2.7c0.1-0.2,0.2-0.9,0.4-1.6c0,0.1,0.1,0.2,0.1,0.3c0.2,0.6,0.2,1.8,0.2,2.8
-		s0.8,1.6,1.4,1.9c0.7,0.3,2,2.7,2.6,3.6c0.7,0.9-0.1,1.3-0.5,2c-0.4,0.7,0.2,1.1,1.1,1.1c0.9,0,7.3,0,7.3,0c0-0.5-1-2.1-1.2-2.3
-		c-0.1-0.2-1.1-0.3-1.3-0.5c-0.2-0.2-1.6-3-2-3.8c-0.4-0.8-0.5-1.5-0.5-1.8c-0.1-0.4-0.5-1.8-0.8-2.6c-0.3-0.8-0.5-3-0.5-3.6
-		c0-0.5,0.5-1.4,1.1-1.8c0.5-0.5,0.7-1.7,0.9-2.6l0.4,0.2c0,0,3.5,3.9,3.7,4.1c0.2,0.2,5.7,2.5,8.1,2.8c2.4,0.2,5.7,0.1,8.8-0.3
-		c3.1-0.4,6-0.8,6-0.8c0.1,0.2,0.6,1.6,0.4,2.1c-0.2,0.5-0.8,1.7-0.8,2.1c0,0.4-0.3,2.9,0,3.7c0.3,0.8,0.2,1.3-0.1,2
-		c-0.4,0.7-1,2.5-0.9,2.9l9.6,0.1l4.5,0.1c0-0.8-1.1-2.2-1.9-2.4c-0.5-0.1-0.4-1.9-0.8-2.3c-0.4-0.5-0.4-1.3-0.4-1.8
-		s0.5-2.3,0.7-3.2c0.1-0.9,0.4-1.1,0.9-1.9c0.5-0.8,1.3-2.7,1.4-3.3c0.1-0.6,0.3-0.8,0.6-0.9c0.3-0.1,1-0.5,1.3-0.5
-		c0.3,0,1.3,0.1,1.6-0.1c0.3-0.1,0.4-0.8,0.8-1c0.4-0.2,1.1-0.3,1.1-0.3s0.9,0.8,1.2,0.8c0.4,0,0.8-0.3,1-0.6
-		c0.2-0.3,0.7-1.5,0.7-1.5s0,0,0.3,0.9c0.3,0.9,1.4,2.2,1.8,2.4c0.4,0.2,3.6,2.8,4.3,3.4c0.8,0.6,1.4,1.4,1.8,1.6
-		c0.4,0.2,0.6,0,0.6,0s1.1,0.8,1.7,0.9c0.7,0.1,1.1-0.1,2.2-0.4c1.1-0.2,1.9-1.1,2.3-1.6c0.4-0.5,1-2.3,1.1-2.8
-		c0.1-0.5,1.3-0.9,1.6-1.2c0.3-0.2,2-1,2.3-1.4c0.4-0.4,0.5-1.1,0.5-1.1s1.2-0.9,1.9-1.7c0.7-0.7,2.6-3,3.3-3.9
-		c0.6-0.8,1.5-2.3,1.7-2.6C92,17.3,89.7,19,88.1,19.8z M49.2,35.7c0,0,0.2,2.1,0.5,2.4c0.2,0.4,0.3,0.5,0.3,0.8c0,0.2-0.7,1-1.1,1.6
-		c-0.1,0-0.2,0-0.3,0c-0.3,0-0.8-1.6-0.8-2.1S49,35.9,49.2,35.7z M54.5,30.1C54.5,30.1,54.5,30.1,54.5,30.1
-		C54.5,30.1,54.5,30.1,54.5,30.1z"/>
-      <path d="M92.3,16.8C92.4,16.8,92.4,16.8,92.3,16.8C92.4,16.7,92.4,16.8,92.3,16.8z"/>
-    </symbol>
-    <symbol id="ic-avatar" viewBox="0 0 24 24">
-      <circle cx="12" cy="8" r="4"/>
-      <path d="M4 20C4 15.4 7.6 12.5 12 12.5C16.4 12.5 20 15.4 20 20H4Z"/>
-    </symbol>
-    <symbol id="ic-leopard" viewBox="0 0 92.4 50.7">
-      <path d="M86.7,13.5c-0.1,0.6,2.5,1.2,3.1,2.1c0.6,0.9,0.9,2.6,1.2,3.1c0.3,0.6,1.3,3.1,1.4,3.2c0.1,0.2-0.2,0.9-0.6,1.2
-	s-0.5,0.5-0.8,0.9c-0.3,0.4-0.8,0.9-1.5,1c-0.7,0.1-2.1-0.1-2.8-0.7c-0.7-0.5-2.2-1.5-3.2-1.6c-0.9-0.1-1.6-0.2-2.1,0.2
-	c-0.5,0.3-1.6,1.2-2.3,1.5c-0.7,0.2-1.6,0.5-1.8,0.7c-0.3,0.2-0.3,0.3-0.4,1.4c-0.1,1.1,0.1,3.4,0,3.8s0.2,2.1,0.7,3.6
-	c0.5,1.4,2.1,4.7,2.7,5.7c0.6,1,2.4,3.9,2.7,4.5s0.1,0.5,0.5,1.1c0.4,0.6,0.5,1.3,0.7,1.5c0.2,0.2,1.1,0.5,1.3,0.9s0.7,0.7,0.7,0.7
-	s1-0.3,1.5,0c0.5,0.3,1.5,0.6,1.5,1.1c0.1,0.5,0.2,1.2-0.7,1.4h-3.1c0,0-2.3-0.5-2.7-0.7c-0.4-0.2-2.4-2.4-2.9-3.2
-	c-0.5-0.8-2-2.8-2.3-3c-0.4-0.2-4.4-5.3-5.3-6.1s-3.1-3.6-3.4-4.1s-1.4-2-1.4-2s-0.7,0.2-2.1,0.5c-1.4,0.3-2.1,0.7-2.3,0.9
-	c-0.2,0.2-0.9,1.7-1.3,2.4S60,38.6,59.8,39c-0.2,0.4-1,4.3-1.3,4.8s-0.9,1-1,1.3s-0.2,2.3-0.2,2.3s0.7,0.2,1.2,0.4s1.7,0.3,2,0.8
-	c0.3,0.5,0.7,1.7-0.4,2.1c0,0-4.7,0-5.3,0S54.1,49.8,54,49s0.1-2.4,0-2.6c-0.1-0.2-0.2-0.9-0.1-1.2c0.1-0.3,0.5-3.7,0.7-4.3
-	s0.2-1.8,0.2-2.1c0-0.3,0.7-3.3,0.9-4.4c0.3-1.1,0.8-2.9,0.8-2.9s-0.6-0.4-1.6-0.5s-3.4,0.4-4.7,0.2c-1.3-0.2-4.5-0.9-5.8-1.4
-	c-1.3-0.6-5.9-2.4-5.9-2.4s-0.1,0.3-0.4,1c-0.3,0.7-1.3,2.8-2.3,4.3c-1,1.5-2.3,3.6-2.4,3.9c-0.2,0.3-0.6,1.3-1.1,1.8
-	c-0.5,0.5-0.9,1-1.3,1.9c-0.4,0.9-1,1.6-0.8,2.4c0.2,0.8,0.1,3.6,1,4.4s1.2,1.4,1.7,1.3c0.5-0.1,1.6-0.5,2.1-0.3
-	c0.5,0.2,1.3,0.5,1.2,1.2c-0.1,0.7,0,1.4-1.9,1.4s-3-0.2-3.2-0.2c-0.2,0-1.7-1.3-2.4-1.8c-0.7-0.5-1.5-3.3-1.6-3.6
-	c-0.1-0.3-1.9-3.5-2.1-4c-0.2-0.6-0.5-0.8,0-1.3c0.5-0.6,1.4-1.8,1.5-2.7c0.2-0.9,0.4-5,0.4-5s-1.8,1-2.4,1.3
-	c-0.7,0.4-2.6,1.6-3.1,2c-0.6,0.4-1.4,1-2.6,1.4c-1.2,0.4-1.9,0.8-2.3,1.2c-0.4,0.4-2.8,2.8-3.2,3.3c-0.5,0.5-2.7,4.9-2.7,5.2
-	c-0.1,0.4-0.1,1.6,0,2.1s0.4,0.8,0.8,1.1s1.1,0.8,0.3,1c-0.8,0.2-1.7,0.1-2.4-0.2c-0.7-0.3-1.7-1-1.7-1.2c0-0.2-0.1-1.2,0-1.5
-	s-0.1-1,0-1.4s2.5-6.6,3.6-8.2s2.4-4,2.6-4.3c0.2-0.4,0.5-0.5,1.1-0.6s1.5-0.6,2.2-1.4c0.7-0.9,3.6-4.5,4.1-5.9
-	c0.6-1.4,1.3-4.3,1.4-5.1s1.2-2,1.1-2.3c-0.1-0.3-1.1-0.1-2,0.4c-0.9,0.4-2.7,1.1-5.3,1.3s-6.6-0.4-8.4-1.4
-	c-2.6-1.5-4.9-3.7-5.9-5.7s-2-4.4-1.9-7.6C0.1,2.6,1,0.3,3.9,0s4.2,1.9,4.3,2.8c0.1,0.9,0.3,2.1-0.4,3.1s-1,1.2-1,1.2S6.2,6.7,6,6.1
-	C5.8,5.6,5.9,4.3,5.6,3.8S5,2.9,4.3,3.1S2.8,4.7,2.7,5.5C2.6,6.3,2.6,7.9,3,9.4c0.4,1.3,1.8,3.5,3.8,4.9s4.3,3.2,8.7,2.4
-	s9.5-3.4,10.9-3.9c1.4-0.5,5-1,5.9-1.1c0.9-0.1,4.7-0.3,5.6-0.1c0.9,0.2,4.3,1.4,5.6,1.5c1.3,0.1,8.4,0.5,9.6,0.7s7.9,1,8.6,1.1
-	c0.7,0.1,1.7,0.1,2.2-0.4c0.5-0.5,0.6-0.9,1-0.9c0.4,0,1.2,0,1.4-0.1c0.3-0.1,0.7-0.5,0.9-0.4s0.9,0,1.3,0.1
-	c0.4,0.1,1.3,0.6,1.6,0.7c0.3,0.1,0.3,0.5,2.4,0.1s5.4-1.3,7-1.5c1.6-0.3,4.3-0.4,4.3-0.4s0.1-0.4,0.5-0.3c0.4,0.1,0.2,0.4,0.2,0.4
-	s0.7-0.9,0.9-1c0.3-0.1,0.6-0.4,0.8,0.2C86.5,12.1,86.8,12.9,86.7,13.5z"/>
-    </symbol>
-  </defs>
-</svg>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-in">
-    <a class="logo" href="index.html">Optimiza-<span>T</span></a>
-    <button class="nav-burger" id="navBurger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
-    <div class="nav-links" id="navLinks">
-      <a href="#dolores">¿Te identificas?</a>
-      <a href="#casos">Casos reales</a>
-      <a href="metodo-big-five/index.html">El Método</a>
-      <a href="servicios/index.html">Servicios</a>
-      <a href="sobre-mi/index.html">Sobre mí</a>
-      <a href="faq/index.html">Preguntas</a>
-    </div>
+<header class="nav"><div class="wrap nav-in">
+  <a class="logo" href="./" aria-label="Optimiza-T, inicio">Optimiza<i>-T</i></a>
+  <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+  <nav class="nav-links" id="navlinks" aria-label="Principal"><a href="#que-creamos">Qué creamos</a><a href="metodo-safari/">Método Safari</a><a href="casos-de-estudio/tinnitus-calm/">Caso real</a><a href="sobre-mi/">Sobre mí</a><a href="faq/">Preguntas</a><a class="btn btn-main" href="https://calendly.com/chussama-digital/15min" target="_blank" rel="noopener">Hablemos 15 min</a></nav>
+</div></header>
+<main>
+<section class="hero hero-c">
+  <span class="spark" style="left:11%;top:96px;font-size:44px" aria-hidden="true">✦</span>
+  <span class="spark" style="right:14%;top:64px;font-size:28px" aria-hidden="true">✦</span>
+  <div class="wrap hero-center">
+    <span class="eb">Optimiza-T · Chus Sama</span>
+    <h1>¿Vives de lo que sabes? <em>Lo convertimos en tu producto digital.</em></h1>
+    <p class="lead">Te ayudo a convertir tu conocimiento en un producto digital propio (un taller, un curso, una membresía o tu app) y a montar todo lo que necesita para venderse, sin que tengas que convertirte en experta en tecnología ni en negocio.</p>
+    <div class="btns"><a class="btn btn-main" href="https://calendly.com/chussama-digital/15min" target="_blank" rel="noopener">Hablemos 15 minutos, gratis</a><a class="btn btn-alt" href="test/">Hacer el test de 3 minutos</a></div>
+    <p class="small">15 minutos para ver si tiene sentido trabajar juntas. Sin compromiso.</p>
+    <div class="arch arch-hero"><img src="images/v2/chus-sama-portatil.jpg" alt="Chus Sama, fundadora de Optimiza-T, sonriendo frente a su portátil" width="700" height="992" fetchpriority="high"></div>
   </div>
-</nav>
+</section>
+<div class="trust"><div class="wrap"><span>Ingeniería y ADE</span><span>7 años en consultoría tecnológica y estratégica</span><span>Caso real: Tinnitus Calm</span></div></div>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="sun" aria-hidden="true"></div>
-  <div class="horizon" aria-hidden="true">
-    <div class="herd">
-      <span class="animal a-buffalo"><svg viewBox="0 0 84.9 47.2"><use href="#ic-buffalo"></use></svg></span>
-      <span class="animal a-elephant"><svg viewBox="0 0 93.3 68.9"><use href="#ic-elephant"></use></svg></span>
-      <span class="animal a-lion"><svg viewBox="0 0 76 57.3"><use href="#ic-lion"></use></svg></span>
-      <span class="animal a-rhino"><svg viewBox="0 0 92.4 43.1"><use href="#ic-rhino"></use></svg></span>
-      <span class="animal a-leopard"><svg viewBox="0 0 92.4 50.7"><use href="#ic-leopard"></use></svg></span>
-      <span class="animal a-buffalo"><svg viewBox="0 0 84.9 47.2"><use href="#ic-buffalo"></use></svg></span>
-      <span class="animal a-elephant"><svg viewBox="0 0 93.3 68.9"><use href="#ic-elephant"></use></svg></span>
-      <span class="animal a-lion"><svg viewBox="0 0 76 57.3"><use href="#ic-lion"></use></svg></span>
-      <span class="animal a-rhino"><svg viewBox="0 0 92.4 43.1"><use href="#ic-rhino"></use></svg></span>
-      <span class="animal a-leopard"><svg viewBox="0 0 92.4 50.7"><use href="#ic-leopard"></use></svg></span>
-      <span class="animal a-buffalo"><svg viewBox="0 0 84.9 47.2"><use href="#ic-buffalo"></use></svg></span>
-      <span class="animal a-elephant"><svg viewBox="0 0 93.3 68.9"><use href="#ic-elephant"></use></svg></span>
-      <span class="animal a-lion"><svg viewBox="0 0 76 57.3"><use href="#ic-lion"></use></svg></span>
-      <span class="animal a-rhino"><svg viewBox="0 0 92.4 43.1"><use href="#ic-rhino"></use></svg></span>
-      <span class="animal a-leopard"><svg viewBox="0 0 92.4 50.7"><use href="#ic-leopard"></use></svg></span>
-      <span class="animal a-buffalo"><svg viewBox="0 0 84.9 47.2"><use href="#ic-buffalo"></use></svg></span>
-      <span class="animal a-elephant"><svg viewBox="0 0 93.3 68.9"><use href="#ic-elephant"></use></svg></span>
-      <span class="animal a-lion"><svg viewBox="0 0 76 57.3"><use href="#ic-lion"></use></svg></span>
-      <span class="animal a-rhino"><svg viewBox="0 0 92.4 43.1"><use href="#ic-rhino"></use></svg></span>
-      <span class="animal a-leopard"><svg viewBox="0 0 92.4 50.7"><use href="#ic-leopard"></use></svg></span>
-    </div>
-  </div>
-  <svg class="hills" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true" style="height:22vh">
-    <path d="M0,90 C240,40 420,120 720,80 C1020,40 1200,120 1440,70 L1440,200 L0,200 Z" fill="#5B6B4E" opacity=".4"/>
-    <path d="M0,140 C300,100 560,170 860,130 C1140,95 1300,160 1440,125 L1440,200 L0,200 Z" fill="#4A5640" opacity=".6"/>
-  </svg>
-
-  <div class="hero-content">
-    <div class="eyebrow rise d1">Optimiza-T con IA · Tu partner tecnológico</div>
-    <h1 class="rise d2">Recupera tu tiempo y haz crecer tu negocio, con la <span class="serif">tecnología correcta.</span></h1>
-    <p class="hero-kicker rise d3">Entiendo tu negocio de verdad, y construyo la tecnología a tu medida.</p>
-    <div class="hero-ctas rise d5">
-      <a class="btn btn-sun btn-hero-primary" href="diagnostico/index.html">🧭 Hacer el test gratis</a>
-    </div>
-    <div class="hero-note rise d5">5 preguntas · 3 minutos · informe personalizado</div>
-  </div>
-</header>
-
-<!-- ¿TE IDENTIFICAS? -->
-<section id="dolores" class="doubts">
+<section class="sec" id="te-suena">
   <div class="wrap">
-    <div class="sec-head reveal" style="text-align:center;margin:0 auto 50px">
-      <div class="eyebrow">Antes de seguir leyendo</div>
-      <h2>¿Te identificas con algo de esto?</h2>
-      <p>Esto es lo que más me cuentan autónomos y pymes de servicios antes de empezar. Si te ves reflejado, el problema no es que te falte capacidad: es que has ido resolviendo a trozos y nadie ha mirado tu negocio entero.</p>
-    </div>
-
-    <div class="doubts-grid">
-      <div class="doubt-card reveal">
-        <span class="doubt-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#ic-avatar"></use></svg></span>
-        <p class="doubt-quote">«Es domingo y ya pienso en <b>los mensajes de mañana</b>»</p>
-        <p class="doubt-note">Ya llevas un negocio en marcha o estás a punto de arrancar, pero todo pasa por ti: WhatsApps, seguimientos, acordarte de quién quería qué.</p>
-      </div>
-      <div class="doubt-card reveal">
-        <span class="doubt-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#ic-avatar"></use></svg></span>
-        <p class="doubt-quote">«Cada herramienta nueva me da <b>un trabajo más</b>»</p>
-        <p class="doubt-note">En vez de quitarte carga, cada app o plataforma añade otra cosa que vigilar. Tienes de todo y sigues haciéndolo todo tú.</p>
-      </div>
-      <div class="doubt-card reveal">
-        <span class="doubt-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#ic-avatar"></use></svg></span>
-        <p class="doubt-quote">«No sé <b>por dónde empezar</b>»</p>
-        <p class="doubt-note">Cada especialista te dice que empieces por lo que él domina (web, CRM, automatización, IA) y nadie te dice en qué orden hacerlo.</p>
-      </div>
-      <div class="doubt-card reveal">
-        <span class="doubt-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#ic-avatar"></use></svg></span>
-        <p class="doubt-quote">«No entiendo <b>lo que me explican</b>»</p>
-        <p class="doubt-note">Sales de la reunión con un presupuesto, pero sin saber qué se va a construir ni qué parte va a ser tuya.</p>
-      </div>
-      <div class="doubt-card reveal">
-        <span class="doubt-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#ic-avatar"></use></svg></span>
-        <p class="doubt-quote">«Todo <b>depende de mí</b>»</p>
-        <p class="doubt-note">Eres tú quien conecta a mano las herramientas: cobros, altas, seguimientos, incidencias.</p>
-      </div>
-      <div class="doubt-card reveal">
-        <span class="doubt-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#ic-avatar"></use></svg></span>
-        <p class="doubt-quote">«Tengo herramientas que <b>pago y no uso</b>»</p>
-        <p class="doubt-note">Pagas cada mes por herramientas que apenas usas, y encima sigues haciendo el trabajo a mano porque no te fías de que funcionen solas.</p>
-      </div>
-      <div class="doubt-card reveal">
-        <span class="doubt-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#ic-avatar"></use></svg></span>
-        <p class="doubt-quote">«No sé qué necesito <b>antes de arrancar</b>»</p>
-        <p class="doubt-note">Quieres montarlo bien desde el principio, pero no sabes qué tecnología de verdad necesitas y cuál es ruido.</p>
-      </div>
-    </div>
-
-    <div class="doubts-cta reveal">
-      <p>Si te has visto reflejado en dos o más frases, o si esto es justo lo que te preocupa de cara a arrancar, no te falta disciplina: te falta dirección tecnológica de conjunto. Empecemos por ahí.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-sun" href="diagnostico/index.html">🧭 Hacer el test gratis</a>
-        <a class="btn btn-ghost" href="https://calendly.com/chussama-digital/15min">Cuéntame tu caso</a>
-      </div>
-    </div>
+    <div class="sec-head"><span class="eb">¿Te suena?</span><h2>¿Te suena <em>alguna?</em></h2></div>
+    <div class="quotes"><article class="quote"><q>Si no estoy, no cobro.</q><p>Tus ingresos tienen el techo de tus horas.</p></article><article class="quote"><q>Tengo años de contenido muerto de risa.</q><p>Audios, PDFs y talleres repartidos entre el móvil, Drive y WhatsApp.</p></article><article class="quote"><q>No sé qué formato me conviene.</q><p>¿Curso, membresía, comunidad o app? ¿Y en qué plataforma?</p></article><article class="quote"><q>Lo empecé y lo dejé a medias.</q><p>No por falta de capacidad, por falta de tiempo.</p></article><article class="quote"><q>No quiero convertirme en técnica.</q><p>Ni pasar las tardes conectando pagos, accesos y correos.</p></article><article class="quote"><q>Solo llego a quien puede pagarme una consulta.</q><p>Y te gustaría ayudar a más gente de la que cabe en tu agenda.</p></article></div>
+    <p class="closing">No te faltan ganas ni conocimiento. Te falta todo lo de detrás. <span class="it">Y eso no tienes por qué aprenderlo tú.</span></p>
   </div>
 </section>
 
-<!-- MANIFIESTO -->
-<section class="manifesto" id="manifiesto">
-  <div class="wrap reveal">
-    <h2>Optimizar tu negocio es como adentrarte en la jungla:<br>da respeto. Pero con un mapa y <span class="serif">una buena guía</span>,<br>se convierte en la mejor aventura de tu negocio.</h2>
-    <div class="chips">
-      <div class="chip">Miro el conjunto</div>
-      <div class="chip">Construyo de verdad</div>
-      <div class="chip">Sin perder el alma</div>
-      <div class="chip">Sin comprar humo</div>
-    </div>
-  </div>
-</section>
-
-<!-- POR QUÉ TRABAJAR CONMIGO: CLARIDAD FRENTE AL RUIDO DE GURÚS -->
-<section class="clarity">
-  <div class="wrap reveal clarity-in">
-    <div class="eyebrow">Por qué trabajar conmigo</div>
-    <h2 class="clarity-hook">No te vendo un curso. <span class="serif">Lo construyo por ti.</span></h2>
-    <p>El mercado está lleno de gurús que te enseñan a montarlo todo tú. El resultado no es que sepas más: es que dudes más, y encima el trabajo sigue siendo tuyo.</p>
-    <p>Yo no te doy la pelota. Miro tu negocio entero, entiendo cómo funciona, y construyo la tecnología que necesita. Apps, webs, automatizaciones reales, no consejos.</p>
-    <p>Y sin perder lo que te hace único: <span class="clarity-motto">automatizo lo que te roba tiempo, nunca lo que te hace humano.</span></p>
-    <p>Si después de mirarlo no hace falta construir nada, te lo digo yo misma.</p>
-    <p class="clarity-tagline">Entro, entiendo y construyo. <span class="serif">Tú, encárgate de tu negocio.</span></p>
-  </div>
-</section>
-
-<!-- CÓMO TRABAJO (resumen en home) -->
-<section id="como-trabajo" class="process">
+<section class="sec alt" id="que-creamos">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">El proceso</div>
-      <h2>Cómo trabajo contigo</h2>
-      <p>Un camino claro, sin sorpresas. Empiezas con el test; el detalle completo está en Servicios.</p>
-    </div>
-
-    <ol class="process-summary reveal">
-      <li><span class="process-summary-num">1</span> Test Big Five gratuito</li>
-      <li><span class="process-summary-num">2</span> Llamada gratis (15 min)</li>
-      <li><span class="process-summary-num">3</span> El Diagnóstico 1:1 de tu negocio</li>
-      <li><span class="process-summary-num">4</span> Construyo lo que necesita tu negocio</li>
-      <li><span class="process-summary-num">5</span> Te lo entrego, te enseño y te acompaño</li>
-    </ol>
-
-    <div class="process-cta reveal">
-      <a class="btn btn-ghost" href="servicios/index.html">Ver cómo trabajo →</a>
+    <div class="sec-head"><span class="eb">Qué creamos</span><h2>Lo que sabes, <em>convertido en algo que se puede comprar.</em></h2></div>
+    <div class="make">
+      <div class="prods"><div class="prod"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><circle cx="12" cy="14.5" r="1.6"/></svg></span><div><h3>Taller online</h3><p>La forma más rápida de empezar a vender lo que sabes. Página, inscripción, pago y recordatorios, funcionando solos.</p></div></div><div class="prod"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M10.5 8.3l4 2.2-4 2.2z"/><path d="M8 20h8"/></svg></span><div><h3>Curso</h3><p>Tu método, grabado y ordenado, para que alguien lo haga a su ritmo sin que tú estés delante.</p></div></div><div class="prod"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V20H4z"/><path d="M9.5 20v-5.5h5V20"/></svg></span><div><h3>Membresía o academia</h3><p>Tu espacio, con tu nombre, donde quien confía en ti vuelve cada mes.</p></div></div><div class="prod"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.8" width="10" height="18.4" rx="2.4"/><path d="M11 18h2"/></svg></span><div><h3>Tu propia app</h3><p>Tu marca y tu contenido en su móvil, sin nadie más al lado.</p></div></div><div class="prod"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H11l-4 3.5v-3.5h-.5a2 2 0 0 1-2-2z"/><path d="M9 10h.01M12 10h.01M15 10h.01"/></svg></span><div><h3>Una IA con lo que sabes</h3><p>Responde las dudas de siempre con tus contenidos. Y lo delicado, siempre a ti.</p></div></div></div>
+      <div><div class="screen"><video src="videos/demo-productos.mp4" poster="images/v2/demo-productos-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Demo animada de los productos: taller, curso, membresía, app e IA"></video></div>
+      <p class="make-note">No vendo apps: te recomiendo lo que tiene sentido para tu caso. Y no solo creamos tu producto: <span class="it">también el camino para que te lo compren.</span></p></div>
     </div>
   </div>
 </section>
 
-<!-- SOBRE MÍ (teaser) -->
-<section class="about-teaser">
-  <div class="wrap reveal about-teaser-in">
+<section class="sec band" id="metodo">
+  <div class="wrap">
+    <div class="sec-head"><span class="eb">El Método Safari</span><h2>De lo que sabes <em>a tu producto.</em></h2>
+      <p class="lead">He viajado a más de sesenta países, y si algo aprendí en un safari es que nadie se mete en la sabana sin ruta y sin guía. Con tu producto pasa lo mismo. Esta es la ruta, en orden.</p></div>
+    <div class="path"><div class="stp"><span class="circ line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v13.5l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/><circle cx="18" cy="9" r="1.6" style="stroke:currentColor"/></svg></span><span class="n">Paso 0</span><h3>Tu mapa</h3><p>¿Qué producto tiene sentido para ti, y para quién?</p></div><div class="stp"><span class="circ"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M25.31 10h-3.76a2.26 2.26 0 0 1-1.63-.72A3.93 3.93 0 0 0 17 8h-2a.45.45 0 0 1-.39-.22l-.56-.96c-.009-.015-.023-.026-.032-.041A4.87 4.87 0 0 0 15.5 3.388A1.79 1.79 0 0 0 13.78 1.5h-2.26a1.05 1.05 0 0 0-1.019 1a1.1 1.1 0 0 0 .29.823a.97.97 0 0 0 .709.311h.733A2.6 2.6 0 0 1 10.3 5h-.318h.008a3.93 3.93 0 0 0-2.18.67l-5.1 3.4A1.59 1.59 0 0 0 2 10.39A2.58 2.58 0 0 0 4.56 13H7l.73 4.03l.68 3.9a2.54 2.54 0 0 0 2.04 2.06v6.79a.247.247 0 0 0 .25.25h1.5a.247.247 0 0 0 .25-.25v-2.75l.87-.44a2.05 2.05 0 0 0 1.13-1.82v-1.74h.741l.739 3.057a.4.4 0 0 1 0 .217l-.76 3.309c-.05.2.07.408.24.408h1.48a.26.26 0 0 0 .24-.23l.7-3.053c.08-.366.08-.745 0-1.111l-.586-2.607L20.39 23c.044 0 .086-.009.129-.011l-1.479 6.632c-.05.205.07.409.24.409h1.48a.26.26 0 0 0 .24-.23l1.326-5.948a3.25 3.25 0 0 0 2.154 1.768L26 26v3.75a.247.247 0 0 0 .25.25h1.5a.247.247 0 0 0 .25-.25v-9.46q.563-.374 1-.89v3.559a1.993 1.993 0 0 0 1 3.721V14.69A4.69 4.69 0 0 0 25.31 10m-20.71.91a.5.5 0 0 1-1 0v-.55a.5.5 0 0 1 1 0zm3.776-1.248a.603.603 0 0 1-1.206 0v-.754a.603.603 0 1 1 1.206 0zM10.31 6a3.72 3.72 0 0 0 3.078-2.456a.65.65 0 0 0-.054-.616a.63.63 0 0 0-.524-.29l-1.289.006V2.5h2.26a.807.807 0 0 1 .72.888a3.9 3.9 0 0 1-1.616 3.058A4.3 4.3 0 0 1 11 7h-1a1 1 0 0 1-.395-.084a.7.7 0 0 1-.105-.366A.5.5 0 0 1 10 6zM22 22.453v.009z"/></svg><span class="badge"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3.2" style="stroke:#fff"/></svg></span></span><span class="n">Paso 1 · Búfalo</span><h3>A la vista</h3><p>Cuando alguien te busca, ¿qué se encuentra?</p></div><div class="stp"><span class="circ"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none"><g fill="currentColor" clip-path="url(#SVGkRCCwb7V)"><path d="M6.49 13.755c0 .42.33.75.75.75s.75-.33.75-.75v-.63c0-.42-.33-.75-.75-.75s-.75.33-.75.75z"/><path d="M7.03 4.05h12.32A12.63 12.63 0 0 1 31.99 16.7V28a3.234 3.234 0 0 1-3.226 3.23h-2.74a3.234 3.234 0 0 1-3.23-3.23v-3.299a.3.3 0 0 0-.3-.3H20.25v5.369c0 .68-.55 1.23-1.23 1.23h-2.74c-.68 0-1.23-.55-1.23-1.23v-1.29q0-.065.007-.134c-1.178 1.715-2.43 2.88-4.003 2.88h-2.74q-.112 0-.217-.01h-.009l-.1-.009a3 3 0 0 1-2.478-1.788a3.1 3.1 0 0 1-.265-1.519A5.24 5.24 0 0 1 1.1 25.773A5.94 5.94 0 0 1 0 22.28v-11.2a7.04 7.04 0 0 1 7.03-7.03m16.396 2.808a10.6 10.6 0 0 0-4.076-.808h-3.957a10.44 10.44 0 0 1 5.69 7.49l.001.003a2.44 2.44 0 0 1-2.404 2.877h-6.41a2.44 2.44 0 0 1-2.44-2.44V6.05h-2.8A5.027 5.027 0 0 0 2 11.08v11.201a3.95 3.95 0 0 0 .718 2.31a3.22 3.22 0 0 0 2.688 1.313a1.375 1.375 0 0 0 0-2.75a.7.7 0 0 1-.327-.061a.4.4 0 0 1-.142-.126a1.23 1.23 0 0 1-.187-.688v-1.197a4 4 0 0 1-.39.018c-.776 0-1.4-.624-1.4-1.4s.624-1.4 1.4-1.4a1.33 1.33 0 0 0 1.33-1.33v-.5h2.803l-.003.503a4.14 4.14 0 0 1-1.002 2.685a4.2 4.2 0 0 1 2.102 2.097a3.43 3.43 0 0 1-.43 3.38l-1.71 2.35a1.092 1.092 0 0 0 .788 1.745h2.813c1.372 0 2.972-2.9 4-4.764l.269-.486a2.6 2.6 0 0 1 2.18-1.57h4.99a2.3 2.3 0 0 1 2.3 2.3V28a1.23 1.23 0 0 0 1.23 1.23h2.74A1.23 1.23 0 0 0 29.99 28V16.7a10.63 10.63 0 0 0-6.564-9.842m-11.62-.808h-.976v7.93c0 .8.65 1.44 1.44 1.44h6.41c.9 0 1.58-.81 1.42-1.7a9.43 9.43 0 0 0-8.27-7.667zM4.36 19.3c-.224 0-.4.176-.4.4s.176.4.4.4a3.14 3.14 0 0 0 3.088-2.63h-.812A2.33 2.33 0 0 1 4.36 19.3"/></g><defs><clipPath id="SVGkRCCwb7V"><path fill="#fff" d="M0 0h32v32H0z"/></clipPath></defs></g></svg><span class="badge"><svg viewBox="0 0 24 24"><path d="M5 8.5h14l-1.2 11.5H6.2z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5" style="stroke:#fff"/></svg></span></span><span class="n">Paso 2 · Elefante</span><h3>Que puedan comprarlo</h3><p>¿Pueden comprarte sin escribirte?</p></div><div class="stp sale"><span class="circ line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.7 5.2 2.8 7.3 8 8-5.2.7-7.3 2.8-8 8-.7-5.2-2.8-7.3-8-8 5.2-.7 7.3-2.8 8-8z"/></svg></span><span class="n">El momento</span><h3>Tu primera venta</h3><p>Se vende antes de construirlo todo.</p></div><div class="stp"><span class="circ"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="currentColor"><path d="M9.04 8.43c.09-.13.18-.25.28-.37v-.01c.74-.92 1.67-1.68 2.72-2.23c-.36-.5-.95-.82-1.61-.82c-1.1 0-2 .9-2 2c0 .56.23 1.07.61 1.43m10.92-2.6a8.5 8.5 0 0 1 2.72 2.23l.091.117q.105.13.199.263c.37-.36.61-.87.61-1.43c0-1.1-.9-2-2-2c-.66 0-1.25.32-1.62.82m-7.92 5.67c-.4 0-.724.219-.93.494s-.32.632-.32 1.006v1c0 .374.114.731.32 1.006s.53.494.93.494s.724-.219.93-.494s.32-.632.32-1.006v-1c0-.374-.114-.731-.32-1.006s-.53-.494-.93-.494m7.92 0c-.4 0-.724.219-.93.494s-.32.632-.32 1.006v1c0 .374.114.731.32 1.006s.53.494.93.494s.724-.219.93-.494s.32-.632.32-1.006v-1c0-.374-.114-.731-.32-1.006s-.53-.494-.93-.494"/><path d="m29.41 12.7l-.75-.37a.44.44 0 0 0-.65.3c-.04.2.06.41.24.5l1 .5c.46.23.75.7.75 1.21v6.45c0 2.79-1.85 5.24-4.53 6.01l-8.88 2.54c-.39.11-.8.11-1.18 0L6.53 27.3A6.255 6.255 0 0 1 2 21.29v-6.45c0-.52.29-.99.75-1.22l1-.5c.19-.09.29-.29.24-.5c-.07-.3-.37-.43-.65-.29l-.75.37a.405.405 0 0 1-.59-.36V8.41A3.415 3.415 0 0 1 5.41 5H6l-.59-1.77c-.2-.6.25-1.23.89-1.23H13c.65 0 1.28.21 1.79.61c.72.53 1.16 1.36 1.2 2.25H16c.05-.89.48-1.72 1.2-2.26c.52-.39 1.15-.6 1.8-.6h6.7c.64 0 1.09.63.89 1.23L26 5h.59A3.415 3.415 0 0 1 30 8.41v3.93c0 .3-.32.5-.59.36m-7.073 9.143A6.036 6.036 0 0 0 27 15.96c0-1.27-.4-2.52-1.15-3.55l-2.3-3.16c.65-.57 1.05-1.42 1.02-2.36C24.52 5.29 23.18 4 21.58 4c-1.08 0-2.02.56-2.55 1.41a4.347 4.347 0 0 1-6.06 0A3 3 0 0 0 10.42 4c-1.6 0-2.93 1.29-2.99 2.89c-.03.95.37 1.79 1.02 2.36l-2.3 3.16A6.02 6.02 0 0 0 5 15.96a6.036 6.036 0 0 0 4.68 5.887q-.178-.975-.18-2.113h.015a3.067 3.067 0 0 1 3.045-3.374a.43.43 0 0 0 .33-.145l.002-.002l1.99-2.3a1.47 1.47 0 0 1 2.226 0l1.986 2.296a.46.46 0 0 0 .336.151a3.07 3.07 0 0 1 3.055 3.374h.015q-.001 1.142-.163 2.109M15.44 19.72l-1.95-1.95a.526.526 0 0 1-.031-.72a1.44 1.44 0 0 1-.899.31c-1.133 0-2.06.925-2.06 2.07a2.07 2.07 0 0 0 2.07 2.07h1.29c.715 0 1.352-.37 1.724-.927l.413-.62a.8.8 0 0 1-.557-.233m-1.56-2.86h4.27q.129.001.23.05l-.032-.036l-.006-.007l-1.99-2.3a.47.47 0 0 0-.714 0l-1.988 2.298l-.001.001q-.038.045-.078.084a.55.55 0 0 1 .309-.09m4.65.91l-1.95 1.95a.82.82 0 0 1-.577.233l.413.62c.372.558 1.01.927 1.724.927h1.29a2.07 2.07 0 1 0 0-4.14c-.302 0-.592-.097-.832-.265a.53.53 0 0 1-.068.675m.9 4.73h-1.29a3.07 3.07 0 0 1-2.14-.873a3.07 3.07 0 0 1-2.14.873h-1.29a3.06 3.06 0 0 1-1.868-.633c.263 1.284.77 2.27 1.425 2.99c.977 1.073 2.335 1.604 3.873 1.604c1.555 0 2.91-.472 3.878-1.504c.67-.713 1.185-1.725 1.442-3.108a3.06 3.06 0 0 1-1.89.651"/></g></svg><span class="badge"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.4a4.2 4.2 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z" style="stroke:#fff"/></svg></span></span><span class="n">Paso 3 · León</span><h3>Que lo disfruten</h3><p>Justo después de pagarte, ¿qué reciben?</p></div><div class="stp"><span class="circ"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="currentColor"><path d="M4 21.03c-.28 0-.5-.22-.5-.5v-.55c0-.28.22-.5.5-.5s.5.22.5.5v.55c0 .27-.22.5-.5.5m4-3.66a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0"/><path d="M14 8h-.178c-2.718.077-4.892 2.116-5.324 4.69A1.27 1.27 0 0 0 7.23 11.5c-.899 0-1.505.908-1.166 1.729A3.27 3.27 0 0 0 4 16.27v-1.05c0-.433-.38-.74-.778-.709l-.011.001l-.011.002C1.963 14.664 1 15.714 1 17v3.5C1 22.43 2.555 24 4.5 24h4.412l-1.807 4.765C6.694 29.846 7.508 31 8.65 31h3.34c.821 0 1.564-.503 1.863-1.281l.002-.005l.145-.382v.881c0 .439.31.787.7.787h3.6c.39 0 .7-.348.7-.787V26.96a12.1 12.1 0 0 0 3.89-.982c.071.134.11.286.11.442v4.3c0 .17.14.31.31.31h2.065l.001-.03h4.304c.722 0 1.31-.588 1.31-1.31V23H31v-5.83c0-3.404-2.769-6.17-6.18-6.17h-4.81a1.5 1.5 0 0 1-1.208-.588A5.98 5.98 0 0 0 14 8M3 17H2c0-.658.418-1.212 1-1.419zm4.5-4h-.23q-.102 0-.203.006l-.06-.12l-.005-.01a.255.255 0 0 1 .228-.376c.152 0 .27.125.27.26zm2.035 8.915L9.373 22H4.5c-.835 0-1.5-.67-1.5-1.5V19h1.68C5.391 19 6 18.433 6 17.69v-1.42c0-.7.565-1.27 1.27-1.27h3.15v-1.37c0-1.955 1.533-3.569 3.445-3.63H14c1.31 0 2.468.63 3.198 1.608A3.5 3.5 0 0 0 20.01 13h4.81A4.18 4.18 0 0 1 29 17.17V21h-.01v8H26v-3.61a1.94 1.94 0 0 0-.563-1.367l-1.154-1.155l-.682.452A10.1 10.1 0 0 1 18 25c-1.144 0-2.242-.188-3.264-.533l-.914-.309L11.987 29H9.155l2.384-6.286l-.488-.458q-.118-.11-.233-.226l-.557-.558l-.673.413z"/></g></svg><span class="badge"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4" style="stroke:#fff"/></svg></span></span><span class="n">Paso 4 · Rinoceronte</span><h3>Que se queden</h3><p>Cuando terminan, ¿qué les hace volver?</p></div><div class="stp"><span class="circ"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="currentColor"><path d="M15 20.59a.59.59 0 1 1-1.18 0a.59.59 0 0 1 1.18 0m6.59.59a.59.59 0 1 0 0-1.18a.59.59 0 0 0 0 1.18m-6.64-4.13a1 1 0 1 1-2 0a1 1 0 0 1 2 0m7 1a1 1 0 1 0 0-2a1 1 0 0 0 0 2m-2.64.59a1.36 1.36 0 1 1-2.72 0a1.36 1.36 0 0 1 2.72 0M6.656 14.969A.65.65 0 0 1 6 14.313v-.657A.65.65 0 0 1 6.656 13a.65.65 0 0 1 .657.656v.656a.65.65 0 0 1-.657.657"/><path d="M7.032 9.04A2.5 2.5 0 0 1 9.49 7c1.382 0 2.5 1.118 2.5 2.5v1.2c0 1.113.56 2.148 1.487 2.753l.002.001A3.3 3.3 0 0 0 15.29 14h8.75c.658 0 1.283.216 1.793.6A3.51 3.51 0 0 1 28.5 18v6c0 .274.226.5.5.5c.826 0 1.5.674 1.5 1.5s-.674 1.5-1.5 1.5a3.5 3.5 0 0 1-2.686-1.26l-1.242 3.726A1.49 1.49 0 0 1 23.65 31h-3.22a1.34 1.34 0 0 1-1.25-.853l-.13.483c-.06.22-.25.37-.48.37h-6.34c-.18 0-.31-.16-.28-.33l.17-.98a.84.84 0 0 1 .62-.66l-.76-2.849v3.509c0 .722-.588 1.31-1.31 1.31H7.42C6.638 31 6 30.362 6 29.58v-.6c0-.734.399-1.37.99-1.713v-3.07A4.59 4.59 0 0 1 5 20.42V19h-.26c-2.073 0-3.724-1.7-3.727-3.747l-.008-.738A1.5 1.5 0 0 1 2.505 13h.539a4.64 4.64 0 0 1 3.988-3.96M14.665 25l1.139 4.274A.83.83 0 0 1 16.42 29h.08l1.073-4zm5.593 1.112l-.4 1.493c.244-.245.548-.427.884-.524l.102-.383zm6.452-1.113A2.53 2.53 0 0 0 28 26.29v-1.173A1.5 1.5 0 0 1 27.5 24v-6c0-.577-.198-1.11-.53-1.534q.04.244.04.494v6.239l-.01.05q0 .066-.006.104l-.005.048a1 1 0 0 1-.01.117l-.005.055l-.001.012l-.003.027v.194l-.01.02v.04l-.01.02v.208l-.06.06a9 9 0 0 1-.18.845m.24-1.319v.009zm.01-.05v.026zm-.02.1v.006zM9.49 9c-.278 0-.5.222-.5.5V11H7.64A2.64 2.64 0 0 0 5 13.64c0 .62-.413 1.142-.98 1.306l-.894.924c.249.661.882 1.13 1.614 1.13h1.735a2.5 2.5 0 0 1 .481 0H7v.005c.58.07 1.049.357 1.384.777c.42.525.606 1.227.606 1.905V29h.99v-6h9.994l3.102 3.102l-.78 2.898h.99l1.383-4.15l.001-.003a6.6 6.6 0 0 0 .281-1.287q.004-.034.02-.102l.002-.01l.008-.046V23.4a1 1 0 0 1 .01-.118l.005-.054l.002-.02l.002-.02q0-.059.01-.158v-6.07a.92.92 0 0 0-.193-.578l-.001-.001A.99.99 0 0 0 24.04 16h-8.75a5.3 5.3 0 0 1-2.908-.873l-.008-.006a1.4 1.4 0 0 1-.964.379a1.408 1.408 0 0 1-.893-2.497A5.3 5.3 0 0 1 9.99 10.7V9.5c0-.278-.222-.5-.5-.5m-1.5 13.452v-2.765c0-.513-.144-.976-.388-1.281A1.06 1.06 0 0 0 7 18.019v2.15a3.6 3.6 0 0 0 .34 1.53c.167.29.388.546.65.753"/></g></svg><span class="badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2" style="stroke:#fff"/></svg></span></span><span class="n">Paso 5 · Leopardo</span><h3>Que funcione sin ti</h3><p>¿Cuánto depende de que estés tú?</p></div></div>
+    <div class="safari-foot"><p>Si automatizas algo que nadie compra, has automatizado el vacío. <span class="it">Por eso el orden importa.</span></p><a class="btn btn-alt" href="metodo-safari/">Ver el método completo</a></div>
+  </div>
+</section>
+
+<section class="sec" id="caso">
+  <div class="wrap case">
     <div>
-      <h2>Quién hay detrás</h2>
-      <p>7 años en Accenture, Deloitte y SAP. 6 años construyendo apps reales para autónomos y pymes de servicios. Entro en tu negocio, construyo la tecnología y no te dejo sola con ella.</p>
-      <a class="case-link" href="sobre-mi/index.html">Conoce mi historia →</a>
+      <span class="tag">Caso real · Tinnitus Calm</span>
+      <h2>De su consulta <em>a su propia app.</em></h2>
+      <p class="lead">Viviane Gamerro es psicóloga, especializada en mindfulness aplicado al tinnitus. Tenía años de conocimiento, un método y una comunidad de más de 18.000 personas, pero todo lo que ofrecía pasaba por su consulta y por sus horas.</p>
+      <p class="lead" style="margin-top:14px">No vino pidiendo una app: vino con una idea y muchas preguntas. Hoy tiene Tinnitus Calm, su app con prácticas guiadas y suscripción, que llega a personas que nunca habrían pasado por su consulta.</p>
+      <div class="pills"><span class="pill">60 prácticas guiadas</span><span class="pill">Suscripción</span><span class="pill b">De 0 a +100 descargas en menos de un mes</span></div>
+      <p class="case-note">Una app no se vende sola. <span class="it">Pero ahora existe algo que antes no existía.</span></p>
+      <div class="btns" style="margin-top:22px"><a class="link" href="casos-de-estudio/tinnitus-calm/">Ver el caso completo →</a></div>
+    </div>
+    <div class="phones ">
+      <div class="phone"><img src="images/v2/tinnitus-home.jpg" alt="Pantalla de inicio de la app Tinnitus Calm con las prácticas guiadas" width="540" height="1040"></div>
+      <div class="phone up"><img src="images/v2/tinnitus-detalle.jpg" alt="Detalle de una práctica de Tinnitus Calm, by Viviane Gamerro" width="540" height="1036"></div>
+      <div class="phone"><img src="images/v2/tinnitus-reproductor.jpg" alt="Reproductor de una práctica guiada en Tinnitus Calm" width="540" height="1039"></div>
     </div>
   </div>
 </section>
 
-<!-- CASOS REALES -->
-<section id="casos">
+<section class="sec alt" id="como-trabajo">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">Casos reales</div>
-      <h2>Casos reales, no promesas</h2>
-      <p>Sin humo: cada caso tiene una historia detrás, no un número inflado.</p>
+    <div class="sec-head"><span class="eb">Cómo trabajo</span><h2>Mirar, ordenar <em>y quedarme.</em></h2></div>
+    <div class="three">
+      <div class="col"><h3>Mirar</h3><p>Entiendo tu caso antes de proponerte nada: qué sabes, a quién ayudas, qué tienes ya y qué te frena.</p><span class="ben">Beneficio</span><p>No inviertes en lo que no necesitas.</p></div>
+      <div class="col"><h3>Ordenar</h3><p>Tu producto con tu nombre, y el camino para que te lo compren: página, pago, acceso, bienvenida y lo que tenga sentido automatizar.</p><span class="ben">Beneficio</span><p>Algo que se compra sin que estés delante.</p></div>
+      <div class="col b"><h3>Quedarme</h3><p>Todo queda a tu nombre, con sus accesos y explicado. Y yo sigo a tu lado después de la entrega.</p><span class="ben">Beneficio</span><p>Lo tuyo es tuyo y no se queda a medias.</p></div>
     </div>
+    <p class="under">Tú pones lo que sabes y las decisiones importantes. Yo me encargo de la tecnología y te acompaño en la estrategia.</p>
+  </div>
+</section>
 
-    <div class="cases-grid reveal">
-      <a class="case-card tone-a" href="casos-de-estudio/tinnitus-calm/index.html">
-        <div class="case-card-body">
-          <div class="case-stat">+10.000 €/año</div>
-          <div class="case-tag">Psicóloga · Tinnitus Calm</div>
-          <h3>De regalar su tiempo a cobrarlo</h3>
-          <p>Enviaba sus meditaciones a mano por WhatsApp. Hoy tiene una app con membresía: sus pacientes la sienten cerca y factura un ingreso recurrente que antes no existía.</p>
-        </div>
-        <span class="case-link">Ver el caso →</span>
-      </a>
-      <a class="case-card tone-b" href="casos-de-estudio/surya-vida/index.html">
-        <div class="case-card-body">
-          <div class="case-stat">De 3 caos a 1 sistema</div>
-          <div class="case-tag">Centro de yoga</div>
-          <h3>Dejó de vivir en hojas de cálculo</h3>
-          <p>Reservas, pagos y alumnas en sitios distintos. Ahora todo vive en un solo lugar y el centro funciona sin que nadie tenga que acordarse de nada.</p>
-        </div>
-        <span class="case-link">Ver el caso →</span>
-      </a>
-      <a class="case-card tone-d" href="casos-de-estudio/maria-fitness/index.html">
-        <div class="case-card-body">
-          <div class="case-stat">Su marca, no la de otro</div>
-          <div class="case-tag">Entrenadora de fitness</div>
-          <h3>Dejó de trabajar gratis para Instagram</h3>
-          <p>Su negocio vivía en una plataforma genérica donde era una más. Hoy tiene web y app propias: sus clientas la recuerdan a ella.</p>
-        </div>
-        <span class="case-link">Ver el caso →</span>
-      </a>
-      <a class="case-card tone-c" href="casos-de-estudio/fisio-connect/index.html">
-        <div class="case-card-body">
-          <div class="case-stat">0 pacientes perdidos entre sesiones</div>
-          <div class="case-tag">Fisioterapeuta</div>
-          <h3>El vínculo ya no se corta al salir por la puerta</h3>
-          <p>Cuando el paciente se iba, desaparecía hasta la siguiente cita. Ahora sigue conectado cada día y el fisio ve su evolución de un vistazo.</p>
-        </div>
-        <span class="case-link">Ver el caso →</span>
-      </a>
-      <a class="case-card tone-e" href="casos-de-estudio/matrona/index.html">
-        <div class="case-card-body">
-          <div class="case-stat">Presente entre cita y cita</div>
-          <div class="case-tag">Matrona</div>
-          <h3>Acompañar de verdad, no solo en la consulta</h3>
-          <p>Las madres se quedaban solas con sus dudas entre visitas. Hoy tienen lactancia, recursos y respuestas cuando lo necesitan.</p>
-        </div>
-        <span class="case-link">Ver el caso →</span>
-      </a>
+<section class="sec" id="chus">
+  <div class="wrap about">
+    <div class="arch"><img src="images/v2/chus-sama.jpg" alt="Chus Sama, sentada, con americana beige" width="700" height="1060" loading="lazy"></div>
+    <div>
+      <span class="eb">Quién hay detrás</span>
+      <h2>Hola, <em>soy Chus.</em></h2>
+      <p class="lead">Estudié Ingeniería y ADE, y pasé siete años en consultoría tecnológica y estratégica, ayudando a empresas grandes a poner la tecnología al servicio de su negocio. Hoy hago eso mismo para profesionales que viven de lo que saben.</p>
+      <p class="lead" style="margin-top:14px">Sé lo que es estar al otro lado: cursos que se quedan a medias y técnicos que no hablan tu idioma. Por eso trabajo así: miro tu caso, te digo lo que tiene sentido para ti y lo construyo contigo, sin tecnicismos. Y como he viajado a más de sesenta países y me encantan los animales, <span class="it">mi método no podía llamarse de otra forma que Safari.</span></p>
+      <div class="btns"><a class="link" href="sobre-mi/">Conocer mi historia →</a></div>
     </div>
   </div>
 </section>
 
-<!-- CTA BAND -->
-<section>
-  <div class="wrap reveal">
-    <div class="band">
-      <h2>¿Cuánto se puede optimizar<br>tu negocio?</h2>
-      <p>5 preguntas · 3 minutos · informe personalizado · gratis</p>
-      <a class="btn" href="diagnostico/index.html">Hacer el test →</a>
+<section class="sec alt" id="para-quien">
+  <div class="wrap">
+    <div class="sec-head"><span class="eb">Para ser justas</span><h2>Esto no es <em>para todo el mundo.</em></h2></div>
+    <div class="fit">
+      <div class="col"><h3>Es para ti si</h3><ul><li>Ya vives de lo que sabes: consultas, clases, sesiones de grupo o formación.</li><li>Quieres que llegue más lejos de lo que cabe en tu agenda.</li><li>Prefieres que alguien de confianza se encargue de todo lo de detrás.</li></ul></div>
+      <div class="col b no"><h3>No es para ti si</h3><ul><li>Quieres aprender a montarlo tú sola.</li><li>Buscas dinero rápido sin trabajar en ello.</li><li>Necesitas gestionar historias clínicas o datos de salud.</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap foot">
-    <div class="col">
-      <a class="logo" href="index.html">Optimiza-<span>T</span></a>
-      <p>Tecnología a medida para negocios de servicios. Barcelona.</p>
+<section class="sec" id="siguiente-paso">
+  <div class="wrap">
+    <div class="sec-head"><span class="eb">Tu siguiente paso</span><h2>Sin sorpresas. <em>Decides tú.</em></h2></div>
+    <div class="steps">
+      <div class="st"><span class="k">Gratis</span><h3>Llamada de 15 minutos</h3><p>Me cuentas tu caso y vemos si tiene sentido trabajar juntas.</p></div>
+      <div class="st"><span class="k">El paso antes de construir</span><h3>La estrategia de tu producto</h3><p>90 minutos mirando tu caso y tu estrategia por escrito: qué producto tiene sentido, por dónde empezar y qué hacer, en orden.</p><p style="margin-top:12px"><a class="link" href="estrategia/">Qué incluye →</a></p></div>
+      <div class="st b"><span class="k">Tu propuesta</span><h3>Qué, cuánto y cuándo</h3><p>Desde un taller listo para vender hasta tu propia app. Y decides tú, con toda la información delante.</p></div>
     </div>
-    <div class="col">
-      <a href="#dolores">¿Te identificas?</a>
-      <a href="#casos">Casos reales</a>
-      <a href="metodo-big-five/index.html">El Método Big Five</a>
-      <a href="servicios/index.html">Servicios</a>
-      <a href="sobre-mi/index.html">Sobre mí</a>
-      <a href="faq/index.html">Preguntas frecuentes</a>
-      <a href="privacidad/index.html">Privacidad</a>
-    </div>
-    <div class="col">
-      <a href="https://maps.google.com/?q=Carrer+Llibertat+27,+08860+Castelldefels" target="_blank" rel="noopener noreferrer">Carrer Llibertat 27, 08860 Castelldefels</a>
-      <a href="mailto:chussama.digital@gmail.com">chussama.digital@gmail.com</a>
-      <a href="tel:+34606587976">+34 606 587 976</a>
-      <a href="https://www.linkedin.com/in/mariajesussantiagomartinez/">LinkedIn</a>
-      <a href="https://www.instagram.com/chus.sama">Instagram</a>
-    </div>
+    <div class="btns"><a class="btn btn-main" href="https://calendly.com/chussama-digital/15min" target="_blank" rel="noopener">Reservar mi llamada de 15 minutos</a></div>
+    <div class="offer"><span aria-hidden="true" style="font-family:var(--display);color:var(--nar);font-size:22px;line-height:1">✦</span><p><b>¿Quieres saber más detalles?</b> Agenda una llamada conmigo o <a href="https://wa.me/34606587976?text=Hola%20Chus%2C%20vengo%20de%20tu%20web%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s." target="_blank" rel="noopener">escríbeme por WhatsApp</a> y lo hablamos.</p></div>
   </div>
-  <div class="copy">© 2026 Chus Santiago. Todos los derechos reservados. Siluetas del Big Five: "Six Plus by Libé" (Wikimedia Commons, CC BY-SA 4.0).</div>
-</footer>
+</section>
 
-<a class="wa" href="https://wa.me/34606587976" aria-label="Contactar por WhatsApp"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64.001 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg></a>
-
+<section class="sec band" id="serie">
+  <div class="wrap serie">
+    <div><span class="eb">¿Todavía no es tu momento?</span><h2>Empieza por <em>la serie gratis.</em></h2>
+      <p class="lead">Nueve vídeos cortos en mi comunidad: qué producto tiene sentido para ti, el Método Safari paso a paso y el caso de Viviane. A tu ritmo y sin compromiso.</p></div>
+    <div class="btns" style="margin-top:0"><a class="btn btn-main" href="https://www.skool.com/rentabiliza-t-con-ia-4357" target="_blank" rel="noopener">Entrar en la comunidad gratis</a><a class="btn btn-alt" href="test/">Hacer el test</a></div>
+  </div>
+</section>
+</main>
+<a class="wa" href="https://wa.me/34606587976?text=Hola%20Chus%2C%20vengo%20de%20tu%20web%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s." target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16.04 4C9.4 4 4 9.37 4 15.98c0 2.11.56 4.17 1.62 5.99L4 28l6.2-1.6a12.1 12.1 0 0 0 5.83 1.48h.01c6.63 0 12.04-5.37 12.04-11.98C28.08 9.37 22.68 4 16.04 4zm0 21.86h-.01a10 10 0 0 1-5.1-1.39l-.37-.22-3.68.95.98-3.57-.24-.37a9.87 9.87 0 0 1-1.52-5.28c0-5.49 4.48-9.95 10-9.95 2.67 0 5.18 1.04 7.07 2.92a9.88 9.88 0 0 1 2.92 7.04c0 5.49-4.49 9.87-10.05 9.87zm5.48-7.42c-.3-.15-1.78-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.46-2.42-1.48a9.07 9.07 0 0 1-1.67-2.07c-.18-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35z"/></svg></a>
+<footer class="site"><div class="wrap">
+  <div class="foot">
+    <div><a class="logo" href="./">Optimiza<i>-T</i></a><p style="margin-top:12px;max-width:26em">De lo que sabes a tu producto. Convierto tu conocimiento en un producto digital propio y monto todo lo que necesita para venderse.</p></div>
+    <div><p class="fh">La web</p><ul><li><a href="#que-creamos">Qué creamos</a></li><li><a href="metodo-safari/">Método Safari</a></li><li><a href="casos-de-estudio/tinnitus-calm/">Caso real: Tinnitus Calm</a></li><li><a href="estrategia/">La estrategia de tu producto</a></li><li><a href="test/">Test ¿Vives de lo que sabes?</a></li><li><a href="sobre-mi/">Sobre mí</a></li><li><a href="faq/">Preguntas</a></li></ul></div>
+    <div><p class="fh">Para quién</p><ul><li><a href="producto-digital-psicologas/">Psicólogas y terapeutas</a></li><li><a href="producto-digital-fisioterapeutas/">Fisioterapeutas</a></li><li><a href="producto-digital-nutricionistas/">Nutricionistas</a></li><li><a href="producto-digital-yoga-pilates/">Profes de yoga y pilates</a></li><li><a href="app-propia/">Tu propia app</a></li><li><a href="ia-con-tu-conocimiento/">Una IA con lo que sabes</a></li></ul></div>
+    <div><p class="fh">Hablemos</p><ul><li><a href="https://calendly.com/chussama-digital/15min" target="_blank" rel="noopener">Llamada de 15 minutos</a></li><li><a href="https://wa.me/34606587976?text=Hola%20Chus%2C%20vengo%20de%20tu%20web%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s." target="_blank" rel="noopener">WhatsApp · +34 606 587 976</a></li><li><a href="mailto:chussama.digital@gmail.com">chussama.digital@gmail.com</a></li><li><a href="https://www.instagram.com/chus.sama" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/in/mariajesussantiagomartinez/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.skool.com/rentabiliza-t-con-ia-4357" target="_blank" rel="noopener">Comunidad en Skool</a></li></ul></div>
+  </div>
+  <div class="foot-bottom">© 2026 Chus Sama · Optimiza-T · Castelldefels (Barcelona) · <a href="privacidad/" style="color:inherit">Privacidad</a></div>
+</div></footer>
 <script>
-// ---- Scroll reveal ----
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Menu hamburguesa (movil/tablet)
-(function(){
-  const burger = document.getElementById('navBurger');
-  const links = document.getElementById('navLinks');
-  if(!burger || !links) return;
-  const closeMenu = () => { links.classList.remove('open'); burger.setAttribute('aria-expanded','false'); };
-  burger.addEventListener('click', () => {
-    const isOpen = links.classList.toggle('open');
-    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-  document.addEventListener('click', (e) => {
-    if(!links.contains(e.target) && !burger.contains(e.target)) closeMenu();
-  });
-  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
-  window.addEventListener('resize', () => { if(window.innerWidth > 900) closeMenu(); });
-})();
-
+(function(){var b=document.getElementById('burger'),n=document.getElementById('navlinks');if(!b||!n)return;
+b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
+n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.setAttribute('aria-expanded','false');}});})();
 </script>
-<script src="site.js" defer></script>
+<script src="site.js"></script>
 </body>
 </html>
