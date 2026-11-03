@@ -5,3 +5,163 @@
 
 [build.environment]
   NODE_VERSION = "18"
+
+# Web v2 (nov 2026): direcciones antiguas -> páginas nuevas
+[[redirects]]
+  from = "/metodo-big-five/*"
+  to = "/metodo-safari/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/diagnostico/*"
+  to = "/test/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/web-para-psicologa/*"
+  to = "/producto-digital-psicologas/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/web-para-fisioterapeuta/*"
+  to = "/producto-digital-fisioterapeutas/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/web-para-nutricionista/*"
+  to = "/producto-digital-nutricionistas/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/web-para-centro-yoga/*"
+  to = "/producto-digital-yoga-pilates/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/app-para-profesionales-salud/*"
+  to = "/app-propia/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/*"
+  to = "/#que-creamos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/apps-para-tu-negocio/*"
+  to = "/app-propia/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/consultoria-ia-pymes/*"
+  to = "/ia-con-tu-conocimiento/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/automatizaciones-pymes/*"
+  to = "/metodo-safari/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/digitalizar-negocio/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/diseno-web-autonomos/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/crm-autonomos/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos-de-estudio/fisio-connect/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos-de-estudio/maria-fitness/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos-de-estudio/matrona/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/FISIO%20CONNECT%20WEB%20Y%20APP/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/MARIA%20FITNESS%20WEB%20y%20APP/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/MATRONA%20APP%20DEMO/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/PILATES%20DEMO/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/PSICOLOGA%20DEMO/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/MEDITACION%20DEMO/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos-de-estudio"
+  to = "/casos-de-estudio/tinnitus-calm/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/casos-de-estudio/"
+  to = "/casos-de-estudio/tinnitus-calm/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
