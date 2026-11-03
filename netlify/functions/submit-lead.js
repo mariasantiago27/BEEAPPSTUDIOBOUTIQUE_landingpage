@@ -1,14 +1,20 @@
 const { json, corsPreflight, parseJsonBody, isValidEmail, normalizeName } = require("./_helpers");
 
 const MARKETING_CONSENT_TEXT =
-  "Sí, quiero recibir emails con ideas para ordenar la tecnología de mi negocio. Escribo cuando tengo algo útil que contar, no cada semana, y te puedes dar de baja cuando quieras.";
+  "Quiero recibir emails de Chus con ideas para convertir lo que sé en producto. Me puedo dar de baja cuando quiera.";
 
 const FUGA_LABELS = {
-  bufalo: "Búfalo · Que te encuentren",
-  elefante: "Elefante · Que te compren",
-  leon: "León · Que se sientan cuidados",
-  rinoceronte: "Rinoceronte · Que vuelvan",
-  leopardo: "Leopardo · Que te sobre tiempo",
+  // Test «¿Vives de lo que sabes?» (Método Safari)
+  mapa: "Paso 0 · Tu mapa",
+  bufalo: "Paso 1 · Búfalo · Tu producto, a la vista",
+  elefante: "Paso 2 · Elefante · Que puedan comprarlo",
+  leon: "Paso 3 · León · Que lo disfruten",
+  rino: "Paso 4 · Rinoceronte · Que se queden",
+  rinoceronte: "Paso 4 · Rinoceronte · Que se queden",
+  leopardo: "Paso 5 · Leopardo · Que funcione sin ti",
+  avanzado: "Camino muy avanzado",
+  inicio: "Punto de partida",
+  objetivo: "Objetivo a 12 meses",
 };
 
 function escapeHtml(value) {
@@ -22,7 +28,7 @@ function escapeHtml(value) {
 function formatAnswers(respuestas) {
   if (!respuestas || typeof respuestas !== "object") return "Sin respuestas";
   return Object.entries(respuestas)
-    .map(([key, value]) => `${FUGA_LABELS[key] || key}: opción ${Number(value) + 1}/4`)
+    .map(([key, value]) => `${FUGA_LABELS[key] || key}: opción ${String.fromCharCode(65 + Number(value))}`)
     .join("<br>");
 }
 
@@ -37,8 +43,8 @@ async function upsertBrevoContact(apiKey, payload) {
       FIRSTNAME: payload.nombre,
       PROFESION: payload.profesion || "",
       MAYOR_FUGA: FUGA_LABELS[payload.mayor_fuga] || payload.mayor_fuga || "",
-      TEST_RESPUESTAS: JSON.stringify(payload.respuestas || {}),
-      ORIGEN: "test_big_five",
+      TEST_RESPUESTAS: JSON.stringify({ ...(payload.respuestas || {}), objetivo_texto: payload.objetivo || "" }),
+      ORIGEN: payload.origen || "test_vives_de_lo_que_sabes",
       ETAPA: payload.etapa === "arrancando" ? "Por arrancar" : payload.etapa === "marcha" ? "En marcha" : payload.etapa || "",
       CONSENT_MARKETING: marketingOptIn ? "sí" : "no",
       CONSENT_FECHA: consentFecha,
@@ -71,15 +77,16 @@ async function notifyOwner(apiKey, payload) {
     throw new Error("BREVO_SENDER_EMAIL not configured");
   }
 
-  const subject = `Nuevo test Big Five: ${payload.nombre || payload.email}`;
+  const subject = `Nuevo test ¿Vives de lo que sabes?: ${payload.nombre || payload.email}`;
   const html = `
     <div style="font-family:Georgia,serif;color:#333;line-height:1.6">
-      <h2 style="color:#A6533B;margin:0 0 16px">Nuevo lead del test Big Five</h2>
+      <h2 style="color:#5C1A36;margin:0 0 16px">Nuevo test «¿Vives de lo que sabes?»</h2>
       <p><strong>Nombre:</strong> ${escapeHtml(payload.nombre)}</p>
       <p><strong>Email:</strong> <a href="mailto:${escapeHtml(payload.email)}">${escapeHtml(payload.email)}</a></p>
       <p><strong>Profesión:</strong> ${escapeHtml(payload.profesion || "—")}</p>
-      <p><strong>Momento:</strong> ${escapeHtml(payload.etapa === "arrancando" ? "Por arrancar" : payload.etapa === "marcha" ? "En marcha con clientes" : "—")}</p>
-      <p><strong>Mayor fuga:</strong> ${escapeHtml(FUGA_LABELS[payload.mayor_fuga] || payload.mayor_fuga || "—")}</p>
+      <p><strong>Punto de partida:</strong> ${escapeHtml(payload.etapa || "—")}</p>
+      <p><strong>Objetivo:</strong> ${escapeHtml(payload.objetivo || "—")}</p>
+      <p><strong>Su paso ahora:</strong> ${escapeHtml(FUGA_LABELS[payload.mayor_fuga] || payload.mayor_fuga || "—")}</p>
       <p><strong>Respuestas:</strong><br>${formatAnswers(payload.respuestas)}</p>
       <p style="color:#666;font-size:13px">Fecha: ${escapeHtml(payload.fecha || new Date().toISOString())}</p>
       <hr style="border:none;border-top:1px solid #ddd;margin:20px 0">
@@ -139,6 +146,8 @@ exports.handler = async (event) => {
     etapa: body.etapa || body.stage || "",
     respuestas: body.respuestas || body.answers || {},
     mayor_fuga: body.mayor_fuga || "",
+    objetivo: String(body.objetivo || "").slice(0, 200),
+    origen: String(body.origen || "").slice(0, 60),
     marketing_opt_in: Boolean(body.marketing_opt_in),
     fecha: body.fecha || new Date().toISOString(),
   };
