@@ -69,7 +69,7 @@ async function upsertBrevoContact(apiKey, payload) {
 }
 
 async function notifyOwner(apiKey, payload) {
-  const to = process.env.NOTIFY_EMAIL || "chussama.digital@gmail.com";
+  const to = process.env.NOTIFY_EMAIL || "chussama.optimizat@gmail.com";
   const senderEmail = process.env.BREVO_SENDER_EMAIL;
   const senderName = process.env.BREVO_SENDER_NAME || "Optimiza-T con IA";
 
